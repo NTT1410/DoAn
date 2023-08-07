@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {} from "../assets/styles/components/Navbar.scss";
 import { BrowserRouter, Link, Outlet } from "react-router-dom";
+import UserLogin from "./UserLogin";
 
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
@@ -35,6 +36,9 @@ const Navbar = () => {
             </li>
             <li>
               <Link to="/contact">Contact</Link>
+            </li>
+            <li>
+              <UserLogin />
             </li>
           </ul>
         </div>
