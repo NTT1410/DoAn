@@ -7,7 +7,7 @@ import Programs from "../Pages/Programs";
 import Departments from "../Pages/Admissions";
 import Contact from "../Pages/Contact";
 import Login from "../Pages/Login";
-import Register from "../Pages/Register";
+import Signup from "../Pages/Signup";
 
 const NavbarRouter = () => {
   return (
@@ -20,7 +20,7 @@ const NavbarRouter = () => {
           <Route path="departments" element={<Departments />} />
           <Route path="contact" element={<Contact />} />
           <Route path="login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          <Route path="signup" element={<Signup />} />
         </Route>
       </Routes>
     </BrowserRouter>
