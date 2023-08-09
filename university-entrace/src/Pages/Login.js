@@ -26,7 +26,7 @@ const Login = () => {
                 />
               </div>
               <div className="form__forgot-password">
-                <Link to="/signup">abs</Link>
+                <Link to="/signup">Forgot password?</Link>
               </div>
               <button className="btn__submit">
                 <span className="btn__text">Log In Now</span>

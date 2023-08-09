@@ -73,9 +73,15 @@
 }
 
 .form__forgot-password {
+    a {
+        text-decoration: none;
+        color: $color-2;
+        font-weight: 600;
+    }
+
     padding-top: 10px;
-    text-decoration: none;
-    font-family: Raleway, sans-serif;
+    font-family: Raleway,
+    sans-serif;
 }
 
 .social-login {
