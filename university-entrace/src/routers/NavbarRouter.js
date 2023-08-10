@@ -8,6 +8,7 @@ import Departments from "../Pages/Admissions";
 import Contact from "../Pages/Contact";
 import Login from "../Pages/Login";
 import Signup from "../Pages/Signup";
+import { UserAdmin } from "../Pages/UserAdmin";
 
 const NavbarRouter = () => {
   return (
@@ -21,6 +22,7 @@ const NavbarRouter = () => {
           <Route path="contact" element={<Contact />} />
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<Signup />} />
+          <Route path="useradmin" element={<UserAdmin />} />
         </Route>
       </Routes>
     </BrowserRouter>
