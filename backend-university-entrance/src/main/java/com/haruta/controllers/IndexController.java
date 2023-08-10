@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 @Controller
 @ControllerAdvice
-//@PropertySource("classpath:configs.properties")
+@PropertySource("classpath:configs.properties")
 public class IndexController {
 
     @Autowired
@@ -39,7 +39,7 @@ public class IndexController {
 
     @RequestMapping("/")
     public String index(Model model) {
-        model.addAttribute("users", this.userService.getUsers());
+//        model.addAttribute("users", this.userService.getUsers());
         return "index";
     }
 

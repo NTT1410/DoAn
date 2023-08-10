@@ -1,24 +1,6 @@
 @import "../abstracts/mixins";
 @import "../abstracts/variables";
 
-.container-form {
-    .input__signup {
-        color: #fff;
-        border-color: lightgray !important;
-        padding-left: 0 !important;
-    }
-
-    .input__signup::placeholder {
-        color: lightgray !important;
-    }
-
-    .input__signup:focus,
-    .input__signup:active {
-        border-color: #fff !important;
-        width: 100% !important;
-    }
-
-    form.form-sign {
-        padding-top: 20px !important;
-    }
+.btn-icon {
+    box-shadow: none !important;
 }

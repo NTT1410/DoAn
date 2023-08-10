@@ -1,138 +1,105 @@
 @import "../abstracts/mixins";
 @import "../abstracts/variables";
 
-.container-form {
-    @include container-form;
-}
-
-.screen-form {
-    @include screen-form;
-
-    .screen-form__content {
-        @include screen-form__content;
-
-        .form {
-            @include form;
-
-            .form__field {
-                @include form__field;
-
-                .form__icon {
-                    @include form__icon;
-                }
-
-                .form__input {
-                    @include form__input;
-                }
-
-                .form__input:active,
-                .form__input:focus {
-                    @include input-focus;
-                }
-            }
-
-            .btn__submit {
-                @include button-submit;
-
-                .btn__icon {
-                    @include button-icon;
-                }
-            }
-
-            .btn__submit:active,
-            .btn__submit:focus,
-            .btn__submit:hover {
-                @include button-submit-focus;
-            }
-        }
-    }
-
-    .screen-form__background {
-        @include screen-form__background;
-
-        .screen-background__shape {
-            @include screen-background__shape;
-        }
-
-        .screen-background__shape1 {
-            @include screen-background__shape1;
-        }
-
-        .screen-background__shape2 {
-            @include screen-background__shape2;
-        }
-
-        .screen-background__shape3 {
-            @include screen-background__shape3;
-        }
-
-        .screen-background__shape4 {
-            @include screen-background__shape4;
-        }
-    }
-}
-
-.form__forgot-password {
-    a {
-        text-decoration: none;
-        color: $color-2;
-        font-weight: 600;
-    }
-
-    padding-top: 10px;
-    font-family: Raleway,
-    sans-serif;
-}
-
-.social-login {
-    position: absolute;
-    height: 90px;
-    width: 160px;
-    text-align: center;
-    right: 0px;
-    color: #fff;
-}
-
-
-
-.signup-button {
-    position: absolute;
-    text-align: center;
-    width: 320px;
-    height: 70px;
-    bottom: 0px;
-    @include design-link;
-
-    .signup {
-        @include design-link;
-        transition: 0.3s ease-in-out;
-    }
-
-    .signup:hover {
-        color: #4C489D;
-    }
-
-    span {
-        padding-right: 5px;
-        font-weight: normal;
-    }
-}
-
-.social-icons {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.social-login__icon {
-    padding: 20px 10px;
-    color: #fff;
+a.to-signup {
     text-decoration: none;
-    text-shadow: 0px 0px 8px #7875B5;
-    transition: 0.3s ease-in-out;
+    margin-left: 5px;
 }
 
-.social-login__icon:hover {
-    transform: scale(2);
-    color: #fbbc05;
+.form-bg {
+    .container {
+        margin-top: 20px;
+    }
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-container {
+    background: #ecf0f3;
+    font-family: 'Nunito', sans-serif;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
+}
+
+.form-container .form-icon {
+    color: #19A7CE;
+    font-size: 55px;
+    text-align: center;
+    line-height: 100px;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 15px;
+    border-radius: 50px;
+    box-shadow: 7px 7px 10px #cbced1, -7px -7px 10px #fff;
+}
+
+.form-container .title {
+    color: #19A7CE;
+    font-size: 25px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+    margin: 0 0 20px;
+}
+
+.form-container .form-horizontal .form-group {
+    margin: 0 0 25px 0;
+}
+
+.form-container .form-horizontal .form-group label {
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.form-container .form-horizontal .form-control {
+    color: #333;
+    background: #ecf0f3;
+    font-size: 15px;
+    height: 50px;
+    padding: 20px;
+    letter-spacing: 1px;
+    border: none;
+    border-radius: 50px;
+    box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px #fff;
+    display: inline-block;
+    transition: all 0.3s ease 0s;
+}
+
+.form-container .form-horizontal .form-control:focus {
+    box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px #fff;
+    outline: none;
+}
+
+.form-container .form-horizontal .form-control::placeholder {
+    color: #808080;
+    font-size: 14px;
+}
+
+.form-container .form-horizontal .btn {
+    color: #000;
+    background-color: #19A7CE;
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    width: 100%;
+    padding: 12px 15px 11px;
+    border-radius: 20px;
+    box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px #fff;
+    border: none;
+    transition: all 0.5s ease 0s;
+}
+
+.form-container .form-horizontal .btn:hover,
+.form-container .form-horizontal .btn:focus {
+    color: #fff;
+    letter-spacing: 3px;
+    box-shadow: none;
+    outline: none;
 }

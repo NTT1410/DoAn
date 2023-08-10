@@ -5,55 +5,133 @@ import { Link } from "react-router-dom";
 const Signup = () => {
   return (
     <>
-      <div className="container-form">
-        <div className="screen-form sign-form">
-          <div className="screen-form__content">
-            <form className="form form-sign">
-              <div className="form__field">
-                <input
-                  type="email"
-                  className="form__input input__signup"
-                  placeholder="Email"
-                />
+      <div class="form-bg">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-7 col-md-offset-4">
+              <div class="form-container form-signup">
+                <form class="form-horizontal">
+                  <table className="table">
+                    <tr>
+                      <td>
+                        <div class="form-group">
+                          <label>first name</label>
+                          <input
+                            class="form-control"
+                            type="text"
+                            placeholder="first name"
+                          />
+                        </div>
+                      </td>
+                      <td>
+                        <div class="form-group">
+                          <label>last name</label>
+                          <input
+                            class="form-control"
+                            type="text"
+                            placeholder="last name"
+                          />
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="form-group">
+                          <label>address</label>
+                          <input
+                            class="form-control"
+                            type="text"
+                            placeholder="address"
+                          />
+                        </div>
+                      </td>
+                      <td>
+                        <div class="form-group">
+                          <label>email</label>
+                          <input
+                            class="form-control"
+                            type="email"
+                            placeholder="email"
+                          />
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="form-group">
+                          <label>create password</label>
+                          <input
+                            class="form-control"
+                            type="password"
+                            placeholder="create password"
+                          />
+                        </div>
+                      </td>
+                      <td>
+                        <div class="form-group">
+                          <label>confirm password</label>
+                          <input
+                            class="form-control"
+                            type="password"
+                            placeholder="confirm password"
+                          />
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="form-check">
+                          <input
+                            class="form-check-input"
+                            type="checkbox"
+                            value="accept"
+                            id="accept"
+                          />
+                          <label class="form-check-label" for="">
+                            I accept all terms & conditions
+                          </label>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colSpan="2" className="text-lg-center">
+                        <button type="button" class="btn btn-default w-50">
+                          Sign up now
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colSpan="2">
+                        <div class="form-group mt-4 text-lg-center">
+                          Already, have an account?
+                          <Link className="link-primary to-signup" to="/login">
+                            Login
+                          </Link>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr className="text-lg-center">
+                      <td>
+                        <Link
+                          class="btn btn-primary btn-lg w-auto btn-icon"
+                          href="#!"
+                        >
+                          <i class="fab fa-facebook-f me-2"></i>Continue with
+                          Facebook
+                        </Link>
+                      </td>
+                      <td>
+                        <Link
+                          class="btn btn-primary btn-lg w-auto btn-icon"
+                          href="#!"
+                        >
+                          <i class="fab fa-google me-2"></i>Continue with Google
+                        </Link>
+                      </td>
+                    </tr>
+                  </table>
+                </form>
               </div>
-              <div className="form__field">
-                <input
-                  type="email"
-                  className="form__input input__signup"
-                  placeholder="User name"
-                />
-              </div>
-              <div className="form__field">
-                <input
-                  type="password"
-                  className="form__input input__signup"
-                  placeholder="Create password"
-                />
-              </div>
-              <div className="form__field">
-                <input
-                  type="password"
-                  className="form__input input__signup"
-                  placeholder="Confirm password"
-                />
-              </div>
-              <div className="form__field">
-                <input
-                  type="file"
-                  className="form__input input__signup"
-                  placeholder="Confirm password"
-                />
-              </div>
-              <button className="btn__submit submit__signup">
-                <span className="btn__text">Sign Un Now</span>
-                <i className="btn__icon fas fa-chevron-right"></i>
-              </button>
-            </form>
-            <div className="signup-button">
-              <span className="signup-s">Have an account?</span>
-              <Link className="signup" to="/login">
-                Login
-              </Link>
             </div>
           </div>
         </div>

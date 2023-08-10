@@ -5,52 +5,53 @@ import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 const Login = () => {
   return (
     <>
-      <div className="container-form">
-        <div className="screen-form">
-          <div className="screen-form__content">
-            <form className="form">
-              <div className="form__field">
-                <i className="form__icon fas fa-user"></i>
-                <input
-                  type="text"
-                  className="form__input"
-                  placeholder="User name / Email"
-                />
-              </div>
-              <div className="form__field">
-                <i className="form__icon fas fa-lock"></i>
-                <input
-                  type="password"
-                  className="form__input"
-                  placeholder="Password"
-                />
-              </div>
-              <div className="form__forgot-password">
-                <Link to="/signup">Forgot password?</Link>
-              </div>
-              <button className="btn__submit">
-                <span className="btn__text">Log In Now</span>
-                <i className="btn__icon fas fa-chevron-right"></i>
-              </button>
-            </form>
-            <div className="social-login">
-              <h3>Login With</h3>
-              <div className="social-icons">
-                <a href="#" className="social-login__icon fab fa-google"></a>
+      <div class="form-bg">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+              <div class="form-container">
+                <div class="form-icon">
+                  <i class="fa fa-user"></i>
+                </div>
+                <h3 class="title">Login</h3>
+                <form class="form-horizontal">
+                  <div class="form-group">
+                    <label>email</label>
+                    <input
+                      class="form-control"
+                      type="email"
+                      placeholder="email address"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label>password</label>
+                    <input
+                      class="form-control"
+                      type="password"
+                      placeholder="password"
+                    />
+                  </div>
+                  <button type="button" class="btn btn-default">
+                    Login
+                  </button>
+                  <div class="form-group mt-4 text-lg-center">
+                    Don't have an account?
+                    <Link className="link-primary to-signup" to="/signup">
+                      Signup
+                    </Link>
+                  </div>
+                  <div className="">
+                    <a class="btn btn-primary btn-lg btn-block" href="#!">
+                      <i class="fab fa-facebook-f me-2"></i>Continue with
+                      Facebook
+                    </a>
+                    <a class="btn btn-primary btn-lg btn-block mt-2" href="#!">
+                      <i class="fab fa-google me-2"></i>Continue with Google
+                    </a>
+                  </div>
+                </form>
               </div>
             </div>
-            <div className="signup-button">
-              <span className="signup-s">Not a member?</span>
-              <Link className="signup" to="/signup">
-                Signup
-              </Link>
-            </div>
-          </div>
-          <div className="screen-form__background">
-            <span className="screen-background__shape screen-background__shape4"></span>
-            <span className="screen-background__shape screen-background__shape3"></span>
-            <span className="screen-background__shape screen-background__shape2"></span>
-            <span className="screen-background__shape screen-background__shape1"></span>
           </div>
         </div>
       </div>

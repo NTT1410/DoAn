@@ -4,6 +4,7 @@
  */
 package com.haruta.pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.Basic;
@@ -61,11 +62,14 @@ public class Users implements Serializable {
     @Column(name = "avatar")
     private String avatar;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
+    @JsonIgnore
     private Set<Comments> commentsSet;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
+    @JsonIgnore
     private Set<Questions> questionsSet;
     @JoinColumn(name = "role_id", referencedColumnName = "role_id")
     @ManyToOne(optional = false)
+    @JsonIgnore
     private Roles roleId;
 
     public Users() {
