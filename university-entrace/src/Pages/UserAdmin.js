@@ -1,112 +1,76 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import Apis, { endpoints } from "../configs/Apis";
+import MySpinner from "../components/MySpinner";
+import { Button, Card, Col, Container, Form, Row } from "react-bootstrap";
 
 export const UserAdmin = () => {
-  const [data, setData] = useState([]);
-  const [params, setParams] = useState({ username: "", userId: "" });
-  const [selectedOption, setSelectedOption] = useState("username");
-  const [test, setTest] = useState("");
-  const [url] = useState({
-    url: new URL("http://localhost:8080/backend-university-entrance/api/users"),
-  });
+  const [users, setUsers] = useState([]);
+  const [params, setParams] = useState({ username: "" });
+  const [q] = useSearchParams();
+  const nav = useNavigate();
 
-  const searchUserByName = (event) => {
-    setParams({ [selectedOption]: event.target.value });
-  };
-  const searchSelect = (event) => {
-    setSelectedOption(event.target.value);
-  };
-  const handlClick = () => {
-    setTest("test");
-  };
   useEffect(() => {
-    url.url.search = new URLSearchParams(params).toString();
-    fetch(url.url)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        setData(data);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
-  }, [url, params]);
+    const loadDpm = async () => {
+      let e = endpoints["users"];
+      console.log(e);
+      let kw = q.get("username");
+      if (kw !== null) {
+        e = `${e}?username=${kw}`;
+      }
+      console.log(kw);
+      let res = await Apis.get(e);
+
+      setUsers(res.data);
+    };
+    loadDpm();
+  }, [q]);
+
+  const search = (evt) => {
+    evt.preventDefault();
+    nav(`/useradmin?username=${params.username}`);
+  };
+
+  if (users.length === 0) return <MySpinner />;
   return (
     <>
-      <div className="App-intro">
-        <h1>{test}</h1>
-        <h1 className="text-center mt-2 mb-2">User List</h1>
-        <div className="search container mt-3 mb-3">
-          <form class="d-flex">
-            <select
-              id="s"
-              onChange={searchSelect}
-              value={selectedOption}
-              class="form-select w-auto"
-            >
-              <option selected value="username">
-                Name
-              </option>
-              <option value="userid">Id</option>
-            </select>
-            <input
-              class="form-control me-2 w-auto"
-              type="search"
-              placeholder="Enter your user name..."
-              value={params.username}
-              onChange={searchUserByName}
-              aria-label="Search"
-            />
-          </form>
-        </div>
-
-        <div className="">
-          <table className="container table-bordered text-center">
-            <thead>
-              <tr>
-                <th>Avatar</th>
-                <th>User Id</th>
-                <th>User Name</th>
-                <th>Password</th>
-                <th colSpan={2}>Edit</th>
-              </tr>
-            </thead>
-            <tbody>
-              {data.map((post) => {
-                return (
-                  <tr key={post.userId}>
-                    <td>
-                      <img src={post.avatar} alt={post.username}></img>
-                    </td>
-                    <td>{post.userId}</td>
-                    <td>{post.username}</td>
-                    <td>{post.password}</td>
-                    <td className="text-lg-center">
-                      <button
-                        type="button"
-                        class="btn btn-info btn-primary w-auto"
-                      >
-                        Update
-                      </button>
-                    </td>
-                    <td className="text-lg-center">
-                      <button
-                        onClick={handlClick}
-                        type="button"
-                        class="btn btn-danger btn-primary w-auto"
-                      >
-                        <Link className="text-decoration-none" to=".">
-                          Delete
-                        </Link>
-                      </button>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
-      </div>
+      <Container className="App-intro mb-5">
+        <h1 className="text-center mt-2 mb-2 text-uppercase">User List</h1>
+        <Form onSubmit={search} inline className="mb-3">
+          <Row>
+            <Col xs="auto">
+              <Form.Control
+                type="text"
+                placeholder="Search..."
+                className=" mr-sm-2"
+                onChange={(e) => setParams({ username: e.target.value })}
+              />
+            </Col>
+            <Col xs="auto">
+              <Button type="submit">Submit</Button>
+            </Col>
+          </Row>
+        </Form>
+        <Row xl={5} sm={3}>
+          {users.map((u) => {
+            return (
+              <Col className="mt-2">
+                <Card>
+                  <Card.Img variant="top" src={u.avatar} id="avatar-card" />
+                  <Card.Body>
+                    <Card.Title>{u.username}</Card.Title>
+                    <Card.Text>{u.password}</Card.Text>
+                    <Button variant="primary">Update</Button>
+                    <Button variant="danger" className="m-2">
+                      Delete
+                    </Button>
+                  </Card.Body>
+                </Card>
+              </Col>
+            );
+          })}
+        </Row>
+      </Container>
     </>
   );
 };

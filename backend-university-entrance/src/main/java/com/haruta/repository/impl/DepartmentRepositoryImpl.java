@@ -4,8 +4,8 @@
  */
 package com.haruta.repository.impl;
 
-import com.haruta.pojo.Users;
-import com.haruta.repository.UserRepository;
+import com.haruta.pojo.Departments;
+import com.haruta.repository.DepartmentRepository;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -26,38 +26,37 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Repository
 @Transactional
-public class UserRepositoryImpl implements UserRepository {
+public class DepartmentRepositoryImpl implements DepartmentRepository {
 
     @Autowired
     private LocalSessionFactoryBean factory;
 
     @Override
-    public List<Users> getUsers(Map<String, String> params) {
+    public List<Departments> getDpm(Map<String, String> params) {
         Session s = this.factory.getObject().getCurrentSession();
         CriteriaBuilder builder = s.getCriteriaBuilder();
-        CriteriaQuery<Users> u = builder.createQuery(Users.class);
-        Root root = u.from(Users.class);
-        u.select(root);
-
+        CriteriaQuery<Departments> d = builder.createQuery(Departments.class);
+        Root root = d.from(Departments.class);
+        d.select(root);
+        
         if (params != null) {
             List<Predicate> predicates = new ArrayList<>();
 
-            String userid = params.get("userid");
-            if (userid != null && !userid.isEmpty()) {
-                predicates.add(builder.equal(root.get("userId"), Double.parseDouble(userid)));
+            String departmentid = params.get("departmentid");
+            if (departmentid != null && !departmentid.isEmpty()) {
+                predicates.add(builder.equal(root.get("departmentId"), Integer.parseInt(departmentid)));
             }
 
-            String username = params.get("username");
-            if (username != null && !username.isEmpty()) {
-                predicates.add(builder.like(root.get("username"), String.format("%%%s%%", username)));
+            String departmentname = params.get("departmentname");
+            if (departmentname != null && !departmentname.isEmpty()) {
+                predicates.add(builder.like(root.get("departmentname"), String.format("%%%s%%", departmentname)));
             }
 
-            u.where(predicates.toArray(Predicate[]::new));
+            d.where(predicates.toArray(Predicate[]::new));
 
         }
-        u.orderBy(builder.asc(root.get("userId")));
-        Query query = s.createQuery(u);
+        d.orderBy(builder.asc(root.get("departmentId")));
+        Query query = s.createQuery(d);
         return query.getResultList();
     }
-
 }

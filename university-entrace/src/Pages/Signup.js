@@ -1,6 +1,8 @@
 import React from "react";
 import {} from "../assets/styles/pages/Signup.scss";
 import { Link } from "react-router-dom";
+import {} from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Signup = () => {
   return (
@@ -14,7 +16,7 @@ const Signup = () => {
                   <table className="table">
                     <tr>
                       <td>
-                        <div class="form-group">
+                        <div class="form-group bg-transparent">
                           <label>first name</label>
                           <input
                             class="form-control"
@@ -24,7 +26,7 @@ const Signup = () => {
                         </div>
                       </td>
                       <td>
-                        <div class="form-group">
+                        <div class="form-group bg-transparent">
                           <label>last name</label>
                           <input
                             class="form-control"
@@ -36,7 +38,7 @@ const Signup = () => {
                     </tr>
                     <tr>
                       <td>
-                        <div class="form-group">
+                        <div class="form-group bg-transparent">
                           <label>address</label>
                           <input
                             class="form-control"
@@ -46,7 +48,7 @@ const Signup = () => {
                         </div>
                       </td>
                       <td>
-                        <div class="form-group">
+                        <div class="form-group bg-transparent">
                           <label>email</label>
                           <input
                             class="form-control"
@@ -58,7 +60,7 @@ const Signup = () => {
                     </tr>
                     <tr>
                       <td>
-                        <div class="form-group">
+                        <div class="form-group bg-transparent">
                           <label>create password</label>
                           <input
                             class="form-control"
@@ -68,7 +70,7 @@ const Signup = () => {
                         </div>
                       </td>
                       <td>
-                        <div class="form-group">
+                        <div class="form-group bg-transparent">
                           <label>confirm password</label>
                           <input
                             class="form-control"
@@ -80,7 +82,7 @@ const Signup = () => {
                     </tr>
                     <tr>
                       <td>
-                        <div class="form-check">
+                        <div class="form-check bg-transparent">
                           <input
                             class="form-check-input"
                             type="checkbox"
@@ -102,7 +104,7 @@ const Signup = () => {
                     </tr>
                     <tr>
                       <td colSpan="2">
-                        <div class="form-group mt-4 text-lg-center">
+                        <div class="form-group mt-4 text-lg-center bg-transparent">
                           Already, have an account?
                           <Link className="link-primary to-signup" to="/login">
                             Login

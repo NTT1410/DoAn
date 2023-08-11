@@ -1,6 +1,8 @@
 import React from "react";
 import {} from "../assets/styles/pages/Login.scss";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Button from "react-bootstrap/esm/Button";
 
 const Login = () => {
   return (
@@ -31,9 +33,9 @@ const Login = () => {
                       placeholder="password"
                     />
                   </div>
-                  <button type="button" class="btn btn-default">
+                  <Button type="button" class="btn btn-default">
                     Login
-                  </button>
+                  </Button>
                   <div class="form-group mt-4 text-lg-center">
                     Don't have an account?
                     <Link className="link-primary to-signup" to="/signup">
@@ -41,13 +43,16 @@ const Login = () => {
                     </Link>
                   </div>
                   <div className="">
-                    <a class="btn btn-primary btn-lg btn-block" href="#!">
+                    <Link class="btn btn-primary btn-lg btn-block" href="#!">
                       <i class="fab fa-facebook-f me-2"></i>Continue with
                       Facebook
-                    </a>
-                    <a class="btn btn-primary btn-lg btn-block mt-2" href="#!">
+                    </Link>
+                    <Link
+                      class="btn btn-primary btn-lg btn-block mt-2"
+                      href="#!"
+                    >
                       <i class="fab fa-google me-2"></i>Continue with Google
-                    </a>
+                    </Link>
                   </div>
                 </form>
               </div>
