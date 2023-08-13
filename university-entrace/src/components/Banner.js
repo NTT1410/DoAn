@@ -26,6 +26,7 @@ const Banner = () => {
           className="owl-theme"
           autoplay={true}
           margin={8}
+          loop={true}
           autoplaySpeed={2000}
         >
           {banners.map((b) => {

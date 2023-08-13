@@ -4,6 +4,7 @@
  */
 package com.haruta.pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
@@ -74,6 +75,7 @@ public class News implements Serializable {
     @Column(name = "status")
     private short status;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "newId")
+    @JsonIgnore
     private Set<Comments> commentsSet;
 
     public News() {
