@@ -6,17 +6,19 @@ import { Button, Card, Col, Container, Form, Row } from "react-bootstrap";
 
 export const UserAdmin = () => {
   const [users, setUsers] = useState([]);
-  const [params, setParams] = useState({ username: "" });
+  const [params, setParams] = useState({ kw: "" });
   const [q] = useSearchParams();
+  const [select, setSelect] = useState("username");
   const nav = useNavigate();
 
   useEffect(() => {
     const loadDpm = async () => {
+      let selected = select;
       let e = endpoints["users"];
-      console.log(e);
-      let kw = q.get("username");
+      let kw = q.get(selected);
+      console.log(selected);
       if (kw !== null) {
-        e = `${e}?username=${kw}`;
+        e = `${e}?${selected}=${kw}`;
       }
       console.log(kw);
       let res = await Apis.get(e);
@@ -24,34 +26,42 @@ export const UserAdmin = () => {
       setUsers(res.data);
     };
     loadDpm();
-  }, [q]);
+  }, [q, select]);
 
   const search = (evt) => {
     evt.preventDefault();
-    nav(`/useradmin?username=${params.username}`);
+    nav(`/useradmin?${select}=${params.kw}`);
   };
 
-  if (users.length === 0) return <MySpinner />;
   return (
     <>
-      <Container className="App-intro mb-5">
+      <Container className="mb-5">
         <h1 className="text-center mt-2 mb-2 text-uppercase">User List</h1>
-        <Form onSubmit={search} inline className="mb-3">
-          <Row>
-            <Col xs="auto">
-              <Form.Control
-                type="text"
-                placeholder="Search..."
-                className=" mr-sm-2"
-                onChange={(e) => setParams({ username: e.target.value })}
-              />
-            </Col>
-            <Col xs="auto">
-              <Button type="submit">Submit</Button>
-            </Col>
-          </Row>
-        </Form>
-        <Row xl={5} sm={3}>
+        <h2>{select}</h2>
+        <div className="d-flex">
+          <Form.Select
+            aria-label="Default select example"
+            className="w-auto"
+            onChange={(e) => setSelect(e.target.value)}
+          >
+            <option selected value="username">
+              Name
+            </option>
+            <option value="userid">Id</option>
+          </Form.Select>
+          <Form onSubmit={search} inline className="d-flex">
+            <Form.Control
+              type="text"
+              placeholder="Search..."
+              className=" mr-sm-2"
+              onChange={(e) => setParams({ kw: e.target.value })}
+            />
+            <Button type="submit" className="ms-3">
+              Submit
+            </Button>
+          </Form>
+        </div>
+        <Row xl={5} sm={3} xs={1}>
           {users.map((u) => {
             return (
               <Col className="mt-2">
