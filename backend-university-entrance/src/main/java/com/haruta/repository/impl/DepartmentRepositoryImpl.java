@@ -44,18 +44,18 @@ public class DepartmentRepositoryImpl implements DepartmentRepository {
 
             String departmentid = params.get("departmentid");
             if (departmentid != null && !departmentid.isEmpty()) {
-                predicates.add(builder.equal(root.get("departmentId"), Integer.parseInt(departmentid)));
+                predicates.add(builder.equal(root.get("id"), Integer.parseInt(departmentid)));
             }
 
             String departmentname = params.get("departmentname");
             if (departmentname != null && !departmentname.isEmpty()) {
-                predicates.add(builder.like(root.get("departmentname"), String.format("%%%s%%", departmentname)));
+                predicates.add(builder.like(root.get("name"), String.format("%%%s%%", departmentname)));
             }
 
             d.where(predicates.toArray(Predicate[]::new));
 
         }
-        d.orderBy(builder.asc(root.get("departmentId")));
+        d.orderBy(builder.asc(root.get("id")));
         Query query = s.createQuery(d);
         return query.getResultList();
     }

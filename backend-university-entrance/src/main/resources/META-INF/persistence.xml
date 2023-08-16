@@ -10,6 +10,7 @@
     <class>com.haruta.pojo.Livestreams</class>
     <class>com.haruta.pojo.Questions</class>
     <class>com.haruta.pojo.Banners</class>
+    <class>com.haruta.pojo.Categories</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/universityentrance?zeroDateTimeBehavior=CONVERT_TO_NULL"/>

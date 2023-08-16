@@ -36,10 +36,10 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "News.findAll", query = "SELECT n FROM News n"),
-    @NamedQuery(name = "News.findByNewId", query = "SELECT n FROM News n WHERE n.newId = :newId"),
+    @NamedQuery(name = "News.findById", query = "SELECT n FROM News n WHERE n.id = :id"),
     @NamedQuery(name = "News.findByTitle", query = "SELECT n FROM News n WHERE n.title = :title"),
-    @NamedQuery(name = "News.findByCreatedAt", query = "SELECT n FROM News n WHERE n.createdAt = :createdAt"),
-    @NamedQuery(name = "News.findByUpdatedAt", query = "SELECT n FROM News n WHERE n.updatedAt = :updatedAt"),
+    @NamedQuery(name = "News.findByCreatedDate", query = "SELECT n FROM News n WHERE n.createdDate = :createdDate"),
+    @NamedQuery(name = "News.findByUpdatedDate", query = "SELECT n FROM News n WHERE n.updatedDate = :updatedDate"),
     @NamedQuery(name = "News.findByStatus", query = "SELECT n FROM News n WHERE n.status = :status")})
 public class News implements Serializable {
 
@@ -47,8 +47,8 @@ public class News implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "new_id")
-    private Integer newId;
+    @Column(name = "id")
+    private Integer id;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
@@ -62,14 +62,14 @@ public class News implements Serializable {
     private String content;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "created_at")
+    @Column(name = "created_date")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date createdAt;
+    private Date createdDate;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "updated_at")
+    @Column(name = "updated_date")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date updatedAt;
+    private Date updatedDate;
     @Basic(optional = false)
     @NotNull
     @Column(name = "status")
@@ -81,25 +81,25 @@ public class News implements Serializable {
     public News() {
     }
 
-    public News(Integer newId) {
-        this.newId = newId;
+    public News(Integer id) {
+        this.id = id;
     }
 
-    public News(Integer newId, String title, String content, Date createdAt, Date updatedAt, short status) {
-        this.newId = newId;
+    public News(Integer id, String title, String content, Date createdDate, Date updatedDate, short status) {
+        this.id = id;
         this.title = title;
         this.content = content;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
+        this.createdDate = createdDate;
+        this.updatedDate = updatedDate;
         this.status = status;
     }
 
-    public Integer getNewId() {
-        return newId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setNewId(Integer newId) {
-        this.newId = newId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -118,20 +118,20 @@ public class News implements Serializable {
         this.content = content;
     }
 
-    public Date getCreatedAt() {
-        return createdAt;
+    public Date getCreatedDate() {
+        return createdDate;
     }
 
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
     }
 
-    public Date getUpdatedAt() {
-        return updatedAt;
+    public Date getUpdatedDate() {
+        return updatedDate;
     }
 
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
+    public void setUpdatedDate(Date updatedDate) {
+        this.updatedDate = updatedDate;
     }
 
     public short getStatus() {
@@ -154,7 +154,7 @@ public class News implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (newId != null ? newId.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -165,7 +165,7 @@ public class News implements Serializable {
             return false;
         }
         News other = (News) object;
-        if ((this.newId == null && other.newId != null) || (this.newId != null && !this.newId.equals(other.newId))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -173,7 +173,7 @@ public class News implements Serializable {
 
     @Override
     public String toString() {
-        return "com.haruta.pojo.News[ newId=" + newId + " ]";
+        return "com.haruta.pojo.News[ id=" + id + " ]";
     }
     
 }

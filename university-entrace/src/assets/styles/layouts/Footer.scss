@@ -1,10 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital@1&display=swap');
+
 #footer {
     padding: 20px 0 10px 0;
-    background: #1c92d2;
-    /* fallback for old browsers */
-    background: -webkit-linear-gradient(to bottom, #f2fcfe, #1c92d2);
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to bottom, #f2fcfe, #1c92d2);
+    background: #1b2430;
+    color: white !important;
 
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     #title-footer {
@@ -14,13 +13,19 @@
     #item-icon {
         font-size: 15px;
         margin-right: 10px;
-        font-family: Roboto, sans-serif;
     }
 
     #list {
-        #list-item {
+
+        #list-item,
+        #list-item>a {
             padding-left: 0;
-            font-family: Roboto, sans-serif;
+            font-family: 'Roboto Condensed', sans-serif;
+            color: #fff !important;
         }
+    }
+
+    #row-container {
+        align-items: start;
     }
 }

@@ -31,7 +31,7 @@ const Banner = () => {
         >
           {banners.map((b) => {
             return (
-              <div key={b.bannerId}>
+              <div key={b.id}>
                 <img className="img" src={b.link} alt="banner" />
               </div>
             );

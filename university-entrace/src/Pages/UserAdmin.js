@@ -68,7 +68,7 @@ export const UserAdmin = () => {
                 <Card>
                   <Card.Img variant="top" src={u.avatar} id="avatar-card" />
                   <Card.Body>
-                    <Card.Title>{u.username}</Card.Title>
+                    <Card.Title>{u.name}</Card.Title>
                     <Card.Text>{u.password}</Card.Text>
                     <Button variant="primary">Update</Button>
                     <Button variant="danger" className="m-2">

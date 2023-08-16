@@ -5,49 +5,36 @@ import MySpinner from "./MySpinner";
 import Moment from "react-moment";
 
 const News = () => {
-  let max = [];
-  for (let i = 0; i < 3; i++) {
-    max.push(i);
-  }
   const [news, setNews] = useState([]);
 
   useEffect(() => {
     const loadNews = async () => {
       let res = await Apis.get(endpoints["news"]);
-      setNews(res.data);
+      setNews(res.data.slice(0, 4));
     };
     loadNews();
   }, []);
   if (news.length === 0) return <MySpinner />;
   return (
     <>
-      <Row className="mb-3">
-        <Col md={2}>Advertisement</Col>
-        <Col md={8}>
-          <h3 className="">Related News</h3>
-          {news.map((n) => {
-            return (
-              <Row className="mt-2" key={n.newId}>
-                <Card className="p-2">
-                  <Card.Header className="bg-info-subtle">
-                    <Card.Title>{n.title}</Card.Title>
-                  </Card.Header>
-                  <Card.Body>
-                    <Card.Text>{n.content}</Card.Text>
-                    <Card.Text>
+      <Row className="pb-3">
+        <h2 className="">Thông tin tuyển sinh</h2>
+        <div>
+          <Row id="row-content" lg={3}>
+            {news.map((n) => {
+              return (
+                <Col>
+                  <Card className="shadow-lg p-2">
+                    <Card.Body d-flex>
+                      <Card.Link href="#">{n.title}</Card.Link>
                       <Moment format="DD/MM/YYYY">{n.createdAt}</Moment>
-                    </Card.Text>
-                    <hr />
-                    <div className="text-end">
-                      <Button variant="success">See details</Button>
-                    </div>
-                  </Card.Body>
-                </Card>
-              </Row>
-            );
-          })}
-        </Col>
-        <Col md={2}>Advertisement</Col>
+                    </Card.Body>
+                  </Card>
+                </Col>
+              );
+            })}
+          </Row>
+        </div>
       </Row>
     </>
   );

@@ -4,6 +4,7 @@
  */
 package com.haruta.pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
@@ -34,7 +35,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Livestreams.findAll", query = "SELECT l FROM Livestreams l"),
-    @NamedQuery(name = "Livestreams.findByLivestreamId", query = "SELECT l FROM Livestreams l WHERE l.livestreamId = :livestreamId"),
+    @NamedQuery(name = "Livestreams.findById", query = "SELECT l FROM Livestreams l WHERE l.id = :id"),
     @NamedQuery(name = "Livestreams.findByTitle", query = "SELECT l FROM Livestreams l WHERE l.title = :title"),
     @NamedQuery(name = "Livestreams.findByDescription", query = "SELECT l FROM Livestreams l WHERE l.description = :description"),
     @NamedQuery(name = "Livestreams.findByDate", query = "SELECT l FROM Livestreams l WHERE l.date = :date"),
@@ -45,8 +46,8 @@ public class Livestreams implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "livestream_id")
-    private Integer livestreamId;
+    @Column(name = "id")
+    private Integer id;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
@@ -68,29 +69,30 @@ public class Livestreams implements Serializable {
     @Temporal(TemporalType.TIME)
     private Date time;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "livestreamId")
+    @JsonIgnore
     private Set<Questions> questionsSet;
 
     public Livestreams() {
     }
 
-    public Livestreams(Integer livestreamId) {
-        this.livestreamId = livestreamId;
+    public Livestreams(Integer id) {
+        this.id = id;
     }
 
-    public Livestreams(Integer livestreamId, String title, String description, Date date, Date time) {
-        this.livestreamId = livestreamId;
+    public Livestreams(Integer id, String title, String description, Date date, Date time) {
+        this.id = id;
         this.title = title;
         this.description = description;
         this.date = date;
         this.time = time;
     }
 
-    public Integer getLivestreamId() {
-        return livestreamId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setLivestreamId(Integer livestreamId) {
-        this.livestreamId = livestreamId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -137,7 +139,7 @@ public class Livestreams implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (livestreamId != null ? livestreamId.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -148,7 +150,7 @@ public class Livestreams implements Serializable {
             return false;
         }
         Livestreams other = (Livestreams) object;
-        if ((this.livestreamId == null && other.livestreamId != null) || (this.livestreamId != null && !this.livestreamId.equals(other.livestreamId))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -156,7 +158,7 @@ public class Livestreams implements Serializable {
 
     @Override
     public String toString() {
-        return "com.haruta.pojo.Livestreams[ livestreamId=" + livestreamId + " ]";
+        return "com.haruta.pojo.Livestreams[ id=" + id + " ]";
     }
     
 }

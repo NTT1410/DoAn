@@ -15,7 +15,7 @@ const Footer = () => {
     <>
       <div id="footer">
         <Container>
-          <Row xl={2} sm={1}>
+          <Row xl={3} sm={1} id="row-container">
             <Col>
               <h5 className="text-uppercase" id="title-footer">
                 HaRuTa Company
@@ -93,8 +93,43 @@ const Footer = () => {
                 </ListGroup.Item>
               </ListGroup>
             </Col>
+            <Col>
+              <h5 className="text-uppercase" id="title-footer">
+                HaRuTa Company
+              </h5>
+              <ListGroup id="list">
+                <ListGroup.Item
+                  className="bg-transparent border-0"
+                  id="list-item"
+                >
+                  <FontAwesomeIcon icon={faLocationPin} id="item-icon" />
+                  35-37 Hồ Hảo Hớn, P.Cô Giang, Q1, Tp.HCM
+                </ListGroup.Item>
+                <ListGroup.Item
+                  className="bg-transparent border-0"
+                  id="list-item"
+                >
+                  <FontAwesomeIcon icon={faPhoneFlip} id="item-icon" />
+                  028.39207627; 08.39300072
+                </ListGroup.Item>
+                <ListGroup.Item
+                  className="bg-transparent border-0"
+                  id="list-item"
+                >
+                  <FontAwesomeIcon icon={faFax} id="item-icon" />
+                  Hotline: 1800585884
+                </ListGroup.Item>
+                <ListGroup.Item
+                  className="bg-transparent border-0"
+                  id="list-item"
+                >
+                  <FontAwesomeIcon icon={faEnvelope} id="item-icon" />
+                  tuyensinh@ou.edu.vn
+                </ListGroup.Item>
+              </ListGroup>
+            </Col>
           </Row>
-          <Row className="text-center mt-1">
+          <Row className="text-center mt-5 mb-2">
             <Col>Copyright 2023 by HaRuTa&copy;. All Rights Reserved.</Col>
           </Row>
         </Container>

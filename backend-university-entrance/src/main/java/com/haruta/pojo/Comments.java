@@ -4,6 +4,7 @@
  */
 package com.haruta.pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -33,17 +34,16 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Comments.findAll", query = "SELECT c FROM Comments c"),
-    @NamedQuery(name = "Comments.findByCommentId", query = "SELECT c FROM Comments c WHERE c.commentId = :commentId"),
-    @NamedQuery(name = "Comments.findByCreatedAt", query = "SELECT c FROM Comments c WHERE c.createdAt = :createdAt"),
-    @NamedQuery(name = "Comments.findByFollowcmt", query = "SELECT c FROM Comments c WHERE c.followcmt = :followcmt")})
+    @NamedQuery(name = "Comments.findById", query = "SELECT c FROM Comments c WHERE c.id = :id"),
+    @NamedQuery(name = "Comments.findByCreatedDate", query = "SELECT c FROM Comments c WHERE c.createdDate = :createdDate")})
 public class Comments implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "comment_id")
-    private Integer commentId;
+    @Column(name = "id")
+    private Integer id;
     @Basic(optional = false)
     @NotNull
     @Lob
@@ -52,38 +52,37 @@ public class Comments implements Serializable {
     private String content;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "created_at")
+    @Column(name = "created_date")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date createdAt;
-    @Size(max = 45)
-    @Column(name = "followcmt")
-    private String followcmt;
-    @JoinColumn(name = "new_id", referencedColumnName = "new_id")
+    private Date createdDate;
+    @JoinColumn(name = "new_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
+    @JsonIgnore
     private News newId;
-    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
+    @JsonIgnore
     private Users userId;
 
     public Comments() {
     }
 
-    public Comments(Integer commentId) {
-        this.commentId = commentId;
+    public Comments(Integer id) {
+        this.id = id;
     }
 
-    public Comments(Integer commentId, String content, Date createdAt) {
-        this.commentId = commentId;
+    public Comments(Integer id, String content, Date createdDate) {
+        this.id = id;
         this.content = content;
-        this.createdAt = createdAt;
+        this.createdDate = createdDate;
     }
 
-    public Integer getCommentId() {
-        return commentId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setCommentId(Integer commentId) {
-        this.commentId = commentId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getContent() {
@@ -94,20 +93,12 @@ public class Comments implements Serializable {
         this.content = content;
     }
 
-    public Date getCreatedAt() {
-        return createdAt;
+    public Date getCreatedDate() {
+        return createdDate;
     }
 
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public String getFollowcmt() {
-        return followcmt;
-    }
-
-    public void setFollowcmt(String followcmt) {
-        this.followcmt = followcmt;
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
     }
 
     public News getNewId() {
@@ -129,7 +120,7 @@ public class Comments implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (commentId != null ? commentId.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -140,7 +131,7 @@ public class Comments implements Serializable {
             return false;
         }
         Comments other = (Comments) object;
-        if ((this.commentId == null && other.commentId != null) || (this.commentId != null && !this.commentId.equals(other.commentId))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -148,7 +139,7 @@ public class Comments implements Serializable {
 
     @Override
     public String toString() {
-        return "com.haruta.pojo.Comments[ commentId=" + commentId + " ]";
+        return "com.haruta.pojo.Comments[ id=" + id + " ]";
     }
     
 }

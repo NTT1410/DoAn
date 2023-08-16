@@ -28,8 +28,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Departments.findAll", query = "SELECT d FROM Departments d"),
-    @NamedQuery(name = "Departments.findByDepartmentId", query = "SELECT d FROM Departments d WHERE d.departmentId = :departmentId"),
-    @NamedQuery(name = "Departments.findByDepartmentname", query = "SELECT d FROM Departments d WHERE d.departmentname = :departmentname"),
+    @NamedQuery(name = "Departments.findById", query = "SELECT d FROM Departments d WHERE d.id = :id"),
+    @NamedQuery(name = "Departments.findByName", query = "SELECT d FROM Departments d WHERE d.name = :name"),
     @NamedQuery(name = "Departments.findByWebsite", query = "SELECT d FROM Departments d WHERE d.website = :website"),
     @NamedQuery(name = "Departments.findByVideo", query = "SELECT d FROM Departments d WHERE d.video = :video"),
     @NamedQuery(name = "Departments.findByAverageScore", query = "SELECT d FROM Departments d WHERE d.averageScore = :averageScore")})
@@ -39,13 +39,13 @@ public class Departments implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "department_id")
-    private Integer departmentId;
+    @Column(name = "id")
+    private Integer id;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
-    @Column(name = "departmentname")
-    private String departmentname;
+    @Column(name = "name")
+    private String name;
     @Basic(optional = false)
     @NotNull
     @Lob
@@ -70,33 +70,33 @@ public class Departments implements Serializable {
     public Departments() {
     }
 
-    public Departments(Integer departmentId) {
-        this.departmentId = departmentId;
+    public Departments(Integer id) {
+        this.id = id;
     }
 
-    public Departments(Integer departmentId, String departmentname, String description, String website, String video, float averageScore) {
-        this.departmentId = departmentId;
-        this.departmentname = departmentname;
+    public Departments(Integer id, String name, String description, String website, String video, float averageScore) {
+        this.id = id;
+        this.name = name;
         this.description = description;
         this.website = website;
         this.video = video;
         this.averageScore = averageScore;
     }
 
-    public Integer getDepartmentId() {
-        return departmentId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setDepartmentId(Integer departmentId) {
-        this.departmentId = departmentId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getDepartmentname() {
-        return departmentname;
+    public String getName() {
+        return name;
     }
 
-    public void setDepartmentname(String departmentname) {
-        this.departmentname = departmentname;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {
@@ -134,7 +134,7 @@ public class Departments implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (departmentId != null ? departmentId.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -145,7 +145,7 @@ public class Departments implements Serializable {
             return false;
         }
         Departments other = (Departments) object;
-        if ((this.departmentId == null && other.departmentId != null) || (this.departmentId != null && !this.departmentId.equals(other.departmentId))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -153,7 +153,7 @@ public class Departments implements Serializable {
 
     @Override
     public String toString() {
-        return "com.haruta.pojo.Departments[ departmentId=" + departmentId + " ]";
+        return "com.haruta.pojo.Departments[ id=" + id + " ]";
     }
     
 }

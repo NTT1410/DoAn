@@ -30,20 +30,20 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Banners.findAll", query = "SELECT b FROM Banners b"),
-    @NamedQuery(name = "Banners.findByBannerId", query = "SELECT b FROM Banners b WHERE b.bannerId = :bannerId"),
+    @NamedQuery(name = "Banners.findById", query = "SELECT b FROM Banners b WHERE b.id = :id"),
     @NamedQuery(name = "Banners.findByTitle", query = "SELECT b FROM Banners b WHERE b.title = :title"),
     @NamedQuery(name = "Banners.findByImage", query = "SELECT b FROM Banners b WHERE b.image = :image"),
     @NamedQuery(name = "Banners.findByLink", query = "SELECT b FROM Banners b WHERE b.link = :link"),
-    @NamedQuery(name = "Banners.findByCreatedAt", query = "SELECT b FROM Banners b WHERE b.createdAt = :createdAt"),
-    @NamedQuery(name = "Banners.findByUpdatedAt", query = "SELECT b FROM Banners b WHERE b.updatedAt = :updatedAt")})
+    @NamedQuery(name = "Banners.findByCreatedDate", query = "SELECT b FROM Banners b WHERE b.createdDate = :createdDate"),
+    @NamedQuery(name = "Banners.findByUpdatedDate", query = "SELECT b FROM Banners b WHERE b.updatedDate = :updatedDate")})
 public class Banners implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "banner_id")
-    private Integer bannerId;
+    @Column(name = "id")
+    private Integer id;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
@@ -61,37 +61,37 @@ public class Banners implements Serializable {
     private String link;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "created_at")
+    @Column(name = "created_date")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date createdAt;
+    private Date createdDate;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "updated_at")
+    @Column(name = "updated_date")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date updatedAt;
+    private Date updatedDate;
 
     public Banners() {
     }
 
-    public Banners(Integer bannerId) {
-        this.bannerId = bannerId;
+    public Banners(Integer id) {
+        this.id = id;
     }
 
-    public Banners(Integer bannerId, String title, String image, String link, Date createdAt, Date updatedAt) {
-        this.bannerId = bannerId;
+    public Banners(Integer id, String title, String image, String link, Date createdDate, Date updatedDate) {
+        this.id = id;
         this.title = title;
         this.image = image;
         this.link = link;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
+        this.createdDate = createdDate;
+        this.updatedDate = updatedDate;
     }
 
-    public Integer getBannerId() {
-        return bannerId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setBannerId(Integer bannerId) {
-        this.bannerId = bannerId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -118,26 +118,26 @@ public class Banners implements Serializable {
         this.link = link;
     }
 
-    public Date getCreatedAt() {
-        return createdAt;
+    public Date getCreatedDate() {
+        return createdDate;
     }
 
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
     }
 
-    public Date getUpdatedAt() {
-        return updatedAt;
+    public Date getUpdatedDate() {
+        return updatedDate;
     }
 
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
+    public void setUpdatedDate(Date updatedDate) {
+        this.updatedDate = updatedDate;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (bannerId != null ? bannerId.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -148,7 +148,7 @@ public class Banners implements Serializable {
             return false;
         }
         Banners other = (Banners) object;
-        if ((this.bannerId == null && other.bannerId != null) || (this.bannerId != null && !this.bannerId.equals(other.bannerId))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -156,7 +156,7 @@ public class Banners implements Serializable {
 
     @Override
     public String toString() {
-        return "com.haruta.pojo.Banners[ bannerId=" + bannerId + " ]";
+        return "com.haruta.pojo.Banners[ id=" + id + " ]";
     }
     
 }

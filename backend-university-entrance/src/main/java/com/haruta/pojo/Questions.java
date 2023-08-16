@@ -33,17 +33,17 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Questions.findAll", query = "SELECT q FROM Questions q"),
-    @NamedQuery(name = "Questions.findByQuestionId", query = "SELECT q FROM Questions q WHERE q.questionId = :questionId"),
-    @NamedQuery(name = "Questions.findByCreatedAt", query = "SELECT q FROM Questions q WHERE q.createdAt = :createdAt"),
-    @NamedQuery(name = "Questions.findByAnsweredAt", query = "SELECT q FROM Questions q WHERE q.answeredAt = :answeredAt")})
+    @NamedQuery(name = "Questions.findById", query = "SELECT q FROM Questions q WHERE q.id = :id"),
+    @NamedQuery(name = "Questions.findByCreatedDate", query = "SELECT q FROM Questions q WHERE q.createdDate = :createdDate"),
+    @NamedQuery(name = "Questions.findByAnsweredDate", query = "SELECT q FROM Questions q WHERE q.answeredDate = :answeredDate")})
 public class Questions implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "question_id")
-    private Integer questionId;
+    @Column(name = "id")
+    private Integer id;
     @Basic(optional = false)
     @NotNull
     @Lob
@@ -58,39 +58,39 @@ public class Questions implements Serializable {
     private String answer;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "created_at")
+    @Column(name = "created_date")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date createdAt;
-    @Column(name = "answered_at")
+    private Date createdDate;
+    @Column(name = "answered_date")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date answeredAt;
-    @JoinColumn(name = "livestream_id", referencedColumnName = "livestream_id")
+    private Date answeredDate;
+    @JoinColumn(name = "livestream_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Livestreams livestreamId;
-    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Users userId;
 
     public Questions() {
     }
 
-    public Questions(Integer questionId) {
-        this.questionId = questionId;
+    public Questions(Integer id) {
+        this.id = id;
     }
 
-    public Questions(Integer questionId, String content, String answer, Date createdAt) {
-        this.questionId = questionId;
+    public Questions(Integer id, String content, String answer, Date createdDate) {
+        this.id = id;
         this.content = content;
         this.answer = answer;
-        this.createdAt = createdAt;
+        this.createdDate = createdDate;
     }
 
-    public Integer getQuestionId() {
-        return questionId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setQuestionId(Integer questionId) {
-        this.questionId = questionId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getContent() {
@@ -109,20 +109,20 @@ public class Questions implements Serializable {
         this.answer = answer;
     }
 
-    public Date getCreatedAt() {
-        return createdAt;
+    public Date getCreatedDate() {
+        return createdDate;
     }
 
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
     }
 
-    public Date getAnsweredAt() {
-        return answeredAt;
+    public Date getAnsweredDate() {
+        return answeredDate;
     }
 
-    public void setAnsweredAt(Date answeredAt) {
-        this.answeredAt = answeredAt;
+    public void setAnsweredDate(Date answeredDate) {
+        this.answeredDate = answeredDate;
     }
 
     public Livestreams getLivestreamId() {
@@ -144,7 +144,7 @@ public class Questions implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (questionId != null ? questionId.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -155,7 +155,7 @@ public class Questions implements Serializable {
             return false;
         }
         Questions other = (Questions) object;
-        if ((this.questionId == null && other.questionId != null) || (this.questionId != null && !this.questionId.equals(other.questionId))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -163,7 +163,7 @@ public class Questions implements Serializable {
 
     @Override
     public String toString() {
-        return "com.haruta.pojo.Questions[ questionId=" + questionId + " ]";
+        return "com.haruta.pojo.Questions[ id=" + id + " ]";
     }
     
 }

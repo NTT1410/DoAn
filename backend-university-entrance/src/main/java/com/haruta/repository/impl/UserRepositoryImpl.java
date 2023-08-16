@@ -44,18 +44,18 @@ public class UserRepositoryImpl implements UserRepository {
 
             String userid = params.get("userid");
             if (userid != null && !userid.isEmpty()) {
-                predicates.add(builder.equal(root.get("userId"), Double.parseDouble(userid)));
+                predicates.add(builder.equal(root.get("id"), Double.parseDouble(userid)));
             }
 
             String username = params.get("username");
             if (username != null && !username.isEmpty()) {
-                predicates.add(builder.like(root.get("username"), String.format("%%%s%%", username)));
+                predicates.add(builder.like(root.get("name"), String.format("%%%s%%", username)));
             }
 
             u.where(predicates.toArray(Predicate[]::new));
 
         }
-        u.orderBy(builder.asc(root.get("userId")));
+        u.orderBy(builder.asc(root.get("id")));
         Query query = s.createQuery(u);
         return query.getResultList();
     }
