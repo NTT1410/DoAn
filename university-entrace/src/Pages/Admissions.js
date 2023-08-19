@@ -1,5 +1,3 @@
-import {} from "../assets/styles/pages/Admissions.scss";
-
 const Admissions = () => {
   return (
     <>

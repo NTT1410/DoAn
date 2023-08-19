@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import {} from "../assets/styles/components/Navbar.scss";
 import { BrowserRouter, Link, Outlet } from "react-router-dom";
 import UserLogin from "./UserLogin";
 

@@ -1,5 +1,4 @@
 import React from "react";
-import {} from "../assets/styles/pages/Signup.scss";
 import { Link } from "react-router-dom";
 import {} from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

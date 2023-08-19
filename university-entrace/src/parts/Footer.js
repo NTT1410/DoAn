@@ -1,5 +1,4 @@
 import React from "react";
-import {} from "../assets/styles/layouts/Footer.scss";
 import { Col, Container, ListGroup, Row } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {

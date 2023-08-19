@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import {} from "../assets/styles/pages/Departments.scss";
 import { ListGroup } from "react-bootstrap";
 import Apis, { endpoints } from "../configs/Apis";
 import MySpinner from "../components/MySpinner";

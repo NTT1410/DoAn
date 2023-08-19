@@ -3,7 +3,7 @@ import Header from "./parts/Header";
 import Footer from "./parts/Footer";
 import NavbarRouter from "./routers/NavbarRouter";
 import { BrowserRouter } from "react-router-dom";
-import {} from "./App.scss";
+import {} from "./assets/styles/global.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 
