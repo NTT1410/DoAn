@@ -4,7 +4,7 @@ import Apis, { endpoints } from "../configs/Apis";
 import MySpinner from "../components/MySpinner";
 import { Button, Card, Col, Container, Form, Row } from "react-bootstrap";
 
-export const UserAdmin = () => {
+const UserAdmin = () => {
   const [users, setUsers] = useState([]);
   const [params, setParams] = useState({ kw: "" });
   const [q] = useSearchParams();
@@ -84,3 +84,5 @@ export const UserAdmin = () => {
     </>
   );
 };
+
+export default UserAdmin;

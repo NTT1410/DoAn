@@ -1,13 +1,13 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Home from "../Pages/Home";
-import Admissions from "../Pages/Admissions";
-import Programs from "../Pages/Programs";
-import Departments from "../Pages/Departments";
-import Contact from "../Pages/Contact";
-import Login from "../Pages/Login";
-import Signup from "../Pages/Signup";
-import { UserAdmin } from "../Pages/UserAdmin";
+import Home from "../pages/Home";
+import Departments from "../pages/Departments";
+import Admissions from "../pages/Admissions";
+import Programs from "../pages/Programs";
+import Contact from "../pages/Contact";
+import Login from "../pages/Login";
+import Signup from "../pages/Signup";
+import UserAdmin from "../pages/UserAdmin";
 
 const NavbarRouter = () => {
   return (
