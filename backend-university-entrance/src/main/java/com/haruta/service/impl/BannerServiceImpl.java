@@ -8,6 +8,7 @@ import com.haruta.pojo.Banners;
 import com.haruta.repository.BannerRepository;
 import com.haruta.service.BannerService;
 import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

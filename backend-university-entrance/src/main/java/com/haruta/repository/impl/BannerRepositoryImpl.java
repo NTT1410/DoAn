@@ -6,8 +6,14 @@ package com.haruta.repository.impl;
 
 import com.haruta.pojo.Banners;
 import com.haruta.repository.BannerRepository;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
@@ -20,18 +26,30 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Repository
 @Transactional
-public class BannerRepositoryImpl implements BannerRepository{
+public class BannerRepositoryImpl implements BannerRepository {
     
     @Autowired
     private LocalSessionFactoryBean factory;
-
+    
     @Override
     public List<Banners> getBanner() {
         Session s = this.factory.getObject().getCurrentSession();
+        CriteriaBuilder builder = s.getCriteriaBuilder();
+        CriteriaQuery<Banners> b = builder.createQuery(Banners.class);
+        Root root = b.from(Banners.class);
         
-        Query q = s.createQuery("From Banners");
+        b.select(root);
         
-        return q.getResultList();
+        List<Predicate> predicates = new ArrayList<>();
+
+        predicates.add(builder.equal(root.get("status"), "1"));
+        
+        b.where(predicates.toArray(Predicate[]::new));
+        
+        b.orderBy(builder.desc(root.get("createdDate")), builder.desc(root.get("updatedDate")));
+        
+        Query query = s.createQuery(b);
+        return query.getResultList();
     }
     
 }

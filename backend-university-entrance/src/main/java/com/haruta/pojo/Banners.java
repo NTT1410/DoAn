@@ -35,7 +35,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Banners.findByImage", query = "SELECT b FROM Banners b WHERE b.image = :image"),
     @NamedQuery(name = "Banners.findByLink", query = "SELECT b FROM Banners b WHERE b.link = :link"),
     @NamedQuery(name = "Banners.findByCreatedDate", query = "SELECT b FROM Banners b WHERE b.createdDate = :createdDate"),
-    @NamedQuery(name = "Banners.findByUpdatedDate", query = "SELECT b FROM Banners b WHERE b.updatedDate = :updatedDate")})
+    @NamedQuery(name = "Banners.findByUpdatedDate", query = "SELECT b FROM Banners b WHERE b.updatedDate = :updatedDate"),
+    @NamedQuery(name = "Banners.findByStatus", query = "SELECT b FROM Banners b WHERE b.status = :status")})
 public class Banners implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -69,6 +70,10 @@ public class Banners implements Serializable {
     @Column(name = "updated_date")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedDate;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "status")
+    private short status;
 
     public Banners() {
     }
@@ -77,13 +82,14 @@ public class Banners implements Serializable {
         this.id = id;
     }
 
-    public Banners(Integer id, String title, String image, String link, Date createdDate, Date updatedDate) {
+    public Banners(Integer id, String title, String image, String link, Date createdDate, Date updatedDate, short status) {
         this.id = id;
         this.title = title;
         this.image = image;
         this.link = link;
         this.createdDate = createdDate;
         this.updatedDate = updatedDate;
+        this.status = status;
     }
 
     public Integer getId() {
@@ -132,6 +138,14 @@ public class Banners implements Serializable {
 
     public void setUpdatedDate(Date updatedDate) {
         this.updatedDate = updatedDate;
+    }
+
+    public short getStatus() {
+        return status;
+    }
+
+    public void setStatus(short status) {
+        this.status = status;
     }
 
     @Override

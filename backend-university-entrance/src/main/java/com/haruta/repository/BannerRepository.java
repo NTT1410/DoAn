@@ -6,6 +6,7 @@ package com.haruta.repository;
 
 import com.haruta.pojo.Banners;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
