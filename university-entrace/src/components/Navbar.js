@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { BrowserRouter, Link, Outlet } from "react-router-dom";
 import UserLogin from "./UserLogin";
+import { logo } from "../assets/images/logofull_nobg.png";
 
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
@@ -13,7 +14,7 @@ const Navbar = () => {
       <nav>
         <div>
           <Link to="/">
-            <img src="https://res.cloudinary.com/ds8i6jriz/image/upload/v1691315156/MyImages/logofull_nobg_f8oome.png" />
+            <img src={logo} alt="logo" />
           </Link>
         </div>
 

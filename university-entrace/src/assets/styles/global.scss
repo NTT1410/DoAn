@@ -22,6 +22,7 @@ code {
 }
 
 nav {
+
     @include reset_nav;
     background: $bg-nav;
     padding: 20px 80px;
