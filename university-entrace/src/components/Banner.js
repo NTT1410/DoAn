@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Apis, { endpoints } from "../configs/Apis";
 import MySpinner from "./MySpinner";
-import Image from "react-bootstrap/Image";
+import {} from "../assets/styles/global.css";
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
@@ -19,7 +19,7 @@ const Banner = () => {
   if (banners.length === 0) return <MySpinner />;
   return (
     <>
-      <div class="container-fluid">
+      <div class="" id="banner">
         <OwlCarousel
           items={1}
           className="owl-theme"
@@ -33,7 +33,7 @@ const Banner = () => {
           {banners.map((b) => {
             return (
               <div key={b.id}>
-                <img className="img" src={b.link} alt="banner" />
+                <img className="img slider-item" src={b.link} alt="banner" />
               </div>
             );
           })}

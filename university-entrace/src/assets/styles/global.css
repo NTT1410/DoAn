@@ -119,6 +119,67 @@ nav #toggle i {
     content: url("https://res.cloudinary.com/ds8i6jriz/image/upload/v1691315155/MyImages/logo_jhv85x.png");
   }
 }
+#banner img {
+  background: #000;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#banner .slider-item {
+  width: 100vw;
+  position: relative !important;
+}
+#banner .owl-prev {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-150%);
+  font-size: 50px !important;
+  color: #fff !important;
+}
+#banner .owl-next {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-150%);
+  font-size: 50px !important;
+  color: #fff !important;
+}
+#banner .owl-prev,
+#banner .owl-next:hover {
+  background: none !important;
+}
+#banner .owl-prev:hover,
+#banner .owl-next:hover {
+  color: #000 !important;
+}
+#banner .owl-dots {
+  position: absolute;
+  display: flex;
+  left: 50%;
+  top: 80%;
+}
+#banner .owl-dots .owl-dot {
+  width: 23px;
+  height: 23px;
+  border: 3px solid #1b2430 !important;
+  border-radius: 50%;
+  margin-left: 6px;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  align-content: center !important;
+}
+#banner .owl-dots .owl-dot span {
+  width: 15px !important;
+  height: 15px !important;
+  margin: 0 !important;
+  background-color: transparent !important;
+}
+#banner .owl-dots .owl-dot.active span {
+  background-color: #a773e8 !important;
+}
+
 #footer {
   padding: 20px 0 0 0;
   background: #eeeeee;

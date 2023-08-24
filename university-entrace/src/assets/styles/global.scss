@@ -144,6 +144,81 @@ nav {
     }
 }
 
+#banner {
+    img {
+        background: #000;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .slider-item {
+        width: 100vw;
+        position: relative !important;
+    }
+
+    .owl-prev {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-150%);
+        font-size: 50px !important;
+        color: #fff !important;
+    }
+
+    .owl-next {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-150%);
+        font-size: 50px !important;
+        color: #fff !important;
+    }
+
+    .owl-prev,
+    .owl-next:hover {
+        background: none !important;
+    }
+
+    .owl-prev:hover,
+    .owl-next:hover {
+        color: #000 !important;
+    }
+
+
+    .owl-dots {
+        position: absolute;
+        display: flex;
+        // justify-self: center;
+        // flex-direction: row;
+        left: 50%;
+        top: 80%;
+
+        .owl-dot {
+            width: 23px;
+            height: 23px;
+            border: 3px solid $bg-nav !important;
+            border-radius: 50%;
+            margin-left: 6px;
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            align-content: center !important;
+
+            span {
+                width: 15px !important;
+                height: 15px !important;
+                margin: 0 !important;
+                background-color: transparent !important;
+            }
+        }
+
+        .owl-dot.active span {
+            background-color: #a773e8 !important;
+        }
+    }
+}
+
 
 #footer {
     padding: 20px 0 0 0;
