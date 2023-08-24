@@ -128,10 +128,12 @@ const Footer = () => {
               </ListGroup>
             </Col>
           </Row>
-          <Row className="text-center mt-5 mb-2">
-            <Col>Copyright 2023 by HaRuTa&copy;. All Rights Reserved.</Col>
-          </Row>
         </Container>
+        <div className="text-center mt-5 pt-3 pb-3" id="copyright">
+          Copyright &copy;2023 All rights reserved | This is made by{" "}
+          <i className="fa fa-heart color-danger"></i>
+          <span> HaRuTa</span>.
+        </div>
       </div>
     </>
   );

@@ -14,6 +14,7 @@ const Navbar = () => {
         <div>
           <Link to="/">
             <img
+              id="logo"
               className="object-fit-contain"
               src="https://res.cloudinary.com/ds8i6jriz/image/upload/v1691837162/MyImages/UniversityEntrance/logo/logofull_nobg_bxnzgd.png"
               alt=""

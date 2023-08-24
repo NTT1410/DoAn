@@ -13,17 +13,24 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+#content {
+  background: #f8f8f8;
+  min-height: 405px;
 }
 
 nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #1b2430;
-  padding: 20px 80px;
+  padding: 10px 80px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+  background: #fff;
+}
+nav #logo {
+  padding: 5px 10px;
+  background: #1b2430;
+  border: 2px solid #1b2430;
+  border-radius: 25px;
 }
 nav div {
   z-index: 2;
@@ -42,6 +49,7 @@ nav div ul#navbar li {
   position: relative;
 }
 nav div ul#navbar li a {
+  color: #1b2430 !important;
   text-decoration: none;
   font-size: 1.3rem;
   font-weight: 600;
@@ -54,14 +62,14 @@ nav div ul#navbar li a {
 }
 nav div ul#navbar li a:hover,
 nav div ul#navbar li a.active {
-  color: #19A7CE;
+  color: #00acf3 !important;
 }
 nav div ul#navbar li a:hover::after,
 nav div ul#navbar li a.active::after {
   content: "";
   width: 30%;
   height: 2px;
-  background: #19A7CE;
+  background: #00acf3;
   position: absolute;
   bottom: -4px;
   left: 20px;
@@ -73,7 +81,7 @@ nav #toggle i.fa-times::before {
   font-size: 120%;
 }
 nav #toggle i {
-  color: #19A7CE;
+  color: #00acf3;
 }
 
 @media screen and (max-width: 900px) {
@@ -111,15 +119,10 @@ nav #toggle i {
     content: url("https://res.cloudinary.com/ds8i6jriz/image/upload/v1691315155/MyImages/logo_jhv85x.png");
   }
 }
-#content {
-  background: #f3f4f4;
-  min-height: 405px;
-}
-
 #footer {
-  padding: 20px 0 10px 0;
-  background: #1b2430;
-  color: white !important;
+  padding: 20px 0 0 0;
+  background: #eeeeee;
+  color: #1b2430 !important;
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 #footer #title-footer {
@@ -133,36 +136,37 @@ nav #toggle i {
 #footer #list #list-item > a {
   padding-left: 0;
   font-family: "Roboto Condensed", sans-serif;
-  color: #fff !important;
+  color: #999999 !important;
 }
 #footer #row-container {
   align-items: start;
 }
+#footer #copyright {
+  background: #e3e3e3;
+  color: #999999 !important;
+}
+#footer #copyright span {
+  color: #f4bf2c;
+}
 
-a.to-signup {
+.form-bg a.to-signup {
   text-decoration: none;
   margin-left: 5px;
 }
-
-.form-bg .container {
-  margin-top: 20px;
-}
-
-.row {
+.form-bg .row {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 10px 0 30px 0;
 }
-
-.form-container {
+.form-bg .form-container {
   background: #ecf0f3;
   font-family: "Nunito", sans-serif;
   padding: 40px;
   border-radius: 20px;
   box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
 }
-
-.form-container .form-icon {
+.form-bg .form-container .form-icon {
   color: #19A7CE;
   font-size: 55px;
   text-align: center;
@@ -173,8 +177,7 @@ a.to-signup {
   border-radius: 50px;
   box-shadow: 7px 7px 10px #cbced1, -7px -7px 10px #fff;
 }
-
-.form-container .title {
+.form-bg .form-container .title {
   color: #19A7CE;
   font-size: 25px;
   font-weight: 700;
@@ -183,18 +186,15 @@ a.to-signup {
   text-align: center;
   margin: 0 0 20px;
 }
-
-.form-container .form-horizontal .form-group {
+.form-bg .form-container .form-horizontal .form-group {
   margin: 0 0 25px 0;
 }
-
-.form-container .form-horizontal .form-group label {
+.form-bg .form-container .form-horizontal .form-group label {
   font-size: 15px;
   font-weight: 600;
   text-transform: uppercase;
 }
-
-.form-container .form-horizontal .form-control {
+.form-bg .form-container .form-horizontal .form-control {
   color: #333;
   background: #ecf0f3;
   font-size: 15px;
@@ -207,23 +207,19 @@ a.to-signup {
   display: inline-block;
   transition: all 0.3s ease 0s;
 }
-
-.form-container .form-horizontal .form-control:focus {
+.form-bg .form-container .form-horizontal .form-control:focus {
   box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px #fff;
   outline: none;
 }
-
-.form-container .form-horizontal .form-control::-moz-placeholder {
+.form-bg .form-container .form-horizontal .form-control::-moz-placeholder {
   color: #808080;
   font-size: 14px;
 }
-
-.form-container .form-horizontal .form-control::placeholder {
+.form-bg .form-container .form-horizontal .form-control::placeholder {
   color: #808080;
   font-size: 14px;
 }
-
-.form-container .form-horizontal .btn {
+.form-bg .form-container .form-horizontal .btn {
   color: #000;
   background-color: #19A7CE;
   font-size: 15px;
@@ -236,15 +232,13 @@ a.to-signup {
   border: none;
   transition: all 0.5s ease 0s;
 }
-
-.form-container .form-horizontal .btn:hover,
-.form-container .form-horizontal .btn:focus {
+.form-bg .form-container .form-horizontal .btn:hover,
+.form-bg .form-container .form-horizontal .btn:focus {
   color: #fff;
   letter-spacing: 3px;
   box-shadow: none;
   outline: none;
 }
-
-.btn-icon {
+.form-bg .btn-icon {
   box-shadow: none !important;
 }/*# sourceMappingURL=global.css.map */

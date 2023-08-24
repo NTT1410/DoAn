@@ -25,8 +25,10 @@ const Banner = () => {
           className="owl-theme"
           autoplay={true}
           margin={8}
-          loop={true}
+          rewind={true}
           autoplaySpeed={2000}
+          autoplayHoverPause
+          nav={true}
         >
           {banners.map((b) => {
             return (

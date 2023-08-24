@@ -16,17 +16,29 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-        monospace;
+// code {
+//     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+//         monospace;
+// }
+
+#content {
+    background: $color-6;
+    min-height: 405px;
 }
 
 nav {
-
     @include reset_nav;
-    background: $bg-nav;
-    padding: 20px 80px;
+    padding: 10px 80px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+    background: #fff;
+    // border-bottom: 1px solid $bg-nav;
+
+    #logo {
+        padding: 5px 10px;
+        background: $bg-nav;
+        border: 2px solid $bg-nav;
+        border-radius: 25px;
+    }
 
     div {
         z-index: 2;
@@ -42,6 +54,7 @@ nav {
                 @include design-list;
 
                 a {
+                    color: $bg-nav !important;
                     @include design-link;
                     transition: 0.2s ease-in-out;
                     -webkit-transition: 0.2s ease-in-out;
@@ -52,7 +65,7 @@ nav {
 
                 a:hover,
                 a.active {
-                    color: $color-2;
+                    color: $color-2 !important;
                 }
 
                 a:hover::after,
@@ -131,15 +144,11 @@ nav {
     }
 }
 
-#content {
-    background: #f3f4f4;
-    min-height: 405px;
-}
 
 #footer {
-    padding: 20px 0 10px 0;
-    background: #1b2430;
-    color: white !important;
+    padding: 20px 0 0 0;
+    background: $color-4;
+    color: $bg-nav !important;
 
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     #title-footer {
@@ -157,118 +166,127 @@ nav {
         #list-item>a {
             padding-left: 0;
             font-family: 'Roboto Condensed', sans-serif;
-            color: #fff !important;
+            color: #999999 !important;
         }
     }
 
     #row-container {
         align-items: start;
     }
-}
 
-a.to-signup {
-    text-decoration: none;
-    margin-left: 5px;
-}
+    #copyright {
+        background: $color-5;
+        color: #999999 !important;
 
-.form-bg {
-    .container {
-        margin-top: 20px;
+        span {
+            color: #f4bf2c;
+        }
     }
 }
 
-.row {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
-.form-container {
-    background: #ecf0f3;
-    font-family: 'Nunito', sans-serif;
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
-}
 
-.form-container .form-icon {
-    color: #19A7CE;
-    font-size: 55px;
-    text-align: center;
-    line-height: 100px;
-    width: 100px;
-    height: 100px;
-    margin: 0 auto 15px;
-    border-radius: 50px;
-    box-shadow: 7px 7px 10px #cbced1, -7px -7px 10px #fff;
-}
+.form-bg {
 
-.form-container .title {
-    color: #19A7CE;
-    font-size: 25px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    text-align: center;
-    margin: 0 0 20px;
-}
+    a.to-signup {
+        text-decoration: none;
+        margin-left: 5px;
+    }
 
-.form-container .form-horizontal .form-group {
-    margin: 0 0 25px 0;
-}
+    .row {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 0 30px 0;
+    }
 
-.form-container .form-horizontal .form-group label {
-    font-size: 15px;
-    font-weight: 600;
-    text-transform: uppercase;
-}
+    .form-container {
+        background: #ecf0f3;
+        font-family: 'Nunito', sans-serif;
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
+    }
 
-.form-container .form-horizontal .form-control {
-    color: #333;
-    background: #ecf0f3;
-    font-size: 15px;
-    height: 50px;
-    padding: 20px;
-    letter-spacing: 1px;
-    border: none;
-    border-radius: 50px;
-    box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px #fff;
-    display: inline-block;
-    transition: all 0.3s ease 0s;
-}
+    .form-container .form-icon {
+        color: #19A7CE;
+        font-size: 55px;
+        text-align: center;
+        line-height: 100px;
+        width: 100px;
+        height: 100px;
+        margin: 0 auto 15px;
+        border-radius: 50px;
+        box-shadow: 7px 7px 10px #cbced1, -7px -7px 10px #fff;
+    }
 
-.form-container .form-horizontal .form-control:focus {
-    box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px #fff;
-    outline: none;
-}
+    .form-container .title {
+        color: #19A7CE;
+        font-size: 25px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        text-align: center;
+        margin: 0 0 20px;
+    }
 
-.form-container .form-horizontal .form-control::placeholder {
-    color: #808080;
-    font-size: 14px;
-}
+    .form-container .form-horizontal .form-group {
+        margin: 0 0 25px 0;
+    }
 
-.form-container .form-horizontal .btn {
-    color: #000;
-    background-color: #19A7CE;
-    font-size: 15px;
-    font-weight: bold;
-    text-transform: uppercase;
-    width: 100%;
-    padding: 12px 15px 11px;
-    border-radius: 20px;
-    box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px #fff;
-    border: none;
-    transition: all 0.5s ease 0s;
-}
+    .form-container .form-horizontal .form-group label {
+        font-size: 15px;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
 
-.form-container .form-horizontal .btn:hover,
-.form-container .form-horizontal .btn:focus {
-    color: #fff;
-    letter-spacing: 3px;
-    box-shadow: none;
-    outline: none;
-}
+    .form-container .form-horizontal .form-control {
+        color: #333;
+        background: #ecf0f3;
+        font-size: 15px;
+        height: 50px;
+        padding: 20px;
+        letter-spacing: 1px;
+        border: none;
+        border-radius: 50px;
+        box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px #fff;
+        display: inline-block;
+        transition: all 0.3s ease 0s;
+    }
 
-.btn-icon {
-    box-shadow: none !important;
+    .form-container .form-horizontal .form-control:focus {
+        box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px #fff;
+        outline: none;
+    }
+
+    .form-container .form-horizontal .form-control::placeholder {
+        color: #808080;
+        font-size: 14px;
+    }
+
+    .form-container .form-horizontal .btn {
+        color: #000;
+        background-color: #19A7CE;
+        font-size: 15px;
+        font-weight: bold;
+        text-transform: uppercase;
+        width: 100%;
+        padding: 12px 15px 11px;
+        border-radius: 20px;
+        box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px #fff;
+        border: none;
+        transition: all 0.5s ease 0s;
+    }
+
+    .form-container .form-horizontal .btn:hover,
+    .form-container .form-horizontal .btn:focus {
+        color: #fff;
+        letter-spacing: 3px;
+        box-shadow: none;
+        outline: none;
+    }
+
+    .btn-icon {
+        box-shadow: none !important;
+    }
 }

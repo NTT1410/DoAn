@@ -6,7 +6,7 @@ import News from "../components/News";
 const Home = () => {
   return (
     <>
-      <Banner />
+      {/* <Banner /> */}
       <Container>
         <News />
       </Container>
