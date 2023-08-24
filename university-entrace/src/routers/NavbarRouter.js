@@ -7,7 +7,7 @@ import Programs from "../pages/Programs";
 import Contact from "../pages/Contact";
 import Login from "../pages/Login";
 import Signup from "../pages/Signup";
-import UserAdmin from "../pages/UserAdmin";
+import UserAdmin from "../pages/admin/UserAdmin";
 
 const NavbarRouter = () => {
   return (
