@@ -4,7 +4,7 @@
  */
 package com.haruta.service.impl;
 
-import com.haruta.pojo.Banners;
+import com.haruta.pojo.Banner;
 import com.haruta.repository.BannerRepository;
 import com.haruta.service.BannerService;
 import java.util.List;
@@ -22,7 +22,7 @@ public class BannerServiceImpl implements BannerService{
     private BannerRepository bannerRepo;
 
     @Override
-    public List<Banners> getBanner() {
+    public List<Banner> getBanner() {
         return this.bannerRepo.getBanner();
     }
 }

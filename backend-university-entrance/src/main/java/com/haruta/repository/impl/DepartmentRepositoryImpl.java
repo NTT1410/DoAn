@@ -4,7 +4,7 @@
  */
 package com.haruta.repository.impl;
 
-import com.haruta.pojo.Departments;
+import com.haruta.pojo.Department;
 import com.haruta.repository.DepartmentRepository;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,11 +32,11 @@ public class DepartmentRepositoryImpl implements DepartmentRepository {
     private LocalSessionFactoryBean factory;
 
     @Override
-    public List<Departments> getDpm(Map<String, String> params) {
+    public List<Department> getDpm(Map<String, String> params) {
         Session s = this.factory.getObject().getCurrentSession();
         CriteriaBuilder builder = s.getCriteriaBuilder();
-        CriteriaQuery<Departments> d = builder.createQuery(Departments.class);
-        Root root = d.from(Departments.class);
+        CriteriaQuery<Department> d = builder.createQuery(Department.class);
+        Root root = d.from(Department.class);
         d.select(root);
         
         if (params != null) {

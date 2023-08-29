@@ -4,6 +4,7 @@
  */
 package com.haruta.pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -12,7 +13,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -27,17 +30,13 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author nguye
  */
 @Entity
-@Table(name = "news")
+@Table(name = "comment")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "News.findAll", query = "SELECT n FROM News n"),
-    @NamedQuery(name = "News.findById", query = "SELECT n FROM News n WHERE n.id = :id"),
-    @NamedQuery(name = "News.findByTitle", query = "SELECT n FROM News n WHERE n.title = :title"),
-    @NamedQuery(name = "News.findByCreatedDate", query = "SELECT n FROM News n WHERE n.createdDate = :createdDate"),
-    @NamedQuery(name = "News.findByUpdatedDate", query = "SELECT n FROM News n WHERE n.updatedDate = :updatedDate"),
-    @NamedQuery(name = "News.findByStatus", query = "SELECT n FROM News n WHERE n.status = :status"),
-    @NamedQuery(name = "News.findByCId", query = "SELECT n FROM News n WHERE n.cId = :cId")})
-public class News implements Serializable {
+    @NamedQuery(name = "Comment.findAll", query = "SELECT c FROM Comment c"),
+    @NamedQuery(name = "Comment.findById", query = "SELECT c FROM Comment c WHERE c.id = :id"),
+    @NamedQuery(name = "Comment.findByCreatedDate", query = "SELECT c FROM Comment c WHERE c.createdDate = :createdDate")})
+public class Comment implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -45,11 +44,6 @@ public class News implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 255)
-    @Column(name = "title")
-    private String title;
     @Basic(optional = false)
     @NotNull
     @Lob
@@ -61,35 +55,26 @@ public class News implements Serializable {
     @Column(name = "created_date")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdDate;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "updated_date")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date updatedDate;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "status")
-    private short status;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "c_id")
-    private int cId;
+    @JoinColumn(name = "new_id", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    @JsonIgnore
+    private News newId;
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    @JsonIgnore
+    private User userId;
 
-    public News() {
+    public Comment() {
     }
 
-    public News(Integer id) {
+    public Comment(Integer id) {
         this.id = id;
     }
 
-    public News(Integer id, String title, String content, Date createdDate, Date updatedDate, short status, int cId) {
+    public Comment(Integer id, String content, Date createdDate) {
         this.id = id;
-        this.title = title;
         this.content = content;
         this.createdDate = createdDate;
-        this.updatedDate = updatedDate;
-        this.status = status;
-        this.cId = cId;
     }
 
     public Integer getId() {
@@ -98,14 +83,6 @@ public class News implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     public String getContent() {
@@ -124,28 +101,20 @@ public class News implements Serializable {
         this.createdDate = createdDate;
     }
 
-    public Date getUpdatedDate() {
-        return updatedDate;
+    public News getNewId() {
+        return newId;
     }
 
-    public void setUpdatedDate(Date updatedDate) {
-        this.updatedDate = updatedDate;
+    public void setNewId(News newId) {
+        this.newId = newId;
     }
 
-    public short getStatus() {
-        return status;
+    public User getUserId() {
+        return userId;
     }
 
-    public void setStatus(short status) {
-        this.status = status;
-    }
-
-    public int getCId() {
-        return cId;
-    }
-
-    public void setCId(int cId) {
-        this.cId = cId;
+    public void setUserId(User userId) {
+        this.userId = userId;
     }
 
     @Override
@@ -158,10 +127,10 @@ public class News implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof News)) {
+        if (!(object instanceof Comment)) {
             return false;
         }
-        News other = (News) object;
+        Comment other = (Comment) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -170,7 +139,7 @@ public class News implements Serializable {
 
     @Override
     public String toString() {
-        return "com.haruta.pojo.News[ id=" + id + " ]";
+        return "com.haruta.pojo.Comment[ id=" + id + " ]";
     }
     
 }

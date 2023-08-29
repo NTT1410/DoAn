@@ -12,7 +12,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -27,17 +26,18 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author nguye
  */
 @Entity
-@Table(name = "news")
+@Table(name = "banner")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "News.findAll", query = "SELECT n FROM News n"),
-    @NamedQuery(name = "News.findById", query = "SELECT n FROM News n WHERE n.id = :id"),
-    @NamedQuery(name = "News.findByTitle", query = "SELECT n FROM News n WHERE n.title = :title"),
-    @NamedQuery(name = "News.findByCreatedDate", query = "SELECT n FROM News n WHERE n.createdDate = :createdDate"),
-    @NamedQuery(name = "News.findByUpdatedDate", query = "SELECT n FROM News n WHERE n.updatedDate = :updatedDate"),
-    @NamedQuery(name = "News.findByStatus", query = "SELECT n FROM News n WHERE n.status = :status"),
-    @NamedQuery(name = "News.findByCId", query = "SELECT n FROM News n WHERE n.cId = :cId")})
-public class News implements Serializable {
+    @NamedQuery(name = "Banner.findAll", query = "SELECT b FROM Banner b"),
+    @NamedQuery(name = "Banner.findById", query = "SELECT b FROM Banner b WHERE b.id = :id"),
+    @NamedQuery(name = "Banner.findByTitle", query = "SELECT b FROM Banner b WHERE b.title = :title"),
+    @NamedQuery(name = "Banner.findByImage", query = "SELECT b FROM Banner b WHERE b.image = :image"),
+    @NamedQuery(name = "Banner.findByLink", query = "SELECT b FROM Banner b WHERE b.link = :link"),
+    @NamedQuery(name = "Banner.findByCreatedDate", query = "SELECT b FROM Banner b WHERE b.createdDate = :createdDate"),
+    @NamedQuery(name = "Banner.findByUpdatedDate", query = "SELECT b FROM Banner b WHERE b.updatedDate = :updatedDate"),
+    @NamedQuery(name = "Banner.findByStatus", query = "SELECT b FROM Banner b WHERE b.status = :status")})
+public class Banner implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -52,10 +52,14 @@ public class News implements Serializable {
     private String title;
     @Basic(optional = false)
     @NotNull
-    @Lob
-    @Size(min = 1, max = 65535)
-    @Column(name = "content")
-    private String content;
+    @Size(min = 1, max = 255)
+    @Column(name = "image")
+    private String image;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 255)
+    @Column(name = "link")
+    private String link;
     @Basic(optional = false)
     @NotNull
     @Column(name = "created_date")
@@ -70,26 +74,22 @@ public class News implements Serializable {
     @NotNull
     @Column(name = "status")
     private short status;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "c_id")
-    private int cId;
 
-    public News() {
+    public Banner() {
     }
 
-    public News(Integer id) {
+    public Banner(Integer id) {
         this.id = id;
     }
 
-    public News(Integer id, String title, String content, Date createdDate, Date updatedDate, short status, int cId) {
+    public Banner(Integer id, String title, String image, String link, Date createdDate, Date updatedDate, short status) {
         this.id = id;
         this.title = title;
-        this.content = content;
+        this.image = image;
+        this.link = link;
         this.createdDate = createdDate;
         this.updatedDate = updatedDate;
         this.status = status;
-        this.cId = cId;
     }
 
     public Integer getId() {
@@ -108,12 +108,20 @@ public class News implements Serializable {
         this.title = title;
     }
 
-    public String getContent() {
-        return content;
+    public String getImage() {
+        return image;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
     }
 
     public Date getCreatedDate() {
@@ -140,14 +148,6 @@ public class News implements Serializable {
         this.status = status;
     }
 
-    public int getCId() {
-        return cId;
-    }
-
-    public void setCId(int cId) {
-        this.cId = cId;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -158,10 +158,10 @@ public class News implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof News)) {
+        if (!(object instanceof Banner)) {
             return false;
         }
-        News other = (News) object;
+        Banner other = (Banner) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -170,7 +170,7 @@ public class News implements Serializable {
 
     @Override
     public String toString() {
-        return "com.haruta.pojo.News[ id=" + id + " ]";
+        return "com.haruta.pojo.Banner[ id=" + id + " ]";
     }
     
 }

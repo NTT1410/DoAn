@@ -4,7 +4,7 @@
  */
 package com.haruta.service;
 
-import com.haruta.pojo.Departments;
+import com.haruta.pojo.Department;
 import java.util.List;
 import java.util.Map;
 
@@ -13,5 +13,5 @@ import java.util.Map;
  * @author nguye
  */
 public interface DepartmentService {
-    List<Departments> getDpm(Map<String, String> params);
+    List<Department> getDpm(Map<String, String> params);
 }

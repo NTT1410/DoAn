@@ -4,7 +4,7 @@
  */
 package com.haruta.controllers;
 
-import com.haruta.pojo.Users;
+import com.haruta.pojo.User;
 import com.haruta.service.UserService;
 import java.util.List;
 import java.util.Map;
@@ -14,8 +14,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -31,8 +34,14 @@ public class ApiUserController {
     private UserService userService;
 
     @GetMapping("/users")
-    public ResponseEntity<List<Users>> list(@RequestParam Map<String, String> params) {
+    public ResponseEntity<List<User>> list(Model model, @RequestParam Map<String, String> params) {
+        model.addAttribute("user", new User());
         return new ResponseEntity<>(this.userService.getUsers(params), HttpStatus.OK);
     }
-
+    
+    @PostMapping("/users")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void add(@ModelAttribute(value = "user") User u) {
+        this.userService.addOrUpdateUser(u);
+    }
 }

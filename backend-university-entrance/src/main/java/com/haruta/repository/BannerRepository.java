@@ -4,7 +4,8 @@
  */
 package com.haruta.repository;
 
-import com.haruta.pojo.Banners;
+
+import com.haruta.pojo.Banner;
 import java.util.List;
 import java.util.Map;
 
@@ -13,5 +14,5 @@ import java.util.Map;
  * @author nguye
  */
 public interface BannerRepository {
-    List<Banners> getBanner();
+    List<Banner> getBanner();
 }

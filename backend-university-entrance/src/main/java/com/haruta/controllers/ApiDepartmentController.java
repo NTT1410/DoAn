@@ -4,7 +4,7 @@
  */
 package com.haruta.controllers;
 
-import com.haruta.pojo.Departments;
+import com.haruta.pojo.Department;
 import com.haruta.service.DepartmentService;
 import java.util.List;
 import java.util.Map;
@@ -29,7 +29,7 @@ public class ApiDepartmentController {
     private DepartmentService dpmService;
     
     @GetMapping("/departments")
-    public ResponseEntity<List<Departments>> list(@RequestParam Map<String, String> params) {
+    public ResponseEntity<List<Department>> list(@RequestParam Map<String, String> params) {
         return new ResponseEntity<>(this.dpmService.getDpm(params), HttpStatus.OK);
     }
 }

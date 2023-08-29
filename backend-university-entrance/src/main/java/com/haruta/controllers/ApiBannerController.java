@@ -4,7 +4,7 @@
  */
 package com.haruta.controllers;
 
-import com.haruta.pojo.Banners;
+import com.haruta.pojo.Banner;
 import com.haruta.service.BannerService;
 import java.util.List;
 import java.util.Map;
@@ -29,7 +29,7 @@ public class ApiBannerController {
     private BannerService banerService;
     
     @GetMapping("/banners")
-    public ResponseEntity<List<Banners>> list() {
+    public ResponseEntity<List<Banner>> list() {
         return new ResponseEntity<>(this.banerService.getBanner(), HttpStatus.OK);
     }
 }

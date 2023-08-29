@@ -4,11 +4,10 @@
  */
 package com.haruta.service.impl;
 
-import com.haruta.pojo.Department;
-import com.haruta.repository.DepartmentRepository;
-import com.haruta.service.DepartmentService;
+import com.haruta.pojo.Role;
+import com.haruta.repository.RoleRepository;
+import com.haruta.service.RoleService;
 import java.util.List;
-import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,12 +16,14 @@ import org.springframework.stereotype.Service;
  * @author nguye
  */
 @Service
-public class DepartmentServiceImpl implements DepartmentService{
+public class RoleServiceImpl implements RoleService{
+    
     @Autowired
-    private DepartmentRepository dpmRepo;
+    private RoleRepository roleRepo;
 
     @Override
-    public List<Department> getDpm(Map<String, String> params) {
-        return this.dpmRepo.getDpm(params);
+    public List<Role> getRoles() {
+        return this.roleRepo.getRoles();
     }
+    
 }

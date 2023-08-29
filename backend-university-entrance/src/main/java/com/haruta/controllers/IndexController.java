@@ -4,6 +4,7 @@
  */
 package com.haruta.controllers;
 
+import com.haruta.service.RoleService;
 import com.haruta.service.UserService;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,23 +25,28 @@ import org.springframework.web.bind.annotation.RequestParam;
 @ControllerAdvice
 @PropertySource("classpath:configs.properties")
 public class IndexController {
-
+    
     @Autowired
     private UserService userService;
+    
+    @Autowired
+    private RoleService roleService;
 
     @Autowired
     private Environment env;
-//    
-//    @ModelAttribute
-//    public void commonAttr(Model model) {
-//        model.addAttribute("categories", this.cates.getCategories());
-//    }
-//    
-
-    @RequestMapping("/")
-    public String index(Model model) {
-//        model.addAttribute("users", this.userService.getUsers());
-        return "index";
+    
+    @ModelAttribute
+    public void commonAttr(Model model) {
+        model.addAttribute("roles", this.roleService.getRoles());
     }
 
+    @RequestMapping("/")
+    public String index(Model model, @RequestParam Map<String, String> params) {
+        model.addAttribute("users", this.userService.getUsers(params));
+        
+//        int pageSize = Integer.parseInt(this.env.getProperty("PAGE_SIZE"));
+//        int count = this.userService.countUser();
+//        model.addAttribute("counter", Math.ceil(count*1.0/pageSize));
+        return "index";
+    }
 }

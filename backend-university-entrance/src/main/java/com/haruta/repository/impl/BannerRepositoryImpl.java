@@ -4,7 +4,7 @@
  */
 package com.haruta.repository.impl;
 
-import com.haruta.pojo.Banners;
+import com.haruta.pojo.Banner;
 import com.haruta.repository.BannerRepository;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,11 +32,11 @@ public class BannerRepositoryImpl implements BannerRepository {
     private LocalSessionFactoryBean factory;
     
     @Override
-    public List<Banners> getBanner() {
+    public List<Banner> getBanner() {
         Session s = this.factory.getObject().getCurrentSession();
         CriteriaBuilder builder = s.getCriteriaBuilder();
-        CriteriaQuery<Banners> b = builder.createQuery(Banners.class);
-        Root root = b.from(Banners.class);
+        CriteriaQuery<Banner> b = builder.createQuery(Banner.class);
+        Root root = b.from(Banner.class);
         
         b.select(root);
         

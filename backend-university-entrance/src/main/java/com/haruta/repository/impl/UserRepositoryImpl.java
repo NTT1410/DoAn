@@ -4,16 +4,22 @@
  */
 package com.haruta.repository.impl;
 
-import com.haruta.pojo.Users;
+import com.haruta.pojo.User;
 import com.haruta.repository.UserRepository;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
@@ -27,16 +33,19 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 @Transactional
 public class UserRepositoryImpl implements UserRepository {
+    
+    @Autowired
+    private SimpleDateFormat f;
 
     @Autowired
     private LocalSessionFactoryBean factory;
 
     @Override
-    public List<Users> getUsers(Map<String, String> params) {
+    public List<User> getUsers(Map<String, String> params) {
         Session s = this.factory.getObject().getCurrentSession();
         CriteriaBuilder builder = s.getCriteriaBuilder();
-        CriteriaQuery<Users> u = builder.createQuery(Users.class);
-        Root root = u.from(Users.class);
+        CriteriaQuery<User> u = builder.createQuery(User.class);
+        Root root = u.from(User.class);
         u.select(root);
 
         if (params != null) {
@@ -58,6 +67,22 @@ public class UserRepositoryImpl implements UserRepository {
         u.orderBy(builder.asc(root.get("id")));
         Query query = s.createQuery(u);
         return query.getResultList();
+    }
+
+    @Override
+    public boolean addOrUpdateUser(User u) {
+        Session s = this.factory.getObject().getCurrentSession();
+        try {
+            if (u.getId() == null) {
+                s.save(u);
+            } else {
+                s.update(u);
+            }
+            return true;
+        } catch (HibernateException ex) {
+            ex.printStackTrace();
+            return false;
+        }
     }
 
 }

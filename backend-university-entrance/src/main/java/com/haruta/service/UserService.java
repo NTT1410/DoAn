@@ -4,7 +4,7 @@
  */
 package com.haruta.service;
 
-import com.haruta.pojo.Users;
+import com.haruta.pojo.User;
 import java.util.List;
 import java.util.Map;
 
@@ -13,5 +13,6 @@ import java.util.Map;
  * @author nguye
  */
 public interface UserService {
-    List<Users> getUsers(Map<String, String> params);
+    List<User> getUsers(Map<String, String> params);
+    boolean addOrUpdateUser(User u);
 }

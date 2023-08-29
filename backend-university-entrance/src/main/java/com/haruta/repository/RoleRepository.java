@@ -4,8 +4,7 @@
  */
 package com.haruta.repository;
 
-
-import com.haruta.pojo.Department;
+import com.haruta.pojo.Role;
 import java.util.List;
 import java.util.Map;
 
@@ -13,6 +12,6 @@ import java.util.Map;
  *
  * @author nguye
  */
-public interface DepartmentRepository {
-    List<Department> getDpm(Map<String, String> params);
+public interface RoleRepository {
+    List<Role> getRoles();
 }
