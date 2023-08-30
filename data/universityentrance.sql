@@ -18,13 +18,13 @@ USE `universityentrance`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `banners`
+-- Table structure for table `banner`
 --
 
-DROP TABLE IF EXISTS `banners`;
+DROP TABLE IF EXISTS `banner`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `banners` (
+CREATE TABLE `banner` (
   `id` int NOT NULL AUTO_INCREMENT,
   `title` varchar(255) COLLATE utf8mb3_unicode_ci NOT NULL,
   `image` varchar(255) COLLATE utf8mb3_unicode_ci NOT NULL,
@@ -37,23 +37,23 @@ CREATE TABLE `banners` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `banners`
+-- Dumping data for table `banner`
 --
 
-LOCK TABLES `banners` WRITE;
-/*!40000 ALTER TABLE `banners` DISABLE KEYS */;
-INSERT INTO `banners` VALUES (1,'Banner 1','banner1.jpg','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691837059/MyImages/UniversityEntrance/banner/banner1_uosk46.jpg','2023-08-05 08:20:42','2023-08-05 08:20:42',1),(2,'Banner 2','banner2.jpg','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691837059/MyImages/UniversityEntrance/banner/banner2_w70vsb.jpg','2023-08-05 08:20:42','2023-08-05 08:20:42',0),(3,'Banner 3','banner3.jpg','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691949896/MyImages/UniversityEntrance/banner/modern-university-admission-banner-template-design-168ce33d82bc9d6823f5a58bc1a51092_screen_bbor76.jpg','2023-08-05 08:20:42','2023-08-05 08:20:42',0),(4,'Banner 4','banner4.jpg','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691950360/MyImages/UniversityEntrance/banner/maroon-university-enrollment-banner-design-template-ed350a837743449b01870b3e812a72d5_screen_ejuuvt.jpg','2023-08-05 08:20:42','2023-08-05 08:20:42',1),(5,'Banner 5','banner5.jpg','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691950562/MyImages/UniversityEntrance/banner/Web_20Banner_202_y8l2un.jpg','2023-08-05 08:20:42','2023-08-05 08:20:42',1),(6,'Banner 6','banner6.jpg','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691950495/MyImages/UniversityEntrance/banner/CDOE-Banner_tynlsa.jpg','2023-08-05 08:20:42','2023-08-05 08:20:42',0),(7,'Banner 7','banner7.jpg','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691950532/MyImages/UniversityEntrance/banner/OL-Banner-3_rn8jyc.jpg','2023-08-05 08:20:42','2023-08-05 08:20:42',0),(8,'Banner 8','banner8.jpg','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691949896/MyImages/UniversityEntrance/banner/modern-university-admission-banner-template-design-168ce33d82bc9d6823f5a58bc1a51092_screen_bbor76.jpg','2023-08-05 08:20:42','2023-08-05 08:20:42',0),(9,'Banner 9','banner9.jpg','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691837059/MyImages/UniversityEntrance/banner/banner1_uosk46.jpg','2023-08-05 08:20:42','2023-08-05 08:20:42',1),(10,'Banner 10','banner10.jpg','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691837059/MyImages/UniversityEntrance/banner/banner2_w70vsb.jpg','2023-08-05 08:20:42','2023-08-05 08:20:42',0);
-/*!40000 ALTER TABLE `banners` ENABLE KEYS */;
+LOCK TABLES `banner` WRITE;
+/*!40000 ALTER TABLE `banner` DISABLE KEYS */;
+INSERT INTO `banner` VALUES (1,'Banner 1','banner1.jpg','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691837059/MyImages/UniversityEntrance/banner/banner1_uosk46.jpg','2023-08-05 08:20:42','2023-08-05 08:20:42',1),(2,'Banner 2','banner2.jpg','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691837059/MyImages/UniversityEntrance/banner/banner2_w70vsb.jpg','2023-08-05 08:20:42','2023-08-05 08:20:42',0),(3,'Banner 3','banner3.jpg','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691949896/MyImages/UniversityEntrance/banner/modern-university-admission-banner-template-design-168ce33d82bc9d6823f5a58bc1a51092_screen_bbor76.jpg','2023-08-05 08:20:42','2023-08-05 08:20:42',0),(4,'Banner 4','banner4.jpg','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691950360/MyImages/UniversityEntrance/banner/maroon-university-enrollment-banner-design-template-ed350a837743449b01870b3e812a72d5_screen_ejuuvt.jpg','2023-08-05 08:20:42','2023-08-05 08:20:42',1),(5,'Banner 5','banner5.jpg','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691950562/MyImages/UniversityEntrance/banner/Web_20Banner_202_y8l2un.jpg','2023-08-05 08:20:42','2023-08-05 08:20:42',1),(6,'Banner 6','banner6.jpg','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691950495/MyImages/UniversityEntrance/banner/CDOE-Banner_tynlsa.jpg','2023-08-05 08:20:42','2023-08-05 08:20:42',0),(7,'Banner 7','banner7.jpg','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691950532/MyImages/UniversityEntrance/banner/OL-Banner-3_rn8jyc.jpg','2023-08-05 08:20:42','2023-08-05 08:20:42',0),(8,'Banner 8','banner8.jpg','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691949896/MyImages/UniversityEntrance/banner/modern-university-admission-banner-template-design-168ce33d82bc9d6823f5a58bc1a51092_screen_bbor76.jpg','2023-08-05 08:20:42','2023-08-05 08:20:42',0),(9,'Banner 9','banner9.jpg','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691837059/MyImages/UniversityEntrance/banner/banner1_uosk46.jpg','2023-08-05 08:20:42','2023-08-05 08:20:42',1),(10,'Banner 10','banner10.jpg','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691837059/MyImages/UniversityEntrance/banner/banner2_w70vsb.jpg','2023-08-05 08:20:42','2023-08-05 08:20:42',0);
+/*!40000 ALTER TABLE `banner` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `categories`
+-- Table structure for table `category`
 --
 
-DROP TABLE IF EXISTS `categories`;
+DROP TABLE IF EXISTS `category`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `categories` (
+CREATE TABLE `category` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   `description` varchar(255) NOT NULL,
@@ -62,23 +62,23 @@ CREATE TABLE `categories` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `categories`
+-- Dumping data for table `category`
 --
 
-LOCK TABLES `categories` WRITE;
-/*!40000 ALTER TABLE `categories` DISABLE KEYS */;
-INSERT INTO `categories` VALUES (1,'Đào tạo đại học chính quy','Dành cho các sinh viên chính quy'),(2,'Đào tạo từ xa','Dành cho các sinh viên học đại học từ xa'),(3,'Đào tạo văn bằng 2 và liên thông','Dành cho người đi làm, muốn có bằng đại học thứ 2, hoặc liên thông lên đại học');
-/*!40000 ALTER TABLE `categories` ENABLE KEYS */;
+LOCK TABLES `category` WRITE;
+/*!40000 ALTER TABLE `category` DISABLE KEYS */;
+INSERT INTO `category` VALUES (1,'Đào tạo đại học chính quy','Dành cho các sinh viên chính quy'),(2,'Đào tạo từ xa','Dành cho các sinh viên học đại học từ xa'),(3,'Đào tạo văn bằng 2 và liên thông','Dành cho người đi làm, muốn có bằng đại học thứ 2, hoặc liên thông lên đại học');
+/*!40000 ALTER TABLE `category` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `comments`
+-- Table structure for table `comment`
 --
 
-DROP TABLE IF EXISTS `comments`;
+DROP TABLE IF EXISTS `comment`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `comments` (
+CREATE TABLE `comment` (
   `id` int NOT NULL AUTO_INCREMENT,
   `new_id` int NOT NULL,
   `user_id` int NOT NULL,
@@ -88,28 +88,28 @@ CREATE TABLE `comments` (
   KEY `fk_newid_cmts_news_idx` (`new_id`),
   KEY `fk_userid_cmts_users_idx` (`user_id`),
   CONSTRAINT `fk_newid_cmts_news` FOREIGN KEY (`new_id`) REFERENCES `news` (`id`),
-  CONSTRAINT `fk_userid_cmts_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+  CONSTRAINT `fk_userid_cmts_users` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `comments`
+-- Dumping data for table `comment`
 --
 
-LOCK TABLES `comments` WRITE;
-/*!40000 ALTER TABLE `comments` DISABLE KEYS */;
-INSERT INTO `comments` VALUES (1,1,1,'Who make it?','2023-08-05 08:48:32'),(2,1,2,'Who make it?','2023-08-05 08:48:32'),(3,2,1,'Who make it?','2023-08-05 08:48:32'),(4,3,1,'Who make it?','2023-08-05 08:48:32'),(5,1,5,'Who make it?','2023-08-05 08:48:32'),(6,3,2,'Who make it?','2023-08-05 08:48:32'),(7,5,8,'Who make it?','2023-08-05 08:48:32');
-/*!40000 ALTER TABLE `comments` ENABLE KEYS */;
+LOCK TABLES `comment` WRITE;
+/*!40000 ALTER TABLE `comment` DISABLE KEYS */;
+INSERT INTO `comment` VALUES (1,1,1,'Who make it?','2023-08-05 08:48:32'),(2,1,2,'Who make it?','2023-08-05 08:48:32'),(3,2,1,'Who make it?','2023-08-05 08:48:32'),(4,3,1,'Who make it?','2023-08-05 08:48:32'),(5,1,5,'Who make it?','2023-08-05 08:48:32'),(6,3,2,'Who make it?','2023-08-05 08:48:32'),(7,5,8,'Who make it?','2023-08-05 08:48:32');
+/*!40000 ALTER TABLE `comment` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `departments`
+-- Table structure for table `department`
 --
 
-DROP TABLE IF EXISTS `departments`;
+DROP TABLE IF EXISTS `department`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `departments` (
+CREATE TABLE `department` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
   `description` text COLLATE utf8mb3_unicode_ci NOT NULL,
@@ -119,45 +119,45 @@ CREATE TABLE `departments` (
   `cateid` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_cateid_idx` (`cateid`),
-  CONSTRAINT `fk_cateid` FOREIGN KEY (`cateid`) REFERENCES `categories` (`id`)
+  CONSTRAINT `fk_cateid` FOREIGN KEY (`cateid`) REFERENCES `category` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `departments`
+-- Dumping data for table `department`
 --
 
-LOCK TABLES `departments` WRITE;
-/*!40000 ALTER TABLE `departments` DISABLE KEYS */;
-INSERT INTO `departments` VALUES (1,'Khoa Công nghệ Thông tin','Chương trình đào tạo của Khoa Công nghệ Thông tin cung cấp kiến thức và kỹ năng cần thiết cho sinh viên để trở thành những kỹ sư phần mềm có trình độ cao. Chương trình đào tạo bao gồm các môn học về khoa học máy tính, kỹ thuật phần mềm, hệ thống máy tính, mạng máy tính và cơ sở dữ liệu. Sinh viên tốt nghiệp Khoa Công nghệ Thông tin có thể làm việc trong các lĩnh vực như phát triển phần mềm, quản trị mạng, quản trị hệ thống và tư vấn công nghệ thông tin.','https://www.uit.edu.vn/','https://www.youtube.com/watch?v=dQw4w9WgXcQ',8.5,1),(2,'Khoa Kinh tế','Chương trình đào tạo của Khoa Kinh tế cung cấp kiến thức và kỹ năng cần thiết cho sinh viên để trở thành những nhà kinh tế có trình độ cao. Chương trình đào tạo bao gồm các môn học về kinh tế học, tài chính, kế toán, quản trị kinh doanh và marketing. Sinh viên tốt nghiệp Khoa Kinh tế có thể làm việc trong các lĩnh vực như ngân hàng, tài chính, kế toán, quản lý, kinh doanh và marketing.','https://www.hus.edu.vn/','https://www.youtube.com/watch?v=dQw4w9WgXcQ',8,1),(3,'Khoa Luật','Chương trình đào tạo của Khoa Luật cung cấp kiến thức và kỹ năng cần thiết cho sinh viên để trở thành những luật sư có trình độ cao. Chương trình đào tạo bao gồm các môn học về luật học, pháp luật, tố tụng hình sự, tố tụng dân sự và luật kinh tế. Sinh viên tốt nghiệp Khoa Luật có thể làm việc trong các lĩnh vực như luật sư, thẩm phán, công tố viên, luật sư tư vấn và giảng dạy luật.','https://www.luật.vn/','https://www.youtube.com/watch?v=dQw4w9WgXcQ',7.5,3),(4,'Khoa Y','Chương trình đào tạo của Khoa Y cung cấp kiến thức và kỹ năng cần thiết cho sinh viên để trở thành những bác sĩ có trình độ cao. Chương trình đào tạo bao gồm các môn học về y học, giải phẫu học, sinh lý học, dược lý học và bệnh học. Sinh viên tốt nghiệp Khoa Y có thể làm việc trong các lĩnh vực như bác sĩ, phẫu thuật viên, bác sĩ nội trú và bác sĩ đa khoa.','https://www.ykhoahanoi.edu.vn/','https://www.youtube.com/watch?v=dQw4w9WgXcQ',9,1),(5,'Khoa Dược','Chương trình đào tạo của Khoa Dược cung cấp kiến thức và kỹ năng cần thiết cho sinh viên để trở thành những dược sĩ có trình độ cao. Chương trình đào tạo bao gồm các môn học về dược học, hóa học, sinh học, dược lý học và bào chế thuốc. Sinh viên tốt nghiệp Khoa Dược có thể làm việc trong các lĩnh vực như dược sĩ, nhà nghiên cứu dược phẩm và kiểm soát chất lượng thuốc.','https://www.dược.vn/','https://www.youtube.com/watch?v=dQw4w9WgXcQ',8.5,2),(6,'Khoa Giáo dục','Chương trình đào tạo của Khoa Giáo dục cung cấp kiến thức và kỹ năng cần thiết cho sinh viên để trở thành những giáo viên có trình độ cao. Chương trình đào tạo bao gồm các môn học về giáo dục học, tâm lý học giáo dục, phương pháp giảng dạy và quản lý giáo dục. Sinh viên tốt nghiệp Khoa Giáo dục có thể làm việc trong các lĩnh vực như giáo viên, nhà quản lý giáo dục và nhà nghiên cứu giáo dục.','https://www.gd.vn/','https://www.youtube.com/watch?v=dQw4w9WgXcQ',8,2);
-/*!40000 ALTER TABLE `departments` ENABLE KEYS */;
+LOCK TABLES `department` WRITE;
+/*!40000 ALTER TABLE `department` DISABLE KEYS */;
+INSERT INTO `department` VALUES (1,'Khoa Công nghệ Thông tin','Chương trình đào tạo của Khoa Công nghệ Thông tin cung cấp kiến thức và kỹ năng cần thiết cho sinh viên để trở thành những kỹ sư phần mềm có trình độ cao. Chương trình đào tạo bao gồm các môn học về khoa học máy tính, kỹ thuật phần mềm, hệ thống máy tính, mạng máy tính và cơ sở dữ liệu. Sinh viên tốt nghiệp Khoa Công nghệ Thông tin có thể làm việc trong các lĩnh vực như phát triển phần mềm, quản trị mạng, quản trị hệ thống và tư vấn công nghệ thông tin.','https://www.uit.edu.vn/','https://www.youtube.com/watch?v=dQw4w9WgXcQ',8.5,1),(2,'Khoa Kinh tế','Chương trình đào tạo của Khoa Kinh tế cung cấp kiến thức và kỹ năng cần thiết cho sinh viên để trở thành những nhà kinh tế có trình độ cao. Chương trình đào tạo bao gồm các môn học về kinh tế học, tài chính, kế toán, quản trị kinh doanh và marketing. Sinh viên tốt nghiệp Khoa Kinh tế có thể làm việc trong các lĩnh vực như ngân hàng, tài chính, kế toán, quản lý, kinh doanh và marketing.','https://www.hus.edu.vn/','https://www.youtube.com/watch?v=dQw4w9WgXcQ',8,1),(3,'Khoa Luật','Chương trình đào tạo của Khoa Luật cung cấp kiến thức và kỹ năng cần thiết cho sinh viên để trở thành những luật sư có trình độ cao. Chương trình đào tạo bao gồm các môn học về luật học, pháp luật, tố tụng hình sự, tố tụng dân sự và luật kinh tế. Sinh viên tốt nghiệp Khoa Luật có thể làm việc trong các lĩnh vực như luật sư, thẩm phán, công tố viên, luật sư tư vấn và giảng dạy luật.','https://www.luật.vn/','https://www.youtube.com/watch?v=dQw4w9WgXcQ',7.5,3),(4,'Khoa Y','Chương trình đào tạo của Khoa Y cung cấp kiến thức và kỹ năng cần thiết cho sinh viên để trở thành những bác sĩ có trình độ cao. Chương trình đào tạo bao gồm các môn học về y học, giải phẫu học, sinh lý học, dược lý học và bệnh học. Sinh viên tốt nghiệp Khoa Y có thể làm việc trong các lĩnh vực như bác sĩ, phẫu thuật viên, bác sĩ nội trú và bác sĩ đa khoa.','https://www.ykhoahanoi.edu.vn/','https://www.youtube.com/watch?v=dQw4w9WgXcQ',9,1),(5,'Khoa Dược','Chương trình đào tạo của Khoa Dược cung cấp kiến thức và kỹ năng cần thiết cho sinh viên để trở thành những dược sĩ có trình độ cao. Chương trình đào tạo bao gồm các môn học về dược học, hóa học, sinh học, dược lý học và bào chế thuốc. Sinh viên tốt nghiệp Khoa Dược có thể làm việc trong các lĩnh vực như dược sĩ, nhà nghiên cứu dược phẩm và kiểm soát chất lượng thuốc.','https://www.dược.vn/','https://www.youtube.com/watch?v=dQw4w9WgXcQ',8.5,2),(6,'Khoa Giáo dục','Chương trình đào tạo của Khoa Giáo dục cung cấp kiến thức và kỹ năng cần thiết cho sinh viên để trở thành những giáo viên có trình độ cao. Chương trình đào tạo bao gồm các môn học về giáo dục học, tâm lý học giáo dục, phương pháp giảng dạy và quản lý giáo dục. Sinh viên tốt nghiệp Khoa Giáo dục có thể làm việc trong các lĩnh vực như giáo viên, nhà quản lý giáo dục và nhà nghiên cứu giáo dục.','https://www.gd.vn/','https://www.youtube.com/watch?v=dQw4w9WgXcQ',8,2);
+/*!40000 ALTER TABLE `department` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `livestreams`
+-- Table structure for table `livestream`
 --
 
-DROP TABLE IF EXISTS `livestreams`;
+DROP TABLE IF EXISTS `livestream`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `livestreams` (
+CREATE TABLE `livestream` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) COLLATE utf8mb3_unicode_ci NOT NULL,
-  `description` varchar(255) COLLATE utf8mb3_unicode_ci NOT NULL,
-  `date` datetime NOT NULL,
-  `time` time NOT NULL,
+  `name` varchar(255) COLLATE utf8mb3_unicode_ci NOT NULL,
+  `description` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `start_date` date NOT NULL,
+  `start_time` time NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `livestreams`
+-- Dumping data for table `livestream`
 --
 
-LOCK TABLES `livestreams` WRITE;
-/*!40000 ALTER TABLE `livestreams` DISABLE KEYS */;
-INSERT INTO `livestreams` VALUES (1,'Livestream 1','This is a livestream about the latest news.','2023-03-08 00:00:00','10:00:00'),(2,'Livestream 2','This is a livestream about a new product launch.','2023-03-09 00:00:00','12:00:00'),(3,'Livestream 3','This is a livestream about a live event.','2023-03-10 00:00:00','14:00:00'),(4,'Livestream 4','This is a livestream about a Q&A session.','2023-03-11 00:00:00','16:00:00'),(5,'Livestream 5','This is a livestream about a live chat.','2023-03-12 00:00:00','18:00:00'),(6,'Livestream 6','This is a livestream about a live game.','2023-03-13 00:00:00','20:00:00'),(7,'Livestream 7','This is a livestream about a live concert.','2023-03-14 00:00:00','22:00:00'),(8,'Livestream 8','This is a livestream about a live performance.','2023-03-15 00:00:00','24:00:00'),(9,'Livestream 9','This is a livestream about a live event.','2023-03-16 00:00:00','02:00:00'),(10,'Livestream 10','This is a livestream about a live event.','2023-03-17 00:00:00','04:00:00');
-/*!40000 ALTER TABLE `livestreams` ENABLE KEYS */;
+LOCK TABLES `livestream` WRITE;
+/*!40000 ALTER TABLE `livestream` DISABLE KEYS */;
+INSERT INTO `livestream` VALUES (1,'Livestream 1','This is a livestream about the latest news.','2023-03-08','10:04:50'),(2,'Livestream 2','This is a livestream about a new product launch.','2023-03-09','01:23:45'),(3,'Livestream 3','This is a livestream about a live event.','2023-03-10','14:56:32'),(4,'Livestream 4','This is a livestream about a Q&A session.','2023-03-11','23:45:00'),(5,'Livestream 5','This is a livestream about a live chat.','2023-03-12','04:00:00'),(6,'Livestream 6','This is a livestream about a live game.','2023-03-13','12:00:00'),(7,'Livestream 7','This is a livestream about a live concert.','2023-03-14','22:00:00'),(8,'Livestream 8','This is a livestream about a live performance.','2023-03-15','18:00:00'),(9,'Livestream 9','This is a livestream about a live event.','2023-03-16','06:00:00'),(10,'Livestream 10','This is a livestream about a live event.','2023-03-17','06:00:00');
+/*!40000 ALTER TABLE `livestream` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -191,13 +191,13 @@ INSERT INTO `news` VALUES (1,'Tuyển sinh hệ chính quy năm 2023','Tuyển s
 UNLOCK TABLES;
 
 --
--- Table structure for table `questions`
+-- Table structure for table `question`
 --
 
-DROP TABLE IF EXISTS `questions`;
+DROP TABLE IF EXISTS `question`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `questions` (
+CREATE TABLE `question` (
   `id` int NOT NULL AUTO_INCREMENT,
   `content` text NOT NULL,
   `answer` text NOT NULL,
@@ -208,29 +208,60 @@ CREATE TABLE `questions` (
   PRIMARY KEY (`id`),
   KEY `fk_userid_ques_users_idx` (`user_id`),
   KEY `fk_liveid_ques_live_idx` (`livestream_id`),
-  CONSTRAINT `fk_liveid_ques_live` FOREIGN KEY (`livestream_id`) REFERENCES `livestreams` (`id`),
-  CONSTRAINT `fk_userid_ques_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+  CONSTRAINT `fk_liveid_ques_live` FOREIGN KEY (`livestream_id`) REFERENCES `livestream` (`id`),
+  CONSTRAINT `fk_userid_ques_users` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `questions`
+-- Dumping data for table `question`
 --
 
-LOCK TABLES `questions` WRITE;
-/*!40000 ALTER TABLE `questions` DISABLE KEYS */;
-INSERT INTO `questions` VALUES (1,'Khi nào là thời gian tốt nhất để đăng ký học?','Thời gian tốt nhất để đăng ký học là khi bạn đã có quyết định và sẵn sàng bắt đầu. Tuy nhiên, nếu bạn vẫn đang phân vân, bạn có thể đăng ký học sớm hơn để có thêm thời gian suy nghĩ.',1,5,'2023-08-05 09:12:41','2023-08-05 09:13:31'),(2,'Tôi có thể học gì sau khi tốt nghiệp?','Sau khi tốt nghiệp, bạn có thể học tiếp lên cao hoặc tìm kiếm một công việc. Nếu bạn muốn học tiếp lên cao, bạn có thể học thạc sĩ hoặc tiến sĩ. Nếu bạn muốn tìm kiếm một công việc, bạn có thể tìm kiếm một công việc trong lĩnh vực mà bạn đã học hoặc tìm kiếm một công việc trong một lĩnh vực khác.',2,1,'2023-08-05 09:12:41','2023-08-05 09:14:40'),(3,'Tôi có thể làm gì để chuẩn bị cho kỳ thi?','Bạn có thể chuẩn bị cho kỳ thi bằng cách học tập chăm chỉ và làm bài tập về nhà. Bạn cũng có thể tham gia các lớp học luyện thi và ôn tập các đề thi cũ.',3,1,'2023-08-05 09:12:41','2023-08-05 09:14:40'),(4,'Tôi nên chọn trường nào?','Bạn nên chọn trường dựa trên các yếu tố như chất lượng giảng dạy, cơ sở vật chất, vị trí và chi phí. Bạn cũng nên xem xét các yếu tố cá nhân như sở thích và nhu cầu của bạn.',4,4,'2023-08-05 09:12:41','2023-08-05 09:14:40'),(5,'Tôi có thể học trực tuyến được không?','Có, bạn có thể học trực tuyến. Có rất nhiều chương trình học trực tuyến có chất lượng cao. Bạn có thể tìm kiếm các chương trình học trực tuyến trên các trang web như Coursera, edX và Udacity.',5,2,'2023-08-05 09:12:41','2023-08-05 09:14:40'),(6,'Tôi có thể làm gì nếu tôi không đạt được điểm cao trong kỳ thi?','Nếu bạn không đạt được điểm cao trong kỳ thi, bạn có thể làm lại kỳ thi. Bạn cũng có thể tìm kiếm các chương trình học khác hoặc tìm kiếm một công việc mà không cần bằng cấp.',6,1,'2023-08-05 09:12:41','2023-08-05 09:14:40'),(7,'Tôi có thể làm gì nếu tôi không biết mình muốn học gì?','Nếu bạn không biết mình muốn học gì, bạn có thể tham khảo ý kiến của bạn bè, gia đình và cố vấn học tập. Bạn cũng có thể tìm kiếm các bài kiểm tra và bài trắc nghiệm trực tuyến để giúp bạn tìm ra con đường sự nghiệp phù hợp với mình.',7,3,'2023-08-05 09:12:41','2023-08-05 09:14:40'),(8,'Tôi có thể làm gì nếu tôi không có đủ tiền để học?','Nếu bạn không có đủ tiền để học, bạn có thể tìm kiếm các học bổng và trợ cấp. Bạn cũng có thể tìm kiếm các chương trình học miễn phí hoặc giá rẻ.',8,3,'2023-08-05 09:12:41','2023-08-05 09:14:40'),(9,'Tôi có thể làm gì nếu tôi không có thời gian để học?','Nếu bạn không có thời gian để học, bạn có thể tìm kiếm các chương trình học online hoặc các chương trình học có thể hoàn thành trong thời gian ngắn. Bạn cũng có thể tìm kiếm các chương trình học có thể học ngoài giờ làm việc.',9,2,'2023-08-05 09:12:41','2023-08-05 09:14:40'),(10,'Tôi có thể làm gì nếu tôi không biết tiếng Anh?','Nếu bạn không biết tiếng Anh, bạn có thể tìm kiếm các chương trình học có giảng dạy bằng tiếng Anh. Bạn cũng có thể tìm kiếm các khóa học tiếng Anh để giúp bạn cải thiện khả năng ngôn ngữ của mình.',10,3,'2023-08-05 09:12:41','2023-08-05 09:14:40');
-/*!40000 ALTER TABLE `questions` ENABLE KEYS */;
+LOCK TABLES `question` WRITE;
+/*!40000 ALTER TABLE `question` DISABLE KEYS */;
+INSERT INTO `question` VALUES (1,'Khi nào là thời gian tốt nhất để đăng ký học?','Thời gian tốt nhất để đăng ký học là khi bạn đã có quyết định và sẵn sàng bắt đầu. Tuy nhiên, nếu bạn vẫn đang phân vân, bạn có thể đăng ký học sớm hơn để có thêm thời gian suy nghĩ.',1,5,'2023-08-05 09:12:41','2023-08-05 09:13:31'),(2,'Tôi có thể học gì sau khi tốt nghiệp?','Sau khi tốt nghiệp, bạn có thể học tiếp lên cao hoặc tìm kiếm một công việc. Nếu bạn muốn học tiếp lên cao, bạn có thể học thạc sĩ hoặc tiến sĩ. Nếu bạn muốn tìm kiếm một công việc, bạn có thể tìm kiếm một công việc trong lĩnh vực mà bạn đã học hoặc tìm kiếm một công việc trong một lĩnh vực khác.',2,1,'2023-08-05 09:12:41','2023-08-05 09:14:40'),(3,'Tôi có thể làm gì để chuẩn bị cho kỳ thi?','Bạn có thể chuẩn bị cho kỳ thi bằng cách học tập chăm chỉ và làm bài tập về nhà. Bạn cũng có thể tham gia các lớp học luyện thi và ôn tập các đề thi cũ.',3,1,'2023-08-05 09:12:41','2023-08-05 09:14:40'),(4,'Tôi nên chọn trường nào?','Bạn nên chọn trường dựa trên các yếu tố như chất lượng giảng dạy, cơ sở vật chất, vị trí và chi phí. Bạn cũng nên xem xét các yếu tố cá nhân như sở thích và nhu cầu của bạn.',4,4,'2023-08-05 09:12:41','2023-08-05 09:14:40'),(5,'Tôi có thể học trực tuyến được không?','Có, bạn có thể học trực tuyến. Có rất nhiều chương trình học trực tuyến có chất lượng cao. Bạn có thể tìm kiếm các chương trình học trực tuyến trên các trang web như Coursera, edX và Udacity.',5,2,'2023-08-05 09:12:41','2023-08-05 09:14:40'),(6,'Tôi có thể làm gì nếu tôi không đạt được điểm cao trong kỳ thi?','Nếu bạn không đạt được điểm cao trong kỳ thi, bạn có thể làm lại kỳ thi. Bạn cũng có thể tìm kiếm các chương trình học khác hoặc tìm kiếm một công việc mà không cần bằng cấp.',6,1,'2023-08-05 09:12:41','2023-08-05 09:14:40'),(7,'Tôi có thể làm gì nếu tôi không biết mình muốn học gì?','Nếu bạn không biết mình muốn học gì, bạn có thể tham khảo ý kiến của bạn bè, gia đình và cố vấn học tập. Bạn cũng có thể tìm kiếm các bài kiểm tra và bài trắc nghiệm trực tuyến để giúp bạn tìm ra con đường sự nghiệp phù hợp với mình.',7,3,'2023-08-05 09:12:41','2023-08-05 09:14:40'),(8,'Tôi có thể làm gì nếu tôi không có đủ tiền để học?','Nếu bạn không có đủ tiền để học, bạn có thể tìm kiếm các học bổng và trợ cấp. Bạn cũng có thể tìm kiếm các chương trình học miễn phí hoặc giá rẻ.',8,3,'2023-08-05 09:12:41','2023-08-05 09:14:40'),(9,'Tôi có thể làm gì nếu tôi không có thời gian để học?','Nếu bạn không có thời gian để học, bạn có thể tìm kiếm các chương trình học online hoặc các chương trình học có thể hoàn thành trong thời gian ngắn. Bạn cũng có thể tìm kiếm các chương trình học có thể học ngoài giờ làm việc.',9,2,'2023-08-05 09:12:41','2023-08-05 09:14:40'),(10,'Tôi có thể làm gì nếu tôi không biết tiếng Anh?','Nếu bạn không biết tiếng Anh, bạn có thể tìm kiếm các chương trình học có giảng dạy bằng tiếng Anh. Bạn cũng có thể tìm kiếm các khóa học tiếng Anh để giúp bạn cải thiện khả năng ngôn ngữ của mình.',10,3,'2023-08-05 09:12:41','2023-08-05 09:14:40');
+/*!40000 ALTER TABLE `question` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `roles`
+-- Table structure for table `recruitment`
 --
 
-DROP TABLE IF EXISTS `roles`;
+DROP TABLE IF EXISTS `recruitment`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `roles` (
+CREATE TABLE `recruitment` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `start_date` date NOT NULL,
+  `end_date` date NOT NULL,
+  `type` varchar(10) NOT NULL,
+  `major` varchar(255) NOT NULL,
+  `socre` float NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_cateid_re_idx` (`type`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `recruitment`
+--
+
+LOCK TABLES `recruitment` WRITE;
+/*!40000 ALTER TABLE `recruitment` DISABLE KEYS */;
+INSERT INTO `recruitment` VALUES (1,'Tuyển sinh đại học chính quy 2023','Tuyển sinh đại học chính quy 2023','2023-06-01','2023-07-31','Xét tuyển','Kỹ thuật',22),(2,'Tuyển sinh đại học chính quy 2023','Tuyển sinh đại học chính quy 2023','2023-06-01','2023-07-31','Xét tuyển','Kinh tế',21),(3,'Tuyển sinh đại học chính quy 2023','Tuyển sinh đại học chính quy 2023','2023-06-01','2023-07-31','Xét tuyển','Luật',22),(4,'Tuyển sinh đại học chính quy 2023','Tuyển sinh đại học chính quy 2023','2023-06-01','2023-07-31','Xét tuyển','Xây dựng',23);
+/*!40000 ALTER TABLE `recruitment` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `role`
+--
+
+DROP TABLE IF EXISTS `role`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `role` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
@@ -238,43 +269,51 @@ CREATE TABLE `roles` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `roles`
+-- Dumping data for table `role`
 --
 
-LOCK TABLES `roles` WRITE;
-/*!40000 ALTER TABLE `roles` DISABLE KEYS */;
-INSERT INTO `roles` VALUES (1,'admin'),(2,'user');
-/*!40000 ALTER TABLE `roles` ENABLE KEYS */;
+LOCK TABLES `role` WRITE;
+/*!40000 ALTER TABLE `role` DISABLE KEYS */;
+INSERT INTO `role` VALUES (1,'admin'),(2,'user');
+/*!40000 ALTER TABLE `role` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `users`
+-- Table structure for table `user`
 --
 
-DROP TABLE IF EXISTS `users`;
+DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `users` (
+CREATE TABLE `user` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8mb3_unicode_ci NOT NULL,
+  `first_name` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `last_name` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `email` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `phone` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `username` varchar(45) COLLATE utf8mb3_unicode_ci NOT NULL,
+  `password` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
   `avatar` varchar(255) COLLATE utf8mb3_unicode_ci NOT NULL,
-  `role_id` int NOT NULL,
+  `user_role` int NOT NULL,
+  `date_of_bird` date DEFAULT NULL,
+  `active` bit(1) NOT NULL DEFAULT b'1',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `username_UNIQUE` (`name`),
-  KEY `fk_roleid_users_roles_idx` (`role_id`),
-  CONSTRAINT `fk_roleid_users_roles` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+  UNIQUE KEY `email_UNIQUE` (`email`),
+  UNIQUE KEY `username_UNIQUE` (`username`),
+  UNIQUE KEY `phone_UNIQUE` (`phone`),
+  KEY `fk_roleid_users_roles_idx` (`user_role`),
+  CONSTRAINT `fk_roleid_users_roles` FOREIGN KEY (`user_role`) REFERENCES `role` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `users`
+-- Dumping data for table `user`
 --
 
-LOCK TABLES `users` WRITE;
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','password1','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691837083/MyImages/UniversityEntrance/avatar/avt3_atudsl.jpg',1),(2,'tru','password2','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691837083/MyImages/UniversityEntrance/avatar/avt2_nwbeon.jpg',1),(3,'Peter Smith','password3','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691837082/MyImages/UniversityEntrance/avatar/avt1_bgmadm.jpg',2),(4,'Mary Jones','password4','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691837082/MyImages/UniversityEntrance/avatar/avt4_byi2ba.jpg',2),(5,'David Brown','password5','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691837083/MyImages/UniversityEntrance/avatar/avt3_atudsl.jpg',2),(6,'Sarah Green','password6','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691837083/MyImages/UniversityEntrance/avatar/avt2_nwbeon.jpg',2),(7,'Michael White','password7','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691837082/MyImages/UniversityEntrance/avatar/avt1_bgmadm.jpg',2),(8,'Emily Black','password8','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691837082/MyImages/UniversityEntrance/avatar/avt4_byi2ba.jpg',2),(9,'William Gray','password9','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691837083/MyImages/UniversityEntrance/avatar/avt2_nwbeon.jpg',2),(10,'Alice Red','password10','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691837082/MyImages/UniversityEntrance/avatar/avt4_byi2ba.jpg',2);
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (1,'Cảnh','Điều Ngọc','canhdieungoc@gmail.com','0504146784','canhdieungoc','canhdieungoc123@','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691837083/MyImages/UniversityEntrance/avatar/avt3_atudsl.jpg',1,'2004-01-07',_binary ''),(2,'Khang','Nhan Nguyên','khangnhannguyen@gmail.com','0119030299','khangnhannguyen','khangnhannguyen123@','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691837083/MyImages/UniversityEntrance/avatar/avt2_nwbeon.jpg',1,'2000-01-04',_binary ''),(3,'Hiệp','Mạc Hoàng','hiepmachoang@gmail.com','0206696076','hiepmachoang','hiepmachoang123@','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691837082/MyImages/UniversityEntrance/avatar/avt1_bgmadm.jpg',2,'2003-03-27',_binary ''),(4,'Luật','Thái Công','luatthaicong@gmail.com','0585418152','luatthaicong','luatthaicong123@','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691837082/MyImages/UniversityEntrance/avatar/avt4_byi2ba.jpg',2,'2003-10-03',_binary ''),(5,'Quân','Nguyễn Hải','quannguyenhai@gmail.com','0757844680','quannguyenhai','quannguyenhai123@','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691837083/MyImages/UniversityEntrance/avatar/avt3_atudsl.jpg',2,'2004-04-30',_binary ''),(6,'Quỳnh','Hình Mạnh','quynhhinhmanh@gmail.com','0700454988','quynhhinhmanh','quynhhinhmanh123@','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691837083/MyImages/UniversityEntrance/avatar/avt2_nwbeon.jpg',2,'2003-07-05',_binary ''),(7,'Thanh','Ngọ Chí','thanhngochi@gmail.com','0696697454','thanhngochi','thanhngochi123@','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691837082/MyImages/UniversityEntrance/avatar/avt1_bgmadm.jpg',2,'2003-12-10',_binary ''),(8,'Châu','Bạch Tùng','chaubachtung@gmail.com','0719484192','chaubachtung','chaubachtung123@','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691837082/MyImages/UniversityEntrance/avatar/avt4_byi2ba.jpg',2,'2003-10-22',_binary ''),(9,'Nam','Mộc Hoàng','nammochoang@gmail.com','0195774102','nammochoang','nammochoang123@','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691837083/MyImages/UniversityEntrance/avatar/avt2_nwbeon.jpg',2,'2000-02-18',_binary ''),(10,'Trường','Tấn Quang','truongtanquang@gmail.com','0649900171','truongtanquang','truongtanquang123@','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691837082/MyImages/UniversityEntrance/avatar/avt4_byi2ba.jpg',2,'2001-03-10',_binary ''),(11,'Trụ','Nguyễn Tấn','tru@gmail.com','0123456789','admin','admin@123','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691837082/MyImages/UniversityEntrance/avatar/avt4_byi2ba.jpg',1,'2004-01-04',_binary ''),(12,'Trụ','Tấn','nguyentantru14102002@gmail.com','0784674775','tru','123','https://res.cloudinary.com/ds8i6jriz/image/upload/v1693327162/b8cevacwo28j5wfc9o5m.png',1,NULL,_binary '\0');
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -286,4 +325,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-08-21 23:19:02
+-- Dump completed on 2023-08-30 12:01:21
