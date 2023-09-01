@@ -26,7 +26,7 @@ public class ApiNewsController {
     @Autowired
     private NewService newService;
     
-    @GetMapping("/news")
+    @GetMapping("/news/")
     public ResponseEntity<List<News>> list() {
         return new ResponseEntity<>(this.newService.getNews(), HttpStatus.OK);
     }

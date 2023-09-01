@@ -21,6 +21,8 @@ import org.springframework.stereotype.Component;
  *
  * @author huu-thanhduong
  */
+
+//viet phuong thuc tao token
 @Component
 public class JwtService {
 
@@ -31,15 +33,15 @@ public class JwtService {
     public String generateTokenLogin(String username) {
         String token = null;
         try {
-            JWSSigner signer = new MACSigner(SHARED_SECRET_KEY);
+            JWSSigner signer = new MACSigner(SHARED_SECRET_KEY);//
             
             JWTClaimsSet.Builder builder = new JWTClaimsSet.Builder();
-            builder.claim("username", username);
+            builder.claim("username", username); //"username" là chữ kí điện tử tạo ra token
             
             builder.expirationTime(new Date(System.currentTimeMillis() + EXPIRE_TIME));
             
-            JWTClaimsSet claimsSet = builder.build();
-            SignedJWT signedJWT = new SignedJWT(new JWSHeader(JWSAlgorithm.HS256), claimsSet);
+            JWTClaimsSet claimsSet = builder.build();//
+            SignedJWT signedJWT = new SignedJWT(new JWSHeader(JWSAlgorithm.HS256), claimsSet);//
             
             signedJWT.sign(signer);
             token = signedJWT.serialize();

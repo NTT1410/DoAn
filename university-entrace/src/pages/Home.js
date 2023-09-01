@@ -1,7 +1,8 @@
 import React from "react";
 import Banner from "../components/Banner";
-import { Container } from "react-bootstrap";
 import News from "../components/News";
+import { Container } from "react-bootstrap";
+
 
 const Home = () => {
   return (
