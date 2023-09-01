@@ -15,4 +15,10 @@ import java.util.Map;
 public interface UserRepository {
     List<User> getUsers(Map<String, String> params);
     boolean addOrUpdateUser(User u);
+    
+    User addUser(User user);
+    User getUserByUsername(String username);
+    boolean authUser(String username, String password);
+    
+    
 }
