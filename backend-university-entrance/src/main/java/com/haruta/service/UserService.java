@@ -7,12 +7,18 @@ package com.haruta.service;
 import com.haruta.pojo.User;
 import java.util.List;
 import java.util.Map;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
  * @author nguye
  */
-public interface UserService {
+public interface UserService extends UserDetailsService{
     List<User> getUsers(Map<String, String> params);
-    boolean addOrUpdateUser(User u);
+    User getUserByUn(String username);  
+    User addUser(Map<String, String> params, MultipartFile avatar);
+    boolean addOrUpdateUser(User u);    
+    boolean authUser(String username, String password);
+    
 }

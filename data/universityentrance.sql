@@ -32,7 +32,10 @@ CREATE TABLE `banner` (
   `created_date` datetime NOT NULL,
   `updated_date` datetime NOT NULL,
   `status` tinyint NOT NULL,
-  PRIMARY KEY (`id`)
+  `recruitment_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_cate_bn_idx` (`recruitment_id`),
+  CONSTRAINT `fk_cate_bn` FOREIGN KEY (`recruitment_id`) REFERENCES `recruitment` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -42,7 +45,7 @@ CREATE TABLE `banner` (
 
 LOCK TABLES `banner` WRITE;
 /*!40000 ALTER TABLE `banner` DISABLE KEYS */;
-INSERT INTO `banner` VALUES (1,'Banner 1','banner1.jpg','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691837059/MyImages/UniversityEntrance/banner/banner1_uosk46.jpg','2023-08-05 08:20:42','2023-08-05 08:20:42',1),(2,'Banner 2','banner2.jpg','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691837059/MyImages/UniversityEntrance/banner/banner2_w70vsb.jpg','2023-08-05 08:20:42','2023-08-05 08:20:42',0),(3,'Banner 3','banner3.jpg','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691949896/MyImages/UniversityEntrance/banner/modern-university-admission-banner-template-design-168ce33d82bc9d6823f5a58bc1a51092_screen_bbor76.jpg','2023-08-05 08:20:42','2023-08-05 08:20:42',0),(4,'Banner 4','banner4.jpg','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691950360/MyImages/UniversityEntrance/banner/maroon-university-enrollment-banner-design-template-ed350a837743449b01870b3e812a72d5_screen_ejuuvt.jpg','2023-08-05 08:20:42','2023-08-05 08:20:42',1),(5,'Banner 5','banner5.jpg','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691950562/MyImages/UniversityEntrance/banner/Web_20Banner_202_y8l2un.jpg','2023-08-05 08:20:42','2023-08-05 08:20:42',1),(6,'Banner 6','banner6.jpg','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691950495/MyImages/UniversityEntrance/banner/CDOE-Banner_tynlsa.jpg','2023-08-05 08:20:42','2023-08-05 08:20:42',0),(7,'Banner 7','banner7.jpg','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691950532/MyImages/UniversityEntrance/banner/OL-Banner-3_rn8jyc.jpg','2023-08-05 08:20:42','2023-08-05 08:20:42',0),(8,'Banner 8','banner8.jpg','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691949896/MyImages/UniversityEntrance/banner/modern-university-admission-banner-template-design-168ce33d82bc9d6823f5a58bc1a51092_screen_bbor76.jpg','2023-08-05 08:20:42','2023-08-05 08:20:42',0),(9,'Banner 9','banner9.jpg','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691837059/MyImages/UniversityEntrance/banner/banner1_uosk46.jpg','2023-08-05 08:20:42','2023-08-05 08:20:42',1),(10,'Banner 10','banner10.jpg','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691837059/MyImages/UniversityEntrance/banner/banner2_w70vsb.jpg','2023-08-05 08:20:42','2023-08-05 08:20:42',0);
+INSERT INTO `banner` VALUES (1,'Banner 1','banner1.jpg','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691837059/MyImages/UniversityEntrance/banner/banner1_uosk46.jpg','2023-08-05 08:20:42','2023-08-05 08:20:42',1,1),(2,'Banner 2','banner2.jpg','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691837059/MyImages/UniversityEntrance/banner/banner2_w70vsb.jpg','2023-08-05 08:20:42','2023-08-05 08:20:42',0,1),(3,'Banner 3','banner3.jpg','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691949896/MyImages/UniversityEntrance/banner/modern-university-admission-banner-template-design-168ce33d82bc9d6823f5a58bc1a51092_screen_bbor76.jpg','2023-08-05 08:20:42','2023-08-05 08:20:42',0,1),(4,'Banner 4','banner4.jpg','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691950360/MyImages/UniversityEntrance/banner/maroon-university-enrollment-banner-design-template-ed350a837743449b01870b3e812a72d5_screen_ejuuvt.jpg','2023-08-05 08:20:42','2023-08-05 08:20:42',1,1),(5,'Banner 5','banner5.jpg','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691950562/MyImages/UniversityEntrance/banner/Web_20Banner_202_y8l2un.jpg','2023-08-05 08:20:42','2023-08-05 08:20:42',1,1),(6,'Banner 6','banner6.jpg','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691950495/MyImages/UniversityEntrance/banner/CDOE-Banner_tynlsa.jpg','2023-08-05 08:20:42','2023-08-05 08:20:42',0,1),(7,'Banner 7','banner7.jpg','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691950532/MyImages/UniversityEntrance/banner/OL-Banner-3_rn8jyc.jpg','2023-08-05 08:20:42','2023-08-05 08:20:42',0,1),(8,'Banner 8','banner8.jpg','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691949896/MyImages/UniversityEntrance/banner/modern-university-admission-banner-template-design-168ce33d82bc9d6823f5a58bc1a51092_screen_bbor76.jpg','2023-08-05 08:20:42','2023-08-05 08:20:42',0,2),(9,'Banner 9','banner9.jpg','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691837059/MyImages/UniversityEntrance/banner/banner1_uosk46.jpg','2023-08-05 08:20:42','2023-08-05 08:20:42',1,3),(10,'Banner 10','banner10.jpg','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691837059/MyImages/UniversityEntrance/banner/banner2_w70vsb.jpg','2023-08-05 08:20:42','2023-08-05 08:20:42',0,2);
 /*!40000 ALTER TABLE `banner` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -146,7 +149,10 @@ CREATE TABLE `livestream` (
   `description` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
   `start_date` date NOT NULL,
   `start_time` time NOT NULL,
-  PRIMARY KEY (`id`)
+  `recruitment_id` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_re_live_idx` (`recruitment_id`),
+  CONSTRAINT `fk_re_live` FOREIGN KEY (`recruitment_id`) REFERENCES `recruitment` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -156,7 +162,7 @@ CREATE TABLE `livestream` (
 
 LOCK TABLES `livestream` WRITE;
 /*!40000 ALTER TABLE `livestream` DISABLE KEYS */;
-INSERT INTO `livestream` VALUES (1,'Livestream 1','This is a livestream about the latest news.','2023-03-08','10:04:50'),(2,'Livestream 2','This is a livestream about a new product launch.','2023-03-09','01:23:45'),(3,'Livestream 3','This is a livestream about a live event.','2023-03-10','14:56:32'),(4,'Livestream 4','This is a livestream about a Q&A session.','2023-03-11','23:45:00'),(5,'Livestream 5','This is a livestream about a live chat.','2023-03-12','04:00:00'),(6,'Livestream 6','This is a livestream about a live game.','2023-03-13','12:00:00'),(7,'Livestream 7','This is a livestream about a live concert.','2023-03-14','22:00:00'),(8,'Livestream 8','This is a livestream about a live performance.','2023-03-15','18:00:00'),(9,'Livestream 9','This is a livestream about a live event.','2023-03-16','06:00:00'),(10,'Livestream 10','This is a livestream about a live event.','2023-03-17','06:00:00');
+INSERT INTO `livestream` VALUES (1,'Livestream 1','This is a livestream about the latest news.','2023-03-08','10:04:50',NULL),(2,'Livestream 2','This is a livestream about a new product launch.','2023-03-09','01:23:45',NULL),(3,'Livestream 3','This is a livestream about a live event.','2023-03-10','14:56:32',NULL),(4,'Livestream 4','This is a livestream about a Q&A session.','2023-03-11','23:45:00',NULL),(5,'Livestream 5','This is a livestream about a live chat.','2023-03-12','04:00:00',NULL),(6,'Livestream 6','This is a livestream about a live game.','2023-03-13','12:00:00',NULL),(7,'Livestream 7','This is a livestream about a live concert.','2023-03-14','22:00:00',NULL),(8,'Livestream 8','This is a livestream about a live performance.','2023-03-15','18:00:00',NULL),(9,'Livestream 9','This is a livestream about a live event.','2023-03-16','06:00:00',NULL),(10,'Livestream 10','This is a livestream about a live event.','2023-03-17','06:00:00',NULL);
 /*!40000 ALTER TABLE `livestream` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -174,9 +180,10 @@ CREATE TABLE `news` (
   `created_date` datetime NOT NULL,
   `updated_date` datetime NOT NULL,
   `status` tinyint NOT NULL,
-  `c_id` int NOT NULL,
+  `recruitment_id` int NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_a_idx` (`c_id`)
+  KEY `fk_re_news_idx` (`recruitment_id`),
+  CONSTRAINT `fk_re_news` FOREIGN KEY (`recruitment_id`) REFERENCES `recruitment` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -186,7 +193,7 @@ CREATE TABLE `news` (
 
 LOCK TABLES `news` WRITE;
 /*!40000 ALTER TABLE `news` DISABLE KEYS */;
-INSERT INTO `news` VALUES (1,'Tuyển sinh hệ chính quy năm 2023','Tuyển sinh hệ chính quy năm 2023. Thời gian tuyển sinh từ ngày 10 tháng 1 đến ngày 30 tháng 4 năm 2023. Yêu cầu tuyển sinh: Tốt nghiệp THPT hoặc tương đương. Điểm chuẩn: 24 điểm.','2023-07-14 07:08:58','2023-08-14 07:08:58',0,0),(2,'Tuyển sinh hệ liên thông năm 2023','Tuyển sinh hệ liên thông năm 2023. Thời gian tuyển sinh từ ngày 1 tháng 5 đến ngày 30 tháng 6 năm 2023. Yêu cầu tuyển sinh: Tốt nghiệp trung cấp hoặc cao đẳng. Điểm chuẩn: 20 điểm.','2023-08-05 07:09:10','2023-08-11 07:09:10',0,0),(3,'Tuyển sinh cao học năm 2023','Tuyển sinh cao học năm 2023. Thời gian tuyển sinh từ ngày 1 tháng 7 đến ngày 31 tháng 8 năm 2023. Yêu cầu tuyển sinh: Tốt nghiệp đại học. Điểm chuẩn: 28 điểm.','2023-08-05 08:46:52','2023-08-14 07:09:34',0,0),(4,'Tuyển sinh thạc sĩ năm 2023','Tuyển sinh thạc sĩ năm 2023. Thời gian tuyển sinh từ ngày 1 tháng 9 đến ngày 30 tháng 10 năm 2023. Yêu cầu tuyển sinh: Tốt nghiệp thạc sĩ. Điểm chuẩn: 32 điểm.','2023-08-05 08:46:52','2023-08-07 08:46:52',0,0),(5,'Tuyển sinh đào tạo từ xa năm 2023','Tuyển sinh đào tạo từ xa năm 2023. Thời gian tuyển sinh từ ngày 1 tháng 11 đến ngày 31 tháng 12 năm 2023. Yêu cầu tuyển sinh: Tốt nghiệp THPT hoặc tương đương. Điểm chuẩn: 22 điểm.','2023-08-12 07:09:46','2023-08-14 07:09:46',0,0);
+INSERT INTO `news` VALUES (1,'Tuyển sinh hệ chính quy năm 2023','Tuyển sinh hệ chính quy năm 2023. Thời gian tuyển sinh từ ngày 10 tháng 1 đến ngày 30 tháng 4 năm 2023. Yêu cầu tuyển sinh: Tốt nghiệp THPT hoặc tương đương. Điểm chuẩn: 24 điểm.','2023-07-14 07:08:58','2023-08-14 07:08:58',0,1),(2,'Tuyển sinh hệ liên thông năm 2023','Tuyển sinh hệ liên thông năm 2023. Thời gian tuyển sinh từ ngày 1 tháng 5 đến ngày 30 tháng 6 năm 2023. Yêu cầu tuyển sinh: Tốt nghiệp trung cấp hoặc cao đẳng. Điểm chuẩn: 20 điểm.','2023-08-05 07:09:10','2023-08-11 07:09:10',0,1),(3,'Tuyển sinh cao học năm 2023','Tuyển sinh cao học năm 2023. Thời gian tuyển sinh từ ngày 1 tháng 7 đến ngày 31 tháng 8 năm 2023. Yêu cầu tuyển sinh: Tốt nghiệp đại học. Điểm chuẩn: 28 điểm.','2023-08-05 08:46:52','2023-08-14 07:09:34',0,1),(4,'Tuyển sinh thạc sĩ năm 2023','Tuyển sinh thạc sĩ năm 2023. Thời gian tuyển sinh từ ngày 1 tháng 9 đến ngày 30 tháng 10 năm 2023. Yêu cầu tuyển sinh: Tốt nghiệp thạc sĩ. Điểm chuẩn: 32 điểm.','2023-08-05 08:46:52','2023-08-07 08:46:52',0,1),(5,'Tuyển sinh đào tạo từ xa năm 2023','Tuyển sinh đào tạo từ xa năm 2023. Thời gian tuyển sinh từ ngày 1 tháng 11 đến ngày 31 tháng 12 năm 2023. Yêu cầu tuyển sinh: Tốt nghiệp THPT hoặc tương đương. Điểm chuẩn: 22 điểm.','2023-08-12 07:09:46','2023-08-14 07:09:46',0,1);
 /*!40000 ALTER TABLE `news` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -239,8 +246,10 @@ CREATE TABLE `recruitment` (
   `type` varchar(10) NOT NULL,
   `major` varchar(255) NOT NULL,
   `socre` float NOT NULL,
+  `deparment_id` int DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_cateid_re_idx` (`type`)
+  KEY `fk_category_idx` (`deparment_id`),
+  CONSTRAINT `fk_category` FOREIGN KEY (`deparment_id`) REFERENCES `department` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -250,7 +259,7 @@ CREATE TABLE `recruitment` (
 
 LOCK TABLES `recruitment` WRITE;
 /*!40000 ALTER TABLE `recruitment` DISABLE KEYS */;
-INSERT INTO `recruitment` VALUES (1,'Tuyển sinh đại học chính quy 2023','Tuyển sinh đại học chính quy 2023','2023-06-01','2023-07-31','Xét tuyển','Kỹ thuật',22),(2,'Tuyển sinh đại học chính quy 2023','Tuyển sinh đại học chính quy 2023','2023-06-01','2023-07-31','Xét tuyển','Kinh tế',21),(3,'Tuyển sinh đại học chính quy 2023','Tuyển sinh đại học chính quy 2023','2023-06-01','2023-07-31','Xét tuyển','Luật',22),(4,'Tuyển sinh đại học chính quy 2023','Tuyển sinh đại học chính quy 2023','2023-06-01','2023-07-31','Xét tuyển','Xây dựng',23);
+INSERT INTO `recruitment` VALUES (1,'Tuyển sinh đại học chính quy 2023','Tuyển sinh đại học chính quy 2023','2023-06-01','2023-07-31','Xét tuyển','Kỹ thuật',22,1),(2,'Tuyển sinh đại học chính quy 2023','Tuyển sinh đại học chính quy 2023','2023-06-01','2023-07-31','Xét tuyển','Kinh tế',21,1),(3,'Tuyển sinh đại học chính quy 2023','Tuyển sinh đại học chính quy 2023','2023-06-01','2023-07-31','Xét tuyển','Luật',22,1),(4,'Tuyển sinh đại học chính quy 2023','Tuyển sinh đại học chính quy 2023','2023-06-01','2023-07-31','Xét tuyển','Xây dựng',23,1);
 /*!40000 ALTER TABLE `recruitment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -325,4 +334,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-08-30 12:01:21
+-- Dump completed on 2023-09-03  0:25:45

@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -23,6 +24,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -39,6 +41,9 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Autowired
     private LocalSessionFactoryBean factory;
+    
+    @Autowired
+    private BCryptPasswordEncoder passEncoder;
 
     @Override
     public List<User> getUsers(Map<String, String> params) {
@@ -84,5 +89,56 @@ public class UserRepositoryImpl implements UserRepository {
             return false;
         }
     }
+
+    @Override
+    public User addUser(User user) {
+         Session s = this.factory.getObject().getCurrentSession();
+        s.save(user);
+        
+        return user;
+    }
+
+    @Override
+    public User getUserByUsername(String username) {
+        Session s = this.factory.getObject().getCurrentSession();
+        org.hibernate.query.Query q = s.createQuery("FROM User WHERE username=:un");
+        q.setParameter("un", username);
+        return (User) q.getSingleResult();
+   
+    }
+    
+//     @Override
+//    public User findByUsername(String username) {
+//        Session s = this.factory.getObject().getCurrentSession();
+//        Query q = s.createQuery("select u from User u where u.username =:username");
+//        q.setParameter("username", username);
+//        q.setMaxResults(1);
+//        User user = null;
+//        try {
+//            user = (User) q.getSingleResult();
+//        } catch (NoResultException e) {
+//            throw new NoSuchFieldException();
+//        } finally {
+//            return user;
+//        }
+//    }
+    
+
+    
+    
+    @Override
+    public boolean authUser(String username, String password) {
+        User  u = this.getUserByUsername(username);
+        
+//        return this.passEncoder.matches(password, u.getPassword());
+        boolean t = false;
+        if(password.equals(u.getPassword()))
+        {
+            t = true;
+        }
+        return t;
+        
+    }
+    
 
 }
