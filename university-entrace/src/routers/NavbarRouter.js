@@ -20,6 +20,8 @@ const NavbarRouter = () => {
         <Route path="departments" element={<Departments />} />
         <Route path="contact" element={<Contact />} />
 
+        <Route path="Login" element={<Login />} />
+
         <Route path="LoginAndRegister" element={<AppLoginAndRegister />} />
         <Route path="signup" element={<Signup />} />
         <Route path="useradmin" element={<UserAdmin />} />

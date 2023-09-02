@@ -1,9 +1,50 @@
-import React from "react";
-import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import cookie from "react-cookies";
+import React, { useContext, useState } from "react";
+import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Button from "react-bootstrap/esm/Button";
+import { MyUserContext } from "../App";
+import { Navigate, useSearchParams } from "react-router-dom";
+import Apis, { authApi, endpoints } from "../configs/Apis";
+import MySpinner from "../components/MySpinner";
 
 const Login = () => {
+  const [user, dispatch] = useContext(MyUserContext);
+  const [username, setUsername] = useState();
+  const [password, setPassword] = useState();
+
+  const [q] = useSearchParams();
+
+  const login = (evt) => {
+    evt.preventDefault();
+
+    const process = async () => {
+      try {
+        let res = await Apis.post(endpoints["login"], {
+          username: username,
+          password: password,
+        });
+        cookie.save("token", res.data);
+        let { data } = await authApi().get(endpoints["current-user"]);
+        cookie.save("user", data);
+        // console.info(data);
+
+        dispatch({
+          type: "login",
+          payload: data,
+        });
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    process();
+  };
+
+  if (user !== null) {
+    let next = q.get("next") || "/";
+    return <Navigate to={next} />;
+  }
+
   return (
     <>
       <div class="form-bg">
@@ -22,6 +63,8 @@ const Login = () => {
                       class="form-control"
                       type="email"
                       placeholder="email address"
+                      value={username}
+                      onChange={(e) => setUsername(e.target.value)}
                     />
                   </div>
                   <div class="form-group">
@@ -30,9 +73,28 @@ const Login = () => {
                       class="form-control"
                       type="password"
                       placeholder="password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
                     />
                   </div>
-                  <Button type="button" class="btn btn-default">
+                  <div class="form-check bg-transparent">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      value="accept"
+                      id="accept"
+                    />
+                    <label
+                      class="form-check-label"
+                      for=""
+                      name="flexCheck"
+                      value=""
+                      id="flexCheckDefault"
+                    >
+                      Remember me
+                    </label>
+                  </div>
+                  <Button type="submit" class="btn btn-default" onClick={login}>
                     Login
                   </Button>
                   <div class="form-group mt-4 text-lg-center">
