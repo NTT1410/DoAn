@@ -67,6 +67,7 @@ public class UserServiceImpl implements UserService{
         u.setPhone(params.get("phone"));
         u.setEmail(params.get("email"));
         u.setUsername(params.get("username"));
+<<<<<<< HEAD
         u.setUsername(params.get("password"));
 //        u.setPassword(this.passwordEncoder.encode(params.get("password")));
         Role role = new Role();
@@ -75,6 +76,10 @@ public class UserServiceImpl implements UserService{
         u.setUserRole(role);
         
         
+=======
+        u.setPassword(this.passwordEncoder.encode(params.get("password")));
+//        u.setUserRole("ROLE_USER");
+>>>>>>> aba3c8f88275a7deb23387d2e6004dc55f076d19
         if (!avatar.isEmpty()) {
             try {
                 Map res = this.cloudinary.uploader().upload(avatar.getBytes(), 

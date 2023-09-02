@@ -51,5 +51,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "mdb-react-ui-kit": "^6.2.0",
+    "react-cookie": "^6.1.0"
   }
 }
