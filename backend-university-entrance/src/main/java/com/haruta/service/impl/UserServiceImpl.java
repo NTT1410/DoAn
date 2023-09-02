@@ -6,6 +6,7 @@ package com.haruta.service.impl;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
+import com.haruta.pojo.Role;
 import com.haruta.pojo.User;
 import com.haruta.repository.UserRepository;
 import com.haruta.service.UserService;
@@ -66,8 +67,14 @@ public class UserServiceImpl implements UserService{
         u.setPhone(params.get("phone"));
         u.setEmail(params.get("email"));
         u.setUsername(params.get("username"));
-        u.setPassword(this.passwordEncoder.encode(params.get("password")));
-//        u.setUserRole("ROLE_USER");
+        u.setUsername(params.get("password"));
+//        u.setPassword(this.passwordEncoder.encode(params.get("password")));
+        Role role = new Role();
+        role.setName("user");
+                
+        u.setUserRole(role);
+        
+        
         if (!avatar.isEmpty()) {
             try {
                 Map res = this.cloudinary.uploader().upload(avatar.getBytes(), 

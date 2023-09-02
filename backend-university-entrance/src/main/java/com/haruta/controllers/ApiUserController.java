@@ -77,7 +77,7 @@ public class ApiUserController {
         return new ResponseEntity<>("SUCCESSFUL", HttpStatus.OK);
     }
     
-    @PostMapping(path = "/users/", 
+    @PostMapping(path = "/user-register/", 
             consumes = {MediaType.MULTIPART_FORM_DATA_VALUE}, 
             produces = {MediaType.APPLICATION_JSON_VALUE})
     @CrossOrigin

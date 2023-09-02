@@ -86,6 +86,7 @@ public class User implements Serializable {
     @Column(name = "password")
     private String password;
     @Basic(optional = false)
+    
     @NotNull
     @Size(min = 1, max = 255)
     @Column(name = "avatar")
@@ -93,13 +94,15 @@ public class User implements Serializable {
     @Column(name = "date_of_bird")
     @Temporal(TemporalType.DATE)
     private Date dateOfBird;
+    
     @Basic(optional = false)
-    @NotNull
     @Column(name = "active")
     private boolean active;
+    
+    
     @JoinColumn(name = "user_role", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    @JsonIgnore
+   
     private Role userRole;
     
     @Transient
