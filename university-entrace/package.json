@@ -15,7 +15,6 @@
     "@types/react-dom": "^18.2.7",
     "axios": "^1.4.0",
     "bootstrap": "^5.3.1",
-    "mdb-react-ui-kit": "^6.2.0",
     "moment": "^2.29.4",
     "moment-timezone": "^0.5.43",
     "react": "^18.2.0",
@@ -52,5 +51,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "mdb-react-ui-kit": "^6.2.0",
+    "react-cookie": "^6.1.0"
   }
 }
