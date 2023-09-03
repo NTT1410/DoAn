@@ -6,21 +6,27 @@ package com.haruta.pojo;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -81,6 +87,15 @@ public class Recruitment implements Serializable {
     @NotNull
     @Column(name = "socre")
     private float socre;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "recruitmentId")
+    private Set<News> newsSet;
+    @JoinColumn(name = "deparment_id", referencedColumnName = "id")
+    @ManyToOne
+    private Department deparmentId;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "recruitmentId")
+    private Set<Banner> bannerSet;
+    @OneToMany(mappedBy = "recruitmentId")
+    private Set<Livestream> livestreamSet;
 
     public Recruitment() {
     }
@@ -162,6 +177,41 @@ public class Recruitment implements Serializable {
 
     public void setSocre(float socre) {
         this.socre = socre;
+    }
+
+    @XmlTransient
+    public Set<News> getNewsSet() {
+        return newsSet;
+    }
+
+    public void setNewsSet(Set<News> newsSet) {
+        this.newsSet = newsSet;
+    }
+
+    public Department getDeparmentId() {
+        return deparmentId;
+    }
+
+    public void setDeparmentId(Department deparmentId) {
+        this.deparmentId = deparmentId;
+    }
+
+    @XmlTransient
+    public Set<Banner> getBannerSet() {
+        return bannerSet;
+    }
+
+    public void setBannerSet(Set<Banner> bannerSet) {
+        this.bannerSet = bannerSet;
+    }
+
+    @XmlTransient
+    public Set<Livestream> getLivestreamSet() {
+        return livestreamSet;
+    }
+
+    public void setLivestreamSet(Set<Livestream> livestreamSet) {
+        this.livestreamSet = livestreamSet;
     }
 
     @Override

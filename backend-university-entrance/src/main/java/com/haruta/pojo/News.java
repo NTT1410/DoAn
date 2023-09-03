@@ -6,21 +6,27 @@ package com.haruta.pojo;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -35,8 +41,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "News.findByTitle", query = "SELECT n FROM News n WHERE n.title = :title"),
     @NamedQuery(name = "News.findByCreatedDate", query = "SELECT n FROM News n WHERE n.createdDate = :createdDate"),
     @NamedQuery(name = "News.findByUpdatedDate", query = "SELECT n FROM News n WHERE n.updatedDate = :updatedDate"),
-    @NamedQuery(name = "News.findByStatus", query = "SELECT n FROM News n WHERE n.status = :status"),
-    @NamedQuery(name = "News.findByCId", query = "SELECT n FROM News n WHERE n.cId = :cId")})
+    @NamedQuery(name = "News.findByStatus", query = "SELECT n FROM News n WHERE n.status = :status")})
 public class News implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -70,10 +75,11 @@ public class News implements Serializable {
     @NotNull
     @Column(name = "status")
     private short status;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "c_id")
-    private int cId;
+    @JoinColumn(name = "recruitment_id", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Recruitment recruitmentId;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "newId")
+    private Set<Comment> commentSet;
 
     public News() {
     }
@@ -82,14 +88,13 @@ public class News implements Serializable {
         this.id = id;
     }
 
-    public News(Integer id, String title, String content, Date createdDate, Date updatedDate, short status, int cId) {
+    public News(Integer id, String title, String content, Date createdDate, Date updatedDate, short status) {
         this.id = id;
         this.title = title;
         this.content = content;
         this.createdDate = createdDate;
         this.updatedDate = updatedDate;
         this.status = status;
-        this.cId = cId;
     }
 
     public Integer getId() {
@@ -140,12 +145,21 @@ public class News implements Serializable {
         this.status = status;
     }
 
-    public int getCId() {
-        return cId;
+    public Recruitment getRecruitmentId() {
+        return recruitmentId;
     }
 
-    public void setCId(int cId) {
-        this.cId = cId;
+    public void setRecruitmentId(Recruitment recruitmentId) {
+        this.recruitmentId = recruitmentId;
+    }
+
+    @XmlTransient
+    public Set<Comment> getCommentSet() {
+        return commentSet;
+    }
+
+    public void setCommentSet(Set<Comment> commentSet) {
+        this.commentSet = commentSet;
     }
 
     @Override

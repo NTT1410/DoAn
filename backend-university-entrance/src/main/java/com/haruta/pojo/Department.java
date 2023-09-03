@@ -4,8 +4,8 @@
  */
 package com.haruta.pojo;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
+import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,10 +17,12 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -69,9 +71,10 @@ public class Department implements Serializable {
     @NotNull
     @Column(name = "average_score")
     private float averageScore;
+    @OneToMany(mappedBy = "deparmentId")
+    private Set<Recruitment> recruitmentSet;
     @JoinColumn(name = "cateid", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    @JsonIgnore
     private Category cateid;
 
     public Department() {
@@ -136,6 +139,15 @@ public class Department implements Serializable {
 
     public void setAverageScore(float averageScore) {
         this.averageScore = averageScore;
+    }
+
+    @XmlTransient
+    public Set<Recruitment> getRecruitmentSet() {
+        return recruitmentSet;
+    }
+
+    public void setRecruitmentSet(Set<Recruitment> recruitmentSet) {
+        this.recruitmentSet = recruitmentSet;
     }
 
     public Category getCateid() {
