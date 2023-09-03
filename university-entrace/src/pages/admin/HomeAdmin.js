@@ -1,7 +1,8 @@
 import React from "react";
 
 const HomeAdmin = () => {
-  return <div>admin</div>;
+  return <div>adminUUUUU</div>;
+
 };
 
 export default HomeAdmin;

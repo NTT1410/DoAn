@@ -2,7 +2,8 @@ import axios from "axios";
 import cookie from "react-cookies";
 
 const SERVER_CONTEXT = "/backend-university-entrance";
-const SERVER = "http://localhost:8080";
+// const SERVER = "http://localhost:8080";
+const SERVER = "http://localhost:8088";
 
 export const endpoints = {
   departments: `${SERVER_CONTEXT}/api/departments`,
