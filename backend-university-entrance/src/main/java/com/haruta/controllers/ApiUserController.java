@@ -38,7 +38,7 @@ public class ApiUserController {
 
     @Autowired
     private UserService userService;
-    
+
     @Autowired
     private JwtService jwtService;
 
@@ -47,24 +47,20 @@ public class ApiUserController {
         model.addAttribute("user", new User());
         return new ResponseEntity<>(this.userService.getUsers(params), HttpStatus.OK);
     }
-    
+
     @PostMapping("/users")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void add(@ModelAttribute(value = "user") User u) {
         this.userService.addOrUpdateUser(u);
     }
-    
-    
-    
-    //
-    
 
+    //
     @PostMapping("/login/")
     @CrossOrigin
     public ResponseEntity<String> login(@RequestBody User user) {
         if (this.userService.authUser(user.getUsername(), user.getPassword()) == true) {
             String token = this.jwtService.generateTokenLogin(user.getUsername());
-            
+
             return new ResponseEntity<>(token, HttpStatus.OK);
         }
 
@@ -76,27 +72,20 @@ public class ApiUserController {
     public ResponseEntity<String> test(Principal pricipal) {
         return new ResponseEntity<>("SUCCESSFUL", HttpStatus.OK);
     }
-    
-    
-    
-//
-//    @PostMapping(path = "/user-register/", 
-//    @PostMapping(path = "/users/",consumes = {MediaType.MULTIPART_FORM_DATA_VALUE}, 
-//            produces = {MediaType.APPLICATION_JSON_VALUE})
-//    @CrossOrigin
-//    public ResponseEntity<User> addUser(@RequestParam Map<String, String> params, @RequestPart MultipartFile avatar) {
-//        User user = this.userService.addUser(params, avatar);
-//        return new ResponseEntity<>(user, HttpStatus.CREATED);
-//    }
-//    
-//    @GetMapping(path = "/current-user/", produces = MediaType.APPLICATION_JSON_VALUE)
-//    @CrossOrigin
-//    public ResponseEntity<User> details(Principal user) {
-//        User u = this.userService.getUserByUn(user.getName());
-//        return new ResponseEntity<>(u, HttpStatus.OK);
-//    }
-//    
-    
-    
-    
+
+    @PostMapping(path = "/users/",
+            consumes = {MediaType.MULTIPART_FORM_DATA_VALUE},
+            produces = {MediaType.APPLICATION_JSON_VALUE})
+    @CrossOrigin
+    public ResponseEntity<User> addUser(@RequestParam Map<String, String> params, @RequestPart MultipartFile avatar) {
+        User user = this.userService.addUser(params, avatar);
+        return new ResponseEntity<>(user, HttpStatus.CREATED);
+    }
+
+    @GetMapping(path = "/current-user/", produces = MediaType.APPLICATION_JSON_VALUE)
+    @CrossOrigin
+    public ResponseEntity<User> details(Principal user) {
+        User u = this.userService.getUserByUn(user.getName());
+        return new ResponseEntity<>(u, HttpStatus.OK);
+    }
 }

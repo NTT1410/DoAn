@@ -2,7 +2,7 @@ import axios from "axios";
 import cookie from "react-cookies";
 
 const SERVER_CONTEXT = "/backend-university-entrance";
-const SERVER = "http://localhost:8088";
+const SERVER = "http://localhost:8080";
 
 export const endpoints = {
   departments: `${SERVER_CONTEXT}/api/departments`,
@@ -23,7 +23,6 @@ export const authApi = () => {
     },
   });
 };
-
 
 export default axios.create({
   baseURL: SERVER,

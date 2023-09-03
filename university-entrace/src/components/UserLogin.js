@@ -39,16 +39,14 @@ const UserLogin = () => {
       {user === null ? (
         <>
           <Link to="/Login">
-            <i class="fas fa-sign-in">Log in</i>
+            <i class="fas fa-sign-in"></i>
           </Link>
         </>
       ) : (
         <>
+          <Link>{user.firstName + " "}</Link>
           <Link to="/">
-            <i class="fas fa-sign-out-alt" onClick={logout}>
-              {" "}
-              Hello {user.username}
-            </i>
+            <i class="fas fa-sign-out-alt" onClick={logout}></i>
           </Link>
         </>
       )}

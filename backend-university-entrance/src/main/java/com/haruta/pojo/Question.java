@@ -4,6 +4,7 @@
  */
 package com.haruta.pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -66,9 +67,11 @@ public class Question implements Serializable {
     private Date answeredDate;
     @JoinColumn(name = "livestream_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
+    @JsonIgnore
     private Livestream livestreamId;
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
+    @JsonIgnore
     private User userId;
 
     public Question() {

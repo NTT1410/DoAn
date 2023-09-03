@@ -4,6 +4,7 @@
  */
 package com.haruta.pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
@@ -14,9 +15,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -71,10 +70,8 @@ public class Livestream implements Serializable {
     @Temporal(TemporalType.TIME)
     private Date startTime;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "livestreamId")
+    @JsonIgnore
     private Set<Question> questionSet;
-    @JoinColumn(name = "recruitment_id", referencedColumnName = "id")
-    @ManyToOne
-    private Recruitment recruitmentId;
 
     public Livestream() {
     }
@@ -138,14 +135,6 @@ public class Livestream implements Serializable {
 
     public void setQuestionSet(Set<Question> questionSet) {
         this.questionSet = questionSet;
-    }
-
-    public Recruitment getRecruitmentId() {
-        return recruitmentId;
-    }
-
-    public void setRecruitmentId(Recruitment recruitmentId) {
-        this.recruitmentId = recruitmentId;
     }
 
     @Override

@@ -12,8 +12,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -76,9 +74,6 @@ public class Banner implements Serializable {
     @NotNull
     @Column(name = "status")
     private short status;
-    @JoinColumn(name = "recruitment_id", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private Recruitment recruitmentId;
 
     public Banner() {
     }
@@ -151,14 +146,6 @@ public class Banner implements Serializable {
 
     public void setStatus(short status) {
         this.status = status;
-    }
-
-    public Recruitment getRecruitmentId() {
-        return recruitmentId;
-    }
-
-    public void setRecruitmentId(Recruitment recruitmentId) {
-        this.recruitmentId = recruitmentId;
     }
 
     @Override
