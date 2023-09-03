@@ -54,8 +54,6 @@ public class JwtAuthenticationTokenFilter extends UsernamePasswordAuthentication
 
                 authorities.add(new SimpleGrantedAuthority( user.getUserRole().getName()));//getName() lây role của User
 
-                authorities.add(new SimpleGrantedAuthority( user.getUserRole().getName()));
-
                 
                 UserDetails userDetail = new org.springframework.security.core.userdetails.User(username, user.getPassword(), enabled, accountNonExpired,
                         credentialsNonExpired, accountNonLocked, authorities);

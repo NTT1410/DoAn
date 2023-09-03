@@ -2226,11 +2226,7 @@
   resolved "https://registry.npmjs.org/@types/range-parser/-/range-parser-1.2.4.tgz"
   integrity sha512-EEhsLsD6UsDM1yFhAvy0Cjr6VwmpMWqFBCb9w07wVugF7w9nfajxLuVmngTIpgS6svCnm6Vaw+MZhoDCKnOfsw==
 
-<<<<<<< HEAD
-"@types/react-dom@^18.0.0", "@types/react-dom@^18.2.7":
-=======
 "@types/react-dom@^18.0.0", "@types/react-dom@^18.0.3", "@types/react-dom@^18.2.7":
->>>>>>> aba3c8f88275a7deb23387d2e6004dc55f076d19
   version "18.2.7"
   resolved "https://registry.npmjs.org/@types/react-dom/-/react-dom-18.2.7.tgz"
   integrity sha512-GRaAEriuT4zp9N4p1i8BDBYmEyfo+xQ3yHjJU4eiK5NDa1RmUZG+unZABUTK4/Ox/M+GaHwb6Ow8rUITrtjszA==
@@ -2244,11 +2240,7 @@
   dependencies:
     "@types/react" "*"
 
-<<<<<<< HEAD
-"@types/react@*", "@types/react@^18.2.21", "@types/react@>=16.14.8", "@types/react@>=16.9.11":
-=======
 "@types/react@*", "@types/react@^18.0.9", "@types/react@^18.2.21", "@types/react@>=16.14.8", "@types/react@>=16.9.11":
->>>>>>> aba3c8f88275a7deb23387d2e6004dc55f076d19
   version "18.2.21"
   resolved "https://registry.npmjs.org/@types/react/-/react-18.2.21.tgz"
   integrity sha512-neFKG/sBAwGxHgXiIxnbm3/AAVQ/cMRS93hvBpg8xYRbeQSPVABp9U2bRnPf0iI4+Ucdv3plSxKK+3CW2ENJxA==
@@ -3533,11 +3525,7 @@ cookie@^0.3.1:
   resolved "https://registry.npmjs.org/cookie/-/cookie-0.3.1.tgz"
   integrity sha512-+IJOX0OqlHCszo2mBUq+SrEbCj6w7Kpffqx60zYbPTFaO4+yYgRjHwcZNpWvaTylDHaV7PPmBHzSecZiMhtPgw==
 
-<<<<<<< HEAD
-cookie@0.5.0:
-=======
 cookie@^0.5.0, cookie@0.5.0:
->>>>>>> aba3c8f88275a7deb23387d2e6004dc55f076d19
   version "0.5.0"
   resolved "https://registry.npmjs.org/cookie/-/cookie-0.5.0.tgz"
   integrity sha512-YZ3GUyn/o8gfKJlnlX7g7xq4gyO6OSuhGPKaaGssGB2qgDUS0gPgtTvoyZLTt9Ab6dC4hfc9dV5arkvc/OCmrw==
@@ -7869,8 +7857,6 @@ react-bootstrap@^2.8.0:
     uncontrollable "^7.2.1"
     warning "^4.0.3"
 
-<<<<<<< HEAD
-=======
 react-cookie@^6.1.0:
   version "6.1.0"
   resolved "https://registry.npmjs.org/react-cookie/-/react-cookie-6.1.0.tgz"
@@ -7880,7 +7866,6 @@ react-cookie@^6.1.0:
     hoist-non-react-statics "^3.3.2"
     universal-cookie "^6.0.0"
 
->>>>>>> aba3c8f88275a7deb23387d2e6004dc55f076d19
 react-cookies@^0.1.1:
   version "0.1.1"
   resolved "https://registry.npmjs.org/react-cookies/-/react-cookies-0.1.1.tgz"
@@ -8019,7 +8004,7 @@ react-router@6.14.2:
   dependencies:
     "@remix-run/router" "1.7.2"
 
-react-scripts@5.0.1:
+react-scripts@^5.0.1:
   version "5.0.1"
   resolved "https://registry.npmjs.org/react-scripts/-/react-scripts-5.0.1.tgz"
   integrity sha512-8VAmEm/ZAwQzJ+GOMLbBsTdDKOpuZh7RPs0UymvBR2vRk4iZWCskjbFnxqjrzoIvlNNRZ3QJFx6/qDSi6zSnaQ==
