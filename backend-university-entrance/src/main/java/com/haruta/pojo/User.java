@@ -101,7 +101,7 @@ public class User implements Serializable {
 
     @JoinColumn(name = "user_role", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    @JsonIgnore
+//    @JsonIgnore
     private Role userRole;
 
     @Transient
