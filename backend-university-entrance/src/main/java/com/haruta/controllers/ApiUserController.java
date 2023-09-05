@@ -47,6 +47,11 @@ public class ApiUserController {
         model.addAttribute("user", new User());
         return new ResponseEntity<>(this.userService.getUsers(params), HttpStatus.OK);
     }
+    
+    @GetMapping("/countusers")
+    public ResponseEntity<Integer> count() {
+        return new ResponseEntity<>(this.userService.countUser(), HttpStatus.OK);
+    }
 
     @PostMapping("/users")
     @ResponseStatus(HttpStatus.NO_CONTENT)

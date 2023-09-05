@@ -4,8 +4,11 @@
  */
 package com.haruta.service.impl;
 
+import com.haruta.pojo.Comment;
 import com.haruta.repository.CommentRepository;
 import com.haruta.service.CommentService;
+import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +25,11 @@ public class CommentServiceImpl implements CommentService{
     @Override
     public int countComment() {
         return this.cmtRepo.countComment();
+    }
+
+    @Override
+    public List<Comment> countCmtByMonth(Map<String, String> params) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
 }

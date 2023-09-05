@@ -142,7 +142,9 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public int countUser() {
-        
+        Session s = this.factory.getObject().getCurrentSession();
+        Query q = s.createQuery("SELECT Count(*) FROM User");
+        return Integer.parseInt(q.getSingleResult().toString());
     }
     
 

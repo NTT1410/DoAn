@@ -9,7 +9,7 @@ function Sidebar({ openSidebarToggle, OpenSidebar }) {
     >
       <div className="sidebar-title">
         <div className="sidebar-brand">
-          <i class="icon_header fas fa-id-card"></i> SHOP
+          <i class="icon_header fas fa-id-card"></i> HARUTA
         </div>
         <span className="icon close_icon" onClick={OpenSidebar}>
           X

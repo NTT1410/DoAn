@@ -4,10 +4,15 @@
  */
 package com.haruta.service;
 
+import com.haruta.pojo.Comment;
+import java.util.List;
+import java.util.Map;
+
 /**
  *
  * @author nguye
  */
 public interface CommentService {
+    List<Comment> countCmtByMonth(Map<String, String> params);
     int countComment();
 }
