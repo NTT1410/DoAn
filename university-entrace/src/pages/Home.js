@@ -1,7 +1,7 @@
 import React from "react";
 import Banner from "../components/Banner";
-import News from "../components/News";
 import { Container } from "react-bootstrap";
+import InfoSchool from "./InfoSchool";
 
 
 const Home = () => {
@@ -9,7 +9,7 @@ const Home = () => {
     <>
       <Banner />
       <Container>
-        <News />
+        <InfoSchool />
       </Container>
     </>
   );

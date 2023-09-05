@@ -10,6 +10,7 @@ import Login from "../pages/Login";
 import Signup from "../pages/Signup";
 import UserAdmin from "../pages/admin/UserAdmin";
 import AppLoginAndRegister from "../pages/Login_Register";
+import HomeAdmin from "../pages/admin/HomeAdmin";
 
 const NavbarRouter = () => {
 
@@ -29,6 +30,7 @@ const NavbarRouter = () => {
         <Route path="LoginAndRegister" element={<AppLoginAndRegister />} />
         <Route path="signup" element={<Signup />} />
         <Route path="useradmin" element={<UserAdmin />} />
+        <Route path="homeAdmin" element={<HomeAdmin />} />
       </Routes>
     </>
   );

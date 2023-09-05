@@ -18,11 +18,14 @@ const App = () => {
     cookie.load("user") || null
   );
 
+  
+
   return (
     <>
       <MyUserContext.Provider value={[user, dispatch]}>
         <BrowserRouter>
-          {user.userRole.id !== 1 ? (
+          {/* {user.userRole.id !== 1 ? ( */}
+
             <>
               <Header />
               <div id="content">
@@ -30,11 +33,12 @@ const App = () => {
               </div>
               <Footer />
             </>
-          ) : (
+
+          {/* ) : (
             <>
               <HomeAdmin />
             </>
-          )}
+          )} */}
         </BrowserRouter>
       </MyUserContext.Provider>
     </>
