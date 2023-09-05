@@ -139,6 +139,11 @@ public class UserRepositoryImpl implements UserRepository {
         return t;
         
     }
+
+    @Override
+    public int countUser() {
+        
+    }
     
 
 }

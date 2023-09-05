@@ -44,10 +44,35 @@ const UserLogin = () => {
         </>
       ) : (
         <>
-          <Link>{user.firstName + " "}</Link>
-          <Link to="/">
-            <i class="fas fa-sign-out-alt" onClick={logout}></i>
-          </Link>
+          <ul class="navbar-nav mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+              <Link
+                class="nav-link"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <i class="icon fas fa-user"></i>
+              </Link>
+              <ul
+                class="dropdown-menu dropdown-menu-end"
+                aria-labelledby="navbarDropdown"
+              >
+                <li>
+                  <Link class="dropdown-item" href="#">
+                    Change Password
+                  </Link>
+                </li>
+                <li>
+                  <Link class="dropdown-item" onClick={logout}>
+                    Logout
+                  </Link>
+                </li>
+              </ul>
+            </li>
+          </ul>
         </>
       )}
     </>

@@ -1,14 +1,4 @@
 import React from "react";
-import {
-  BsCart3,
-  BsGrid1X2Fill,
-  BsFillArchiveFill,
-  BsFillGrid3X3GapFill,
-  BsPeopleFill,
-  BsListCheck,
-  BsMenuButtonWideFill,
-  BsFillGearFill,
-} from "react-icons/bs";
 import { Link } from "react-router-dom";
 
 function Sidebar({ openSidebarToggle, OpenSidebar }) {
@@ -19,7 +9,7 @@ function Sidebar({ openSidebarToggle, OpenSidebar }) {
     >
       <div className="sidebar-title">
         <div className="sidebar-brand">
-          <BsCart3 className="icon_header" /> SHOP
+          <i class="icon_header fas fa-id-card"></i> SHOP
         </div>
         <span className="icon close_icon" onClick={OpenSidebar}>
           X
@@ -29,37 +19,17 @@ function Sidebar({ openSidebarToggle, OpenSidebar }) {
       <ul className="sidebar-list">
         <li className="sidebar-list-item">
           <Link to="/">
-            <BsGrid1X2Fill className="icon" /> Dashboard
+            <i className="fas fa-columns icon"></i> Dashboard
           </Link>
         </li>
         <li className="sidebar-list-item">
           <Link to="/useradmin">
-            <BsFillArchiveFill className="icon" /> Banners
+            <i class="icon fas fa-archive"></i> Banners
           </Link>
         </li>
         <li className="sidebar-list-item">
           <Link href="">
-            <BsFillGrid3X3GapFill className="icon" /> Categories
-          </Link>
-        </li>
-        <li className="sidebar-list-item">
-          <Link href="">
-            <BsPeopleFill className="icon" /> Customers
-          </Link>
-        </li>
-        <li className="sidebar-list-item">
-          <Link href="">
-            <BsListCheck className="icon" /> Inventory
-          </Link>
-        </li>
-        <li className="sidebar-list-item">
-          <Link href="">
-            <BsMenuButtonWideFill className="icon" /> Reports
-          </Link>
-        </li>
-        <li className="sidebar-list-item">
-          <Link href="">
-            <BsFillGearFill className="icon" /> Setting
+            <i class="icon fas fa-th"></i> Categories
           </Link>
         </li>
       </ul>

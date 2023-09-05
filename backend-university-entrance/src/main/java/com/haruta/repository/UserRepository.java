@@ -14,6 +14,7 @@ import java.util.Map;
  */
 public interface UserRepository {
     List<User> getUsers(Map<String, String> params);
+    int countUser();
     boolean addOrUpdateUser(User u);
     
     User addUser(User user);
