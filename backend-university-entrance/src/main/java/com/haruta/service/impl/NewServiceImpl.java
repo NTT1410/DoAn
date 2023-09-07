@@ -8,6 +8,7 @@ import com.haruta.pojo.News;
 import com.haruta.repository.NewRepository;
 import com.haruta.service.NewService;
 import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,5 +26,7 @@ public class NewServiceImpl implements NewService {
     public List<News> getNews() {
         return this.newRepo.getNews();
     }
+
+   
     
 }

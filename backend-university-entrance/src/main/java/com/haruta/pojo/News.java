@@ -4,6 +4,7 @@
  */
 package com.haruta.pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -72,7 +73,8 @@ public class News implements Serializable {
     private short status;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "c_id")
+//    @JsonIgnore
+    @Column(name = "recruitment_id")
     private int cId;
 
     public News() {

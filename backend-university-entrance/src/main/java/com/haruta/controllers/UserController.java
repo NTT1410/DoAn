@@ -29,7 +29,7 @@ public class UserController {
         return "users";
     }
 
-    @PostMapping("/users")
+    @PostMapping("/users")  
     public String add(@ModelAttribute(value = "user") User u) {
         if (userService.addOrUpdateUser(u) == true)
             return "redirect:/";

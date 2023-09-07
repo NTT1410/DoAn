@@ -5,17 +5,19 @@
 package com.haruta.repository.impl;
 
 import com.haruta.pojo.News;
+
 import com.haruta.repository.NewRepository;
+
 import java.util.List;
-import javax.persistence.Query;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
+
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
+
 
 /**
  *
@@ -30,16 +32,28 @@ public class NewRepositoryImpl implements NewRepository {
     
     @Override
     public List<News> getNews() {
+//        Session s = this.factory.getObject().getCurrentSession();
+//        CriteriaBuilder builder = s.getCriteriaBuilder();
+//        CriteriaQuery<News> n = builder.createQuery(News.class);
+//        Root root = n.from(News.class);
+//        
+//        n.select(root);
+//        
+//        n.orderBy(builder.desc(root.get("createdDate")), builder.desc(root.get("updatedDate")));
+//        
+//        Query query = s.createQuery(n);
+//        return query.getResultList();
+
+     
+        
         Session s = this.factory.getObject().getCurrentSession();
-        CriteriaBuilder builder = s.getCriteriaBuilder();
-        CriteriaQuery<News> n = builder.createQuery(News.class);
-        Root root = n.from(News.class);
+//        Query q = s.createQuery("News.findAll");
+        Query q = s.createQuery("From News");
         
-        n.select(root);
-        
-        n.orderBy(builder.desc(root.get("createdDate")), builder.desc(root.get("updatedDate")));
-        
-        Query query = s.createQuery(n);
-        return query.getResultList();
+        return q.getResultList();
     }
+
+    
+    
 }
+

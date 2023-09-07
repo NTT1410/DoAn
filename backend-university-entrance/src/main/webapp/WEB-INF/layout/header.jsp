@@ -98,7 +98,7 @@
                 </li>
                 <li>
                     <a href="#" class="nav-link px-3 active">
-                        <span class="me-2"><i class="bi bi-house-heart-fill"></i></i></span>
+                        <span class="me-2"><i class="bi bi-house-heart-fill"></i></span>
                         <span>Dashboard</span>
                     </a>
                 </li>

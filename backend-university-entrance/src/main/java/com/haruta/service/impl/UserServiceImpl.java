@@ -44,7 +44,7 @@ public class UserServiceImpl implements UserService{
     @Override
     public List<User> getUsers(Map<String, String> params) {
         return this.userRepository.getUsers(params);
-    }
+    }   
 
     @Override
     public boolean addOrUpdateUser(User u) {
@@ -112,6 +112,11 @@ public class UserServiceImpl implements UserService{
         authorities.add(new SimpleGrantedAuthority(u.getUserRole().getName()));
         return new org.springframework.security.core.userdetails.User(
                 u.getUsername(), u.getPassword(), authorities);
+    }
+
+    @Override
+    public int countUser() {
+        return this.userRepository.countUser();
     }
     
     

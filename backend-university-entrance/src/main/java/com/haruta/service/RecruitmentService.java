@@ -15,4 +15,5 @@ public interface RecruitmentService {
     
     List<Recruitment> getRecruitments();
     
+    
 }

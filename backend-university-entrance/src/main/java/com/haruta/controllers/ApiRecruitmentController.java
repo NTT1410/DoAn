@@ -27,6 +27,8 @@ public class ApiRecruitmentController {
     @Autowired
     public RecruitmentService recruitmentService;
     
+    //lay thong tin tuyen sinh
+    //ok
     @GetMapping("/recruiments/")
     @CrossOrigin
     public ResponseEntity<List<Recruitment>> list() {

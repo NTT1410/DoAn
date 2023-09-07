@@ -6,6 +6,7 @@ package com.haruta.service;
 
 import com.haruta.pojo.News;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -13,4 +14,5 @@ import java.util.List;
  */
 public interface NewService {
     List<News> getNews();
+
 }

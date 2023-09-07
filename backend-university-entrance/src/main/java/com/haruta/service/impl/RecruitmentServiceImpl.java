@@ -9,11 +9,13 @@ import com.haruta.repository.RecruitmentRepository;
 import com.haruta.service.RecruitmentService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author HP
  */
+@Service
 public class RecruitmentServiceImpl implements RecruitmentService {
 
     @Autowired
@@ -22,7 +24,7 @@ public class RecruitmentServiceImpl implements RecruitmentService {
     @Override
     public List<Recruitment> getRecruitments() {
 
-        return this.recruitmentRepo.getRecruitments();
+        return this.recruitmentRepo.getRecruitments(); 
 
     }
 

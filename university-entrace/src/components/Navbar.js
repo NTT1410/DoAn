@@ -2,16 +2,12 @@ import React, { useContext, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import UserLogin from "./UserLogin";
 
-
 const Navbar = () => {
-
   const [toggle, setToggle] = useState(false);
   const handleClick = () => {
     toggle ? setToggle(false) : setToggle(true);
     // setToggle({ toggle: !toggle });
   };
-
-
 
   return (
     <>
