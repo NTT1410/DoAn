@@ -63,7 +63,7 @@ public class UserRepositoryImpl implements UserRepository {
 
             String username = params.get("username");
             if (username != null && !username.isEmpty()) {
-                predicates.add(builder.like(root.get("name"), String.format("%%%s%%", username)));
+                predicates.add(builder.like(root.get("username"), String.format("%%%s%%", username)));
             }
 
             u.where(predicates.toArray(Predicate[]::new));

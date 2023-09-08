@@ -34,9 +34,7 @@ const UserAdmin = () => {
 
   return (
     <>
-      <Container className="mb-5">
-        <h1 className="text-center mt-2 mb-2 text-uppercase">User List</h1>
-        <h2>{select}</h2>
+      <main className="main-container">
         <div className="d-flex">
           <Form.Select
             aria-label="Default select example"
@@ -60,26 +58,28 @@ const UserAdmin = () => {
             </Button>
           </Form>
         </div>
-        <Row xl={5} sm={3} xs={1}>
+        <div className="main-cards">
           {users.map((u) => {
             return (
-              <Col className="mt-2">
-                <Card>
-                  <Card.Img variant="top" src={u.avatar} id="avatar-card" />
+              <Col className="mt-3">
+                <Card style={{ width: "" }}>
+                  <div className="text-center">
+                    <Card.Img
+                      style={{ width: "5rem" }}
+                      variant="top"
+                      src={u.avatar}
+                    />
+                  </div>
                   <Card.Body>
-                    <Card.Title>{u.name}</Card.Title>
-                    <Card.Text>{u.password}</Card.Text>
-                    <Button variant="primary">Update</Button>
-                    <Button variant="danger" className="m-2">
-                      Delete
-                    </Button>
+                    <Card.Text>{u.firstName}</Card.Text>
+                    <Button variant="primary">Go somewhere</Button>
                   </Card.Body>
                 </Card>
               </Col>
             );
           })}
-        </Row>
-      </Container>
+        </div>
+      </main>
     </>
   );
 };

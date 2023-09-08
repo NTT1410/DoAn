@@ -53,11 +53,11 @@ public class ApiUserController {
         return new ResponseEntity<>(this.userService.countUser(), HttpStatus.OK);
     }
 
-    @PostMapping("/users")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void add(@ModelAttribute(value = "user") User u) {
-        this.userService.addOrUpdateUser(u);
-    }
+//    @PostMapping("/users")
+//    @ResponseStatus(HttpStatus.NO_CONTENT)
+//    public void add(@ModelAttribute(value = "user") User u) {
+//        this.userService.addOrUpdateUser(u);
+//    }
 
     //
     @PostMapping("/login/")
