@@ -14,5 +14,6 @@ import java.util.Map;
  */
 public interface NewRepository {
     List<News> getNews();
+    int countNews();
 
 }

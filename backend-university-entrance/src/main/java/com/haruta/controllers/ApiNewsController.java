@@ -25,15 +25,20 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/api")
+@CrossOrigin
 public class ApiNewsController {
     @Autowired
     private NewService newService;
     
     
     //ok
-    @GetMapping("/news/")
-    @CrossOrigin
+    @GetMapping("/news")
     public ResponseEntity<List<News>> list() {
         return new ResponseEntity<>(this.newService.getNews(), HttpStatus.OK);
+    }
+    
+    @GetMapping("/countnews")
+    public ResponseEntity<Integer> count() {
+        return new ResponseEntity<>(this.newService.countNews(), HttpStatus.OK);
     }
 }

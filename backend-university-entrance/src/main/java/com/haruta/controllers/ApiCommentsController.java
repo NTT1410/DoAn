@@ -22,18 +22,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin
 public class ApiCommentsController {
     
     @Autowired
     private CommentService commentService;
     
-    @GetMapping("/comments/")
-    @CrossOrigin
+    @GetMapping("/comments")
     public ResponseEntity<List<Comment>> list() {
         return new ResponseEntity<>(this.commentService.getCommets(), HttpStatus.OK);
     }
-   
     
-    
+    @GetMapping("/countcomments")
+    public ResponseEntity<Integer> count() {
+        return new ResponseEntity<>(this.commentService.countComment(), HttpStatus.OK);
+    }
     
 }

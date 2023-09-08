@@ -53,6 +53,13 @@ public class NewRepositoryImpl implements NewRepository {
         return q.getResultList();
     }
 
+    @Override
+    public int countNews() {
+        Session s = this.factory.getObject().getCurrentSession();
+        Query q = s.createQuery("SELECT Count(*) FROM News");
+        return Integer.parseInt(q.getSingleResult().toString());
+    }
+
     
     
 }

@@ -17,47 +17,67 @@ import {
 
 const Admin = () => {
   const [users, setUsers] = useState([]);
+  const [cmts, setCmts] = useState([]);
+  const [news, setNews] = useState([]);
   const data = [
     {
-      name: "Page A",
-      uv: 4000,
-      pv: 2400,
+      name: "Jan",
+      comment: 2400,
       amt: 2400,
     },
     {
-      name: "Page B",
-      uv: 3000,
-      pv: 1398,
+      name: "Feb",
+      comment: 1398,
       amt: 2210,
     },
     {
-      name: "Page C",
-      uv: 2000,
-      pv: 9800,
+      name: "Mar",
+      comment: 9800,
       amt: 2290,
     },
     {
-      name: "Page D",
-      uv: 2780,
-      pv: 3908,
+      name: "Apr",
+      comment: 3908,
       amt: 2000,
     },
     {
-      name: "Page E",
-      uv: 1890,
-      pv: 4800,
+      name: "May",
+      comment: 4800,
       amt: 2181,
     },
     {
-      name: "Page F",
-      uv: 2390,
-      pv: 3800,
+      name: "Jun",
+      comment: 3800,
       amt: 2500,
     },
     {
-      name: "Page G",
-      uv: 3490,
-      pv: 4300,
+      name: "Jul",
+      comment: 4300,
+      amt: 2100,
+    },
+    {
+      name: "Aug",
+      comment: 4300,
+      amt: 2100,
+    },
+    {
+      name: "Sep",
+      comment: 4300,
+      amt: 2100,
+    },
+    {
+      name: "Oct",
+      comment: 4300,
+      amt: 2100,
+    },
+    {
+      name: "Nov",
+      comment: 4300,
+      amt: 2100,
+    },
+    {
+      name: "Dec",
+      comment: 4300,
       amt: 2100,
     },
   ];
@@ -67,6 +87,12 @@ const Admin = () => {
       let e = endpoints["count-users"];
       let res = await Apis.get(e);
       setUsers(res.data);
+      e = endpoints["count-comments"];
+      res = await Apis.get(e);
+      setCmts(res.data);
+      e = endpoints["count-news"];
+      res = await Apis.get(e);
+      setNews(res.data);
     };
     loadDpm();
   });
@@ -88,22 +114,22 @@ const Admin = () => {
           <Col className="m-3">
             <Card className="bg-success">
               <Card.Header>
-                <Card.Text>Users</Card.Text>
-                <i class="icon fas fa-users"></i>
+                <Card.Text>Commenst</Card.Text>
+                <i class="icon fas fa-comment-dots"></i>
               </Card.Header>
               <Card.Body>
-                <Card.Text>{users}</Card.Text>
+                <Card.Text>{cmts}</Card.Text>
               </Card.Body>
             </Card>
           </Col>
           <Col className="m-3">
             <Card className="bg-danger">
               <Card.Header>
-                <Card.Text>Users</Card.Text>
+                <Card.Text>News</Card.Text>
                 <i class="icon fas fa-users"></i>
               </Card.Header>
               <Card.Body>
-                <Card.Text>{users}</Card.Text>
+                <Card.Text>{news}</Card.Text>
               </Card.Body>
             </Card>
           </Col>
@@ -126,8 +152,7 @@ const Admin = () => {
               <YAxis />
               <Tooltip />
               <Legend />
-              <Bar dataKey="pv" fill="#8884d8" />
-              <Bar dataKey="uv" fill="#82ca9d" />
+              <Bar dataKey="comment" fill="#8884d8" />
             </BarChart>
           </ResponsiveContainer>
 
@@ -150,7 +175,7 @@ const Admin = () => {
               <Legend />
               <Line
                 type="monotone"
-                dataKey="pv"
+                dataKey="amt"
                 stroke="#8884d8"
                 activeDot={{ r: 8 }}
               />

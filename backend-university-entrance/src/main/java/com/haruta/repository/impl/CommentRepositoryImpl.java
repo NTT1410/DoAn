@@ -26,8 +26,8 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Repository
 @Transactional
-public class CommentRepositoryImpl implements CommentRepository{
-    
+public class CommentRepositoryImpl implements CommentRepository {
+
     @Autowired
     private LocalSessionFactoryBean factory;
 
@@ -35,7 +35,6 @@ public class CommentRepositoryImpl implements CommentRepository{
     public int countComment() {
         Session s = this.factory.getObject().getCurrentSession();
         Query q = s.createQuery("SELECT Count(*) FROM Comment");
-
         return Integer.parseInt(q.getSingleResult().toString());
     }
 
@@ -46,14 +45,14 @@ public class CommentRepositoryImpl implements CommentRepository{
         CriteriaQuery<Comment> c = builder.createQuery(Comment.class);
         Root root = c.from(Comment.class);
         c.select(root);
-        
-        if(params != null){
+
+        if (params != null) {
             String m = params.get("month");
-            if(m!=null && !m.isEmpty()){
+            if (m != null && !m.isEmpty()) {
 //                Predicate p = builder.equal(root.get("createdDate"), Date.)
             }
         }
-        
+
         c.orderBy(builder.asc(root.get("id")));
         Query query = s.createQuery(c);
         return query.getResultList();
@@ -63,8 +62,8 @@ public class CommentRepositoryImpl implements CommentRepository{
     public List<Comment> getComments() {
         Session s = this.factory.getObject().getCurrentSession();
         Query q = s.createQuery("From Comment");
-        
+
         return q.getResultList();
     }
-    
+
 }

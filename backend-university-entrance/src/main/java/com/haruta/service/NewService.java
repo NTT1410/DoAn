@@ -14,5 +14,5 @@ import java.util.Map;
  */
 public interface NewService {
     List<News> getNews();
-
+    int countNews();
 }

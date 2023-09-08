@@ -27,6 +27,11 @@ public class NewServiceImpl implements NewService {
         return this.newRepo.getNews();
     }
 
+    @Override
+    public int countNews() {
+        return this.newRepo.countNews();
+    }
+
    
     
 }
