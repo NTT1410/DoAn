@@ -95,7 +95,7 @@ const Admin = () => {
       setNews(res.data);
     };
     loadDpm();
-  });
+  }, []);
   return (
     <>
       <main className="main-container">
