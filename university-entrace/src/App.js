@@ -1,5 +1,5 @@
 import React, { createContext, useReducer } from "react";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Link, Navigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import MyUserReducer from "./reducers/MyUserReducer";
@@ -24,7 +24,11 @@ const App = () => {
           {user === null ? (
             <Normal />
           ) : user.userRole.id === 1 ? (
-            <AdminApp />
+            <>
+              <AdminApp />
+               <Navigate to="/" />;
+              
+            </>
           ) : (
             <Normal />
           )}

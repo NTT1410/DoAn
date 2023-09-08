@@ -15,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -36,4 +37,13 @@ public class ApiNewsController {
     public ResponseEntity<List<News>> list() {
         return new ResponseEntity<>(this.newService.getNews(), HttpStatus.OK);
     }
+    
+    @GetMapping("/recruiments/{recruimentId}/news/")
+    @CrossOrigin
+    public ResponseEntity<List<News>> listNewsByRec(@PathVariable(value = "recruimentId") int id) {
+        return new ResponseEntity<>(this.newService.getNewsByRecruitment(id), HttpStatus.OK);
+    }
+    
+    
+    
 }

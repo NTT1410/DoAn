@@ -14,5 +14,6 @@ import java.util.Map;
  */
 public interface NewRepository {
     List<News> getNews();
+    List<News> getNewsByRecruitment (int recruitmentId);
 
 }

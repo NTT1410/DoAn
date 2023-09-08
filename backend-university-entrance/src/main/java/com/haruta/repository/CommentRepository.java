@@ -17,4 +17,6 @@ public interface CommentRepository {
     int countComment();
     
     List<Comment> getComments();
+    
+     List<Comment> getCommentsByNews (int newsId);
 }

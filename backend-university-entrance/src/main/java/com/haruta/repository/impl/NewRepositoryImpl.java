@@ -11,7 +11,7 @@ import com.haruta.repository.NewRepository;
 import java.util.List;
 
 import org.hibernate.Session;
-import org.hibernate.query.Query;
+import javax.persistence.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.stereotype.Repository;
@@ -49,6 +49,19 @@ public class NewRepositoryImpl implements NewRepository {
         Session s = this.factory.getObject().getCurrentSession();
 //        Query q = s.createQuery("News.findAll");
         Query q = s.createQuery("From News");
+        
+        return q.getResultList();
+    }
+
+    @Override
+    public List<News> getNewsByRecruitment(int recruitmentId) {
+        Session s = this.factory.getObject().getCurrentSession();
+        Query q = s.createQuery("From News Where cId.id=:id");//can phai sua lai
+        q.setParameter("id", recruitmentId); //recruitment_id
+                                        
+        
+//        javax.persistence.Query q = s.createQuery("News.findByCId");
+
         
         return q.getResultList();
     }

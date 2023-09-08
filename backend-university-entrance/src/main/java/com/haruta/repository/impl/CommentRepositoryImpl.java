@@ -66,5 +66,18 @@ public class CommentRepositoryImpl implements CommentRepository{
         
         return q.getResultList();
     }
+
+    @Override
+    public List<Comment> getCommentsByNews(int newsId) {
+        Session s = this.factory.getObject().getCurrentSession();
+        Query q = s.createQuery("From Comment Where userId.id=:id");//can phai sua lai
+        q.setParameter("id", newsId); //recruitment_id
+                                        
+        
+//        javax.persistence.Query q = s.createQuery("News.findByCId");
+
+        
+        return q.getResultList();
+    }
     
 }

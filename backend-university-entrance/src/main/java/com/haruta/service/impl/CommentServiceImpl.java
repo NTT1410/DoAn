@@ -6,6 +6,7 @@ package com.haruta.service.impl;
 
 import com.haruta.pojo.Comment;
 import com.haruta.repository.CommentRepository;
+import com.haruta.repository.NewRepository;
 import com.haruta.service.CommentService;
 import java.util.List;
 import java.util.Map;
@@ -21,6 +22,8 @@ public class CommentServiceImpl implements CommentService{
     
     @Autowired
     private CommentRepository cmtRepo;
+    
+    
 
     @Override
     public int countComment() {
@@ -35,6 +38,11 @@ public class CommentServiceImpl implements CommentService{
     @Override
     public List<Comment> getCommets() {
         return this.cmtRepo.getComments(); 
+    }
+
+    @Override
+    public List<Comment> getCommentsByNews(int newsId) {
+        return this.cmtRepo.getCommentsByNews(newsId);
     }
     
 }

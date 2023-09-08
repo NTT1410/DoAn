@@ -18,6 +18,7 @@ public interface CommentService {
     
     
     List<Comment> getCommets();
+    List<Comment> getCommentsByNews (int newsId);
     
     
 }

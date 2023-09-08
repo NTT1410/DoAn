@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Sidebar from "./components/admin/Sidebar";
 import AdminRouter from "./routers/AdminRouter";
 
-const AdminApp = () => {
+const   AdminApp = () => {
   const [openSidebarToggle, setOpenSidebarToggle] = useState(false);
 
   const OpenSidebar = () => {
