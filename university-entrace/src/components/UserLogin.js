@@ -66,7 +66,7 @@ const UserLogin = () => {
                   </Link>
                 </li>
                 <li>
-                    <Link class="dropdown-item" to= "user_info">
+                  <Link class="dropdown-item" to="user_info">
                     Thông tin cá nhân
                   </Link>
                 </li>

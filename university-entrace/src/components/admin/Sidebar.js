@@ -23,13 +23,18 @@ function Sidebar({ openSidebarToggle, OpenSidebar }) {
           </Link>
         </li>
         <li className="sidebar-list-item">
-          <Link to="/useradmin">
+          <Link to="/banners">
             <i class="icon fas fa-archive"></i> Banners
           </Link>
         </li>
         <li className="sidebar-list-item">
-          <Link href="">
+          <Link to="/">
             <i class="icon fas fa-th"></i> Categories
+          </Link>
+        </li>
+        <li className="sidebar-list-item">
+          <Link to="/useradmin">
+            <i class="icon fas fa-users-cog"></i>Users
           </Link>
         </li>
       </ul>

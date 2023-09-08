@@ -405,7 +405,8 @@ nav {
     grid-template-areas:
         'sidebar header header header'
         'sidebar main main main';
-    height: 100vh;
+    height: auto;
+    min-height: 100vh;
 }
 
 /* Header  */
@@ -545,6 +546,10 @@ nav {
     font-weight: 800;
     color: #fff;
     font-size: 25px;
+}
+
+.avatar-card {
+    width: 20px;
 }
 
 /* Container */

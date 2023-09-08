@@ -17,8 +17,6 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-
-
 /**
  *
  * @author nguye
@@ -29,7 +27,7 @@ public class NewRepositoryImpl implements NewRepository {
 
     @Autowired
     private LocalSessionFactoryBean factory;
-    
+
     @Override
     public List<News> getNews() {
 //        Session s = this.factory.getObject().getCurrentSession();
@@ -44,12 +42,10 @@ public class NewRepositoryImpl implements NewRepository {
 //        Query query = s.createQuery(n);
 //        return query.getResultList();
 
-     
-        
         Session s = this.factory.getObject().getCurrentSession();
 //        Query q = s.createQuery("News.findAll");
         Query q = s.createQuery("From News");
-        
+
         return q.getResultList();
     }
 
@@ -58,15 +54,20 @@ public class NewRepositoryImpl implements NewRepository {
         Session s = this.factory.getObject().getCurrentSession();
         Query q = s.createQuery("From News Where cId.id=:id");//can phai sua lai
         q.setParameter("id", recruitmentId); //recruitment_id
-                                        
-        
-//        javax.persistence.Query q = s.createQuery("News.findByCId");
 
-        
+//        javax.persistence.Query q = s.createQuery("News.findByCId");
         return q.getResultList();
+
     }
 
-    
-    
-}
+    @Override
+    public int countNews() {
+         Session s = this.factory.getObject().getCurrentSession();
+        Query q = s.createQuery("SELECT Count(*) FROM News");
+        return Integer.parseInt(q.getSingleResult().toString());
 
+    }
+    
+  
+
+}

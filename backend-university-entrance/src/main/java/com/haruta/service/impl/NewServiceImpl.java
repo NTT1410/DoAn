@@ -34,9 +34,14 @@ public class NewServiceImpl implements NewService {
     @Override
     public List<News> getNewsByRecruitment(int recruitmentId) {
          return this.newRepo.getNewsByRecruitment(recruitmentId);
-         
     }
 
+    @Override
+    public int countNews() {
+        return this.newRepo.countNews();
+    }
+    
+    
    
     
 }
