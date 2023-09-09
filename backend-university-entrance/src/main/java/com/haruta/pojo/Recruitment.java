@@ -4,6 +4,7 @@
  */
 package com.haruta.pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
@@ -88,6 +89,7 @@ public class Recruitment implements Serializable {
     @Column(name = "socre")
     private float socre;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "recruitmentId")
+
     private Set<News> newsSet;
     @JoinColumn(name = "deparment_id", referencedColumnName = "id")
     @ManyToOne
@@ -95,6 +97,7 @@ public class Recruitment implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "recruitmentId")
     private Set<Banner> bannerSet;
     @OneToMany(mappedBy = "recruitmentId")
+    @JsonIgnore
     private Set<Livestream> livestreamSet;
 
     public Recruitment() {
