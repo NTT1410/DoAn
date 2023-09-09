@@ -99,7 +99,7 @@ public class ApiUserController {
     //xoa
     @DeleteMapping("/users/delete/{id}/")
     @CrossOrigin
-    public  ResponseEntity<?> deleteProduct (@PathVariable (value = "id") int id) {
+    public  ResponseEntity<?> deleteUser (@PathVariable (value = "id") int id) {
 //        return new ResponseEntity..body("You don not have permission to delete this comment");
 //        return new ResponseEntity<>("Delete successfully!", HttpStatus.NO_CONTENT);
         Boolean del = this.userService.delete(id);  

@@ -38,7 +38,7 @@ const UserLogin = () => {
 
       {user === null ? (
         <>
-          <Link to="/Login">
+          <Link to="/login">
             <i class="fas fa-sign-in"></i>
           </Link>
         </>

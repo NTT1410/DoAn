@@ -15,6 +15,7 @@ export const endpoints = {
   news: `${SERVER_CONTEXT}/api/news`,
   "count-news": `${SERVER_CONTEXT}/api/countnews`,
   login: `${SERVER_CONTEXT}/api/login/`,
+  register: `${SERVER_CONTEXT}/api/users/`,
   "current-user": `${SERVER_CONTEXT}/api/current-user/`,
   "user-register": `${SERVER_CONTEXT}/api/user-register/`,
   recruiments: `${SERVER_CONTEXT}/api/recruiments/`,

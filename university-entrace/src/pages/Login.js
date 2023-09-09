@@ -7,12 +7,10 @@ import { MyUserContext } from "../App";
 import { Navigate, useSearchParams } from "react-router-dom";
 import Apis, { authApi, endpoints } from "../configs/Apis";
 
-
 const Login = () => {
   const [user, dispatch] = useContext(MyUserContext);
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
-
 
   const [q] = useSearchParams();
 
@@ -29,19 +27,16 @@ const Login = () => {
         let { data } = await authApi().get(endpoints["current-user"]);
         cookie.save("user", data);
 
-
         const role1 = data.userRole.name; //lay role của user
 
         console.log(role1);
 
         // console.info(data); //xuat thong tin user
-        
-        
+
         dispatch({
           type: "login",
           payload: data,
         });
-        
       } catch (err) {
         console.error(err);
       }
@@ -53,7 +48,6 @@ const Login = () => {
     let next = q.get("next") || "/"; //dang nhap thanh cong sẽ chuyển sang trang home
     return <Navigate to={next} />;
   }
-
 
   return (
     <>
@@ -109,7 +103,7 @@ const Login = () => {
                   </Button>
                   <div class="form-group mt-4 text-lg-center">
                     Don't have an account?
-                    <Link className="link-primary to-signup" to="/signup">
+                    <Link className="link-primary to-signup" to="/signup2">
                       Signup
                     </Link>
                   </div>
