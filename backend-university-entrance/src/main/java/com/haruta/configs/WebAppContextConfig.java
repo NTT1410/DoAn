@@ -6,6 +6,7 @@ package com.haruta.configs;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
+import com.haruta.formatter.RecruitmentFormatter;
 import com.haruta.formatter.RoleFormatter;
 import com.haruta.formatter.UserFormatter;
 import java.text.SimpleDateFormat;
@@ -49,6 +50,8 @@ public class WebAppContextConfig implements WebMvcConfigurer{
     @Override
     public void addFormatters(FormatterRegistry registry) {
         registry.addFormatter(new RoleFormatter());
+        registry.addFormatter(new UserFormatter());
+        registry.addFormatter(new RecruitmentFormatter());
     }
     
     @Bean

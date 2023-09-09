@@ -52,6 +52,11 @@ const UserAdmin = () => {
       selector: (r) => r.userRole.name,
     },
     {
+      name: "Active",
+      selector: (r) => String(r.active),
+      sortable: true,
+    },
+    {
       name: "",
       button: true,
       cell: () => <Button variant="primary">Change</Button>,

@@ -24,7 +24,7 @@ const App = () => {
           ) : user.userRole.id === 1 ? (
             <>
               <AdminApp />
-              <Navigate to="/" />;
+              {/* <Navigate to="/" />; */}
             </>
           ) : (
             <Normal />
