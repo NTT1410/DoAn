@@ -7,7 +7,9 @@ package com.haruta.pojo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,6 +19,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -24,6 +27,7 @@ import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -86,7 +90,6 @@ public class User implements Serializable {
     @Column(name = "password")
     private String password;
     @Basic(optional = false)
-
     @NotNull
     @Size(min = 1, max = 255)
     @Column(name = "avatar")
@@ -94,16 +97,21 @@ public class User implements Serializable {
     @Column(name = "date_of_bird")
     @Temporal(TemporalType.DATE)
     private Date dateOfBird;
-
     @Basic(optional = false)
+    @NotNull
     @Column(name = "active")
     private boolean active;
-
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
+    @JsonIgnore
+    private Set<Question> questionSet;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
+    @JsonIgnore
+    private Set<Comment> commentSet;
     @JoinColumn(name = "user_role", referencedColumnName = "id")
     @ManyToOne(optional = false)
-//    @JsonIgnore
+    @JsonIgnore
     private Role userRole;
-
+    
     @Transient
     private MultipartFile file;
 
@@ -206,6 +214,24 @@ public class User implements Serializable {
         this.active = active;
     }
 
+    @XmlTransient
+    public Set<Question> getQuestionSet() {
+        return questionSet;
+    }
+
+    public void setQuestionSet(Set<Question> questionSet) {
+        this.questionSet = questionSet;
+    }
+
+    @XmlTransient
+    public Set<Comment> getCommentSet() {
+        return commentSet;
+    }
+
+    public void setCommentSet(Set<Comment> commentSet) {
+        this.commentSet = commentSet;
+    }
+
     public Role getUserRole() {
         return userRole;
     }
@@ -252,5 +278,5 @@ public class User implements Serializable {
     public void setFile(MultipartFile file) {
         this.file = file;
     }
-
+    
 }

@@ -4,6 +4,7 @@
  */
 package com.haruta.pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -12,6 +13,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -20,13 +23,14 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import lombok.Builder;
+//import lombok.*;
+
 
 /**
  *
  * @author nguye
  */
-@Builder
+//@Builder
 @Entity
 @Table(name = "banner")
 @XmlRootElement
@@ -76,6 +80,10 @@ public class Banner implements Serializable {
     @NotNull
     @Column(name = "status")
     private short status;
+    @JoinColumn(name = "recruitment_id", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    @JsonIgnore
+    private Recruitment recruitmentId;
 
     public Banner() {
     }
@@ -148,6 +156,14 @@ public class Banner implements Serializable {
 
     public void setStatus(short status) {
         this.status = status;
+    }
+
+    public Recruitment getRecruitmentId() {
+        return recruitmentId;
+    }
+
+    public void setRecruitmentId(Recruitment recruitmentId) {
+        this.recruitmentId = recruitmentId;
     }
 
     @Override

@@ -36,35 +36,37 @@ public class BannerServiceImpl implements BannerService{
     @Override
     public Banner create(Banner banner, int recruitmentId) {
 //          public CommentDto create(CommentDto commentDto, Long postId, Long userId, Long belongsCommentId) {
-        Recruitment recruitment = recuRepository.findRecruitmentById(recruitmentId);
-        if (recruitment == null) {
-            throw new ResourceNotFoundException("Recruitment", "id", recruitmentId);
-        }
-//       
-        Banner bannertmp;
-     
-            bannertmp = Banner.builder()
-                    .title(banner.getTitle())
-                    .image(banner.getImage())
-                    .link(banner.getLink())
-                    .createdDate(Timestamp.valueOf(LocalDateTime.now()))
-                    .updatedDate(Timestamp.valueOf(LocalDateTime.now()))   
-                    .status(banner.getStatus())
-                    .build();
-        
-        Banner bannerResult = bannerRepo.save(bannertmp);
-        Banner bannertmp2 = Banner.builder()
-                    .title(bannerResult.getTitle())
-                    .image(bannerResult.getImage())
-                    .link(bannerResult.getLink())
-                    .createdDate(Timestamp.valueOf(LocalDateTime.now()))
-                    .updatedDate(Timestamp.valueOf(LocalDateTime.now()))   
-                    .status(bannerResult.getStatus())
-                    .build();
-        
-        return bannertmp2;
-        
-    
+//        Recruitment recruitment = recuRepository.findRecruitmentById(recruitmentId);
+//        if (recruitment == null) {
+//            throw new ResourceNotFoundException("Recruitment", "id", recruitmentId);
+//        }
+////       
+//        Banner bannertmp;
+//     
+//            bannertmp = Banner.builder()
+//                    .title(banner.getTitle())
+//                    .image(banner.getImage())
+//                    .link(banner.getLink())
+//                    .createdDate(Timestamp.valueOf(LocalDateTime.now()))
+//                    .updatedDate(Timestamp.valueOf(LocalDateTime.now()))   
+//                    .status(banner.getStatus())
+//                    .build();
+//        
+//        Banner bannerResult = bannerRepo.save(bannertmp);
+//        Banner bannertmp2 = Banner.builder()
+//                    .title(bannerResult.getTitle())
+//                    .image(bannerResult.getImage())
+//                    .link(bannerResult.getLink())
+//                    .createdDate(Timestamp.valueOf(LocalDateTime.now()))
+//                    .updatedDate(Timestamp.valueOf(LocalDateTime.now()))   
+//                    .status(bannerResult.getStatus())
+//                    .build();
+//        
+//        return bannertmp2;
+
+        return null;
+//        
+//    
     }
 
     @Override

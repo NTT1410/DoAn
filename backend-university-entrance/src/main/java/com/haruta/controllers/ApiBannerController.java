@@ -35,6 +35,7 @@ public class ApiBannerController {
     private BannerService banerService;
 
     @GetMapping("/banners")
+    @CrossOrigin
     public ResponseEntity<List<Banner>> list() {
         return new ResponseEntity<>(this.banerService.getBanner(), HttpStatus.OK);
     }
