@@ -22,8 +22,7 @@ public class RoleFormatter implements Formatter<Role> {
 
     @Override
     public Role parse(String roleId, Locale locale) throws ParseException {
-        int id = Integer.parseInt(roleId);
-        return new Role(id);
+        return new Role(Integer.parseInt(roleId));
     }
     
 }
