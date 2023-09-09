@@ -50,9 +50,9 @@ public class NewRepositoryImpl implements NewRepository {
     }
 
     @Override
-    public List<News> getNewsByRecruitment(int recruitmentId) {
+    public List<News> getNewsByRecruitment(int recruitmentId) {  
         Session s = this.factory.getObject().getCurrentSession();
-        Query q = s.createQuery("From News Where cId.id=:id");//can phai sua lai
+        Query q = s.createQuery("From News Where recruitmentId.id=:id");//can phai sua lai
         q.setParameter("id", recruitmentId); //recruitment_id
 
 //        javax.persistence.Query q = s.createQuery("News.findByCId");
@@ -90,7 +90,7 @@ public class NewRepositoryImpl implements NewRepository {
     }
 
     @Override
-    public News findCommentById(int id) { 
+    public News findNewsById(int id) { 
         Session s = this.factory.getObject().getCurrentSession();
         return s.get(News.class, id);
     }

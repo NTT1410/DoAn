@@ -11,6 +11,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -39,6 +40,12 @@ public class ApiNewsController {
         return new ResponseEntity<>(this.newService.getNews(), HttpStatus.OK);
     }
     
+//    @RequestMapping(path = "/news/{newsId}/", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "/news/{newsId}/", produces = MediaType.APPLICATION_JSON_VALUE)
+    @CrossOrigin
+    public ResponseEntity<News> details(@PathVariable(value = "newsId") int id) {
+        return new ResponseEntity<>(this.newService.findNewsById(id), HttpStatus.OK);
+    }
 
     @GetMapping("/recruiments/{recruimentId}/news/")
     @CrossOrigin

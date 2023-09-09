@@ -11,6 +11,8 @@ import Signup from "../pages/Signup";
 import UserAdmin from "../pages/admin/UserAdmin";
 import AppLoginAndRegister from "../pages/Login_Register";
 import UserInfor from "../pages/UserInfo";
+import AdmissionDetails from "../pages/AdmissionDetail";
+import AdmisNewsComments from "../pages/AdmisNewsComments";
 // import HomeAdmin from "../pages/admin/HomeAdmin";
 
 const NavbarRouter = () => {
@@ -22,6 +24,8 @@ const NavbarRouter = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="admissions" element={<Admissions />} />
+        <Route path="admissions/:admissionId" element={<AdmissionDetails />} />
+        <Route path="admissions/:admissionId/news/:newsId" element={<AdmisNewsComments />} />
         <Route path="programs" element={<Programs />} />
         <Route path="departments" element={<Departments />} />
         <Route path="contact" element={<Contact />} />

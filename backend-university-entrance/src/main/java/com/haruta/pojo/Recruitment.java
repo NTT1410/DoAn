@@ -89,12 +89,14 @@ public class Recruitment implements Serializable {
     @Column(name = "socre")
     private float socre;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "recruitmentId")
-
+    @JsonIgnore
     private Set<News> newsSet;
     @JoinColumn(name = "deparment_id", referencedColumnName = "id")
     @ManyToOne
+    @JsonIgnore
     private Department deparmentId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "recruitmentId")
+    @JsonIgnore
     private Set<Banner> bannerSet;
     @OneToMany(mappedBy = "recruitmentId")
     @JsonIgnore
