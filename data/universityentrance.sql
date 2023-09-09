@@ -274,8 +274,6 @@ CREATE TABLE `recruitment` (
   `start_date` date NOT NULL,
   `end_date` date NOT NULL,
   `type` varchar(10) NOT NULL,
-  `major` varchar(255) NOT NULL,
-  `socre` float NOT NULL,
   `deparment_id` int DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_category_idx` (`deparment_id`),
@@ -289,7 +287,7 @@ CREATE TABLE `recruitment` (
 
 LOCK TABLES `recruitment` WRITE;
 /*!40000 ALTER TABLE `recruitment` DISABLE KEYS */;
-INSERT INTO `recruitment` VALUES (1,'Tuyển sinh đại học chính quy 2023','Tuyển sinh đại học chính quy 2023','2023-06-01','2023-07-31','Xét tuyển','Kỹ thuật',22,1),(2,'Tuyển sinh đại học chính quy 2023','Tuyển sinh đại học chính quy 2023','2023-06-01','2023-07-31','Xét tuyển','Kinh tế',21,1),(3,'Tuyển sinh đại học chính quy 2023','Tuyển sinh đại học chính quy 2023','2023-06-01','2023-07-31','Xét tuyển','Luật',22,1),(4,'Tuyển sinh đại học chính quy 2023','Tuyển sinh đại học chính quy 2023','2023-06-01','2023-07-31','Xét tuyển','Xây dựng',23,1);
+INSERT INTO `recruitment` VALUES (1,'Tuyển sinh đại học chính quy 2023','Tuyển sinh đại học chính quy 2023','2023-06-01','2023-07-31','Xét tuyển',1),(2,'Tuyển sinh đại học chính quy 2023','Tuyển sinh đại học chính quy 2023','2023-06-01','2023-07-31','Xét tuyển',1),(3,'Tuyển sinh đại học chính quy 2023','Tuyển sinh đại học chính quy 2023','2023-06-01','2023-07-31','Xét tuyển',1),(4,'Tuyển sinh đại học chính quy 2023','Tuyển sinh đại học chính quy 2023','2023-06-01','2023-07-31','Xét tuyển',1);
 /*!40000 ALTER TABLE `recruitment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -392,4 +390,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-09-09 19:21:26
+-- Dump completed on 2023-09-09 19:38:58
