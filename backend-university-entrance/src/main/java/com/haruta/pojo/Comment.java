@@ -6,6 +6,7 @@ package com.haruta.pojo;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,12 +18,14 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -54,6 +57,11 @@ public class Comment implements Serializable {
     @Column(name = "created_date")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdDate;
+    @OneToMany(mappedBy = "folowComment")
+    private Set<Comment> commentSet;
+    @JoinColumn(name = "folow_comment", referencedColumnName = "id")
+    @ManyToOne
+    private Comment folowComment;
     @JoinColumn(name = "new_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private News newId;
@@ -96,6 +104,23 @@ public class Comment implements Serializable {
 
     public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
+    }
+
+    @XmlTransient
+    public Set<Comment> getCommentSet() {
+        return commentSet;
+    }
+
+    public void setCommentSet(Set<Comment> commentSet) {
+        this.commentSet = commentSet;
+    }
+
+    public Comment getFolowComment() {
+        return folowComment;
+    }
+
+    public void setFolowComment(Comment folowComment) {
+        this.folowComment = folowComment;
     }
 
     public News getNewId() {

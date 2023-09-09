@@ -23,14 +23,11 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-//import lombok.*;
-
 
 /**
  *
  * @author nguye
  */
-//@Builder
 @Entity
 @Table(name = "banner")
 @XmlRootElement
@@ -82,7 +79,6 @@ public class Banner implements Serializable {
     private short status;
     @JoinColumn(name = "recruitment_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    @JsonIgnore
     private Recruitment recruitmentId;
 
     public Banner() {

@@ -21,6 +21,8 @@
     <class>com.haruta.pojo.Recruitment</class>
     <class>com.haruta.pojo.User</class>
     <class>com.haruta.pojo.New</class>
+    <class>com.haruta.pojo.Score</class>
+    <class>com.haruta.pojo.Major</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/universityentrance?zeroDateTimeBehavior=CONVERT_TO_NULL"/>
