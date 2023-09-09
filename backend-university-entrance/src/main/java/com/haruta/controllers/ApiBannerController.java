@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,6 +39,12 @@ public class ApiBannerController {
     @CrossOrigin
     public ResponseEntity<List<Banner>> list() {
         return new ResponseEntity<>(this.banerService.getBanner(), HttpStatus.OK);
+    }
+    
+    @GetMapping("/bannersFull")
+    @CrossOrigin
+    public ResponseEntity<List<Banner>> listFull(Model model, @RequestParam Map<String, String> params) {
+        return new ResponseEntity<>(this.banerService.getFullBanner(params), HttpStatus.OK);
     }
 
     //them

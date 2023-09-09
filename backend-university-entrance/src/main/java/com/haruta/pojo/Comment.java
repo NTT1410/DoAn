@@ -63,6 +63,7 @@ public class Comment implements Serializable {
     private Set<Comment> commentSet;
     @JoinColumn(name = "folow_comment", referencedColumnName = "id")
     @ManyToOne
+    @JsonIgnore
     private Comment folowComment;
     @JoinColumn(name = "new_id", referencedColumnName = "id")
     @ManyToOne(optional = false)

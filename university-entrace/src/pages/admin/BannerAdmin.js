@@ -3,13 +3,14 @@ import Apis, { endpoints } from "../../configs/Apis";
 import { Button, Image } from "react-bootstrap";
 import DataTable, { createTheme } from "react-data-table-component";
 import moment from "moment";
+import { Link } from "react-router-dom";
 
 const BannerAdmin = () => {
   const [banner, setBanner] = useState([]);
 
   useEffect(() => {
     const loadDpm = async () => {
-      let e = endpoints["banners"];
+      let e = endpoints["banners-full"];
       let res = await Apis.get(e);
 
       setBanner(res.data);
@@ -22,11 +23,14 @@ const BannerAdmin = () => {
       name: "Id",
       selector: (r) => r.id,
       sortable: true,
+      maxWidth: "60px",
+      minWidth: "60px",
     },
     {
       name: "Title",
       selector: (r) => r.title,
       sortable: true,
+      maxWidth: "100px",
     },
     {
       name: "Image",
@@ -37,8 +41,12 @@ const BannerAdmin = () => {
     {
       name: "Created",
       selector: (r) => moment(new Date(r.createdDate)).format("DD/MM/YYYY"),
-      minWidth: "200px",
       sortable: true,
+      maxWidth: "100px",
+    },
+    {
+      name: "Deparment",
+      selector: (r) => r.recruitmentId.deparmentId.name,
     },
     {
       name: "Status",
@@ -48,12 +56,27 @@ const BannerAdmin = () => {
     {
       name: "",
       button: true,
-      cell: () => <Button variant="primary">Enabled</Button>,
+      cell: () => (
+        <Link>
+          <Button variant="primary">Enabled</Button>
+        </Link>
+      ),
     },
     {
       name: "",
       button: true,
-      cell: () => <Button variant="success">Disabled</Button>,
+      cell: () => <Link variant="success">Disabled</Link>,
+    },
+    {
+      name: "",
+      button: true,
+      cell: (r) => (
+        <Link to={`/banners/${r.id}`}>
+          <Button setTest variant="info">
+            <i class="fa-solid fa-gear"></i>
+          </Button>
+        </Link>
+      ),
     },
   ];
 

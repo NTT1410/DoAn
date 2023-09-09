@@ -88,4 +88,9 @@ public class BannerServiceImpl implements BannerService{
     public Banner findByBannerId(int bannerId) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
+    @Override
+    public List<Banner> getFullBanner(Map<String, String> params) {
+        return this.bannerRepo.getFullBanner(params);
+    }
 }

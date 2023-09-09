@@ -14,6 +14,7 @@ import java.util.Map;
  */
 public interface BannerService {
     List<Banner> getBanner();
+    List<Banner> getFullBanner(Map<String, String> params);
     
     Banner create(Banner banner, int recruitmentId);
 

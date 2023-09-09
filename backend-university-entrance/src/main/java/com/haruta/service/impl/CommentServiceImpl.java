@@ -44,8 +44,8 @@ public class CommentServiceImpl implements CommentService{
     }
 
     @Override
-    public List<Comment> getCommets() {
-        return this.cmtRepo.getComments(); 
+    public List<Comment> getCommets(Map<String, String> params) {
+        return this.cmtRepo.getComments(params); 
     }
 
     @Override

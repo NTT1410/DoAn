@@ -15,6 +15,7 @@ import java.util.Map;
  */
 public interface BannerRepository {
     List<Banner> getBanner();
+    List<Banner> getFullBanner(Map<String, String> params);
     
     Banner save(Banner banner);
 

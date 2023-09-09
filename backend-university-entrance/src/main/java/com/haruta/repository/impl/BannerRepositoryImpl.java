@@ -52,7 +52,6 @@ public class BannerRepositoryImpl implements BannerRepository {
         return query.getResultList();
     }
     
-    
     //them
     @Override
     public Banner save(Banner banner) {
@@ -81,6 +80,30 @@ public class BannerRepositoryImpl implements BannerRepository {
     public Banner findBannerById(int id) {
          Session s = this.factory.getObject().getCurrentSession();
         return s.get(Banner.class, id);
+    }
+
+    @Override
+    public List<Banner> getFullBanner(Map<String, String> params) {
+        Session s = this.factory.getObject().getCurrentSession();
+        CriteriaBuilder builder = s.getCriteriaBuilder();
+        CriteriaQuery<Banner> b = builder.createQuery(Banner.class);
+        Root root = b.from(Banner.class);
+        b.select(root);
+
+        if (params != null) {
+            List<Predicate> predicates = new ArrayList<>();
+
+            String bannerid = params.get("bannerid");
+            if (bannerid != null && !bannerid.isEmpty()) {
+                predicates.add(builder.equal(root.get("id"), Double.parseDouble(bannerid)));
+            }
+
+            b.where(predicates.toArray(Predicate[]::new));
+
+        }
+        b.orderBy(builder.asc(root.get("id")));
+        Query query = s.createQuery(b);
+        return query.getResultList();
     }
     
 }
