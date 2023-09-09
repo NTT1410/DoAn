@@ -4,7 +4,7 @@
  */
 package com.haruta.formatter;
 
-import com.haruta.pojo.Recruitment;
+import com.haruta.pojo.Department;
 import java.text.ParseException;
 import java.util.Locale;
 import org.springframework.format.Formatter;
@@ -13,16 +13,17 @@ import org.springframework.format.Formatter;
  *
  * @author nguye
  */
-public class RecruitmentFormatter implements Formatter<Recruitment> {
+public class DepartmentFormatter implements Formatter<Department>{
 
     @Override
-    public String print(Recruitment r, Locale locale) {
-        return String.valueOf(r.getId());
+    public String print(Department d, Locale locale) {
+        return String.valueOf(d.getId());
     }
 
     @Override
-    public Recruitment parse(String rId, Locale locale) throws ParseException {
-        return new Recruitment(Integer.parseInt(rId));
+    public Department parse(String dId, Locale locale) throws ParseException {
+        return new Department(Integer.parseInt(dId));
     }
-
+    
+    
 }

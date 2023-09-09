@@ -4,37 +4,37 @@
  */
 package com.haruta.pojo;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
-import java.util.Set;
+import java.util.Date;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author nguye
  */
 @Entity
-@Table(name = "role")
+@Table(name = "score")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Role.findAll", query = "SELECT r FROM Role r"),
-    @NamedQuery(name = "Role.findById", query = "SELECT r FROM Role r WHERE r.id = :id"),
-    @NamedQuery(name = "Role.findByName", query = "SELECT r FROM Role r WHERE r.name = :name")})
-public class Role implements Serializable {
+    @NamedQuery(name = "Score.findAll", query = "SELECT s FROM Score s"),
+    @NamedQuery(name = "Score.findById", query = "SELECT s FROM Score s WHERE s.id = :id"),
+    @NamedQuery(name = "Score.findByYear", query = "SELECT s FROM Score s WHERE s.year = :year"),
+    @NamedQuery(name = "Score.findByScore", query = "SELECT s FROM Score s WHERE s.score = :score")})
+public class Score implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -44,23 +44,28 @@ public class Role implements Serializable {
     private Integer id;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 255)
-    @Column(name = "name")
-    private String name;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userRole")
-    @JsonIgnore
-    private Set<User> userSet;
+    @Column(name = "year")
+    @Temporal(TemporalType.DATE)
+    private Date year;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "score")
+    private float score;
+    @JoinColumn(name = "major_id", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Major majorId;
 
-    public Role() {
+    public Score() {
     }
 
-    public Role(Integer id) {
+    public Score(Integer id) {
         this.id = id;
     }
 
-    public Role(Integer id, String name) {
+    public Score(Integer id, Date year, float score) {
         this.id = id;
-        this.name = name;
+        this.year = year;
+        this.score = score;
     }
 
     public Integer getId() {
@@ -71,21 +76,28 @@ public class Role implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public Date getYear() {
+        return year;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setYear(Date year) {
+        this.year = year;
     }
 
-    @XmlTransient
-    public Set<User> getUserSet() {
-        return userSet;
+    public float getScore() {
+        return score;
     }
 
-    public void setUserSet(Set<User> userSet) {
-        this.userSet = userSet;
+    public void setScore(float score) {
+        this.score = score;
+    }
+
+    public Major getMajorId() {
+        return majorId;
+    }
+
+    public void setMajorId(Major majorId) {
+        this.majorId = majorId;
     }
 
     @Override
@@ -98,10 +110,10 @@ public class Role implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Role)) {
+        if (!(object instanceof Score)) {
             return false;
         }
-        Role other = (Role) object;
+        Score other = (Score) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -110,7 +122,7 @@ public class Role implements Serializable {
 
     @Override
     public String toString() {
-        return "com.haruta.pojo.Role[ id=" + id + " ]";
+        return "com.haruta.pojo.Score[ id=" + id + " ]";
     }
     
 }

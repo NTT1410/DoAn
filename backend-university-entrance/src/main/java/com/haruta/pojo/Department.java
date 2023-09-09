@@ -4,9 +4,11 @@
  */
 package com.haruta.pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -71,10 +73,15 @@ public class Department implements Serializable {
     @NotNull
     @Column(name = "average_score")
     private float averageScore;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "departmentId")
+    @JsonIgnore
+    private Set<Major> majorSet;
     @OneToMany(mappedBy = "deparmentId")
+    @JsonIgnore
     private Set<Recruitment> recruitmentSet;
     @JoinColumn(name = "cateid", referencedColumnName = "id")
     @ManyToOne(optional = false)
+    @JsonIgnore
     private Category cateid;
 
     public Department() {
@@ -139,6 +146,15 @@ public class Department implements Serializable {
 
     public void setAverageScore(float averageScore) {
         this.averageScore = averageScore;
+    }
+
+    @XmlTransient
+    public Set<Major> getMajorSet() {
+        return majorSet;
+    }
+
+    public void setMajorSet(Set<Major> majorSet) {
+        this.majorSet = majorSet;
     }
 
     @XmlTransient

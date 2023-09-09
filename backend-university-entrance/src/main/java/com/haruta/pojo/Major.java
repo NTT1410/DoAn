@@ -4,7 +4,6 @@
  */
 package com.haruta.pojo;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.Basic;
@@ -14,6 +13,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -28,13 +29,13 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author nguye
  */
 @Entity
-@Table(name = "role")
+@Table(name = "major")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Role.findAll", query = "SELECT r FROM Role r"),
-    @NamedQuery(name = "Role.findById", query = "SELECT r FROM Role r WHERE r.id = :id"),
-    @NamedQuery(name = "Role.findByName", query = "SELECT r FROM Role r WHERE r.name = :name")})
-public class Role implements Serializable {
+    @NamedQuery(name = "Major.findAll", query = "SELECT m FROM Major m"),
+    @NamedQuery(name = "Major.findById", query = "SELECT m FROM Major m WHERE m.id = :id"),
+    @NamedQuery(name = "Major.findByName", query = "SELECT m FROM Major m WHERE m.name = :name")})
+public class Major implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -47,18 +48,20 @@ public class Role implements Serializable {
     @Size(min = 1, max = 255)
     @Column(name = "name")
     private String name;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userRole")
-    @JsonIgnore
-    private Set<User> userSet;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "majorId")
+    private Set<Score> scoreSet;
+    @JoinColumn(name = "department_id", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Department departmentId;
 
-    public Role() {
+    public Major() {
     }
 
-    public Role(Integer id) {
+    public Major(Integer id) {
         this.id = id;
     }
 
-    public Role(Integer id, String name) {
+    public Major(Integer id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -80,12 +83,20 @@ public class Role implements Serializable {
     }
 
     @XmlTransient
-    public Set<User> getUserSet() {
-        return userSet;
+    public Set<Score> getScoreSet() {
+        return scoreSet;
     }
 
-    public void setUserSet(Set<User> userSet) {
-        this.userSet = userSet;
+    public void setScoreSet(Set<Score> scoreSet) {
+        this.scoreSet = scoreSet;
+    }
+
+    public Department getDepartmentId() {
+        return departmentId;
+    }
+
+    public void setDepartmentId(Department departmentId) {
+        this.departmentId = departmentId;
     }
 
     @Override
@@ -98,10 +109,10 @@ public class Role implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Role)) {
+        if (!(object instanceof Major)) {
             return false;
         }
-        Role other = (Role) object;
+        Major other = (Major) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -110,7 +121,7 @@ public class Role implements Serializable {
 
     @Override
     public String toString() {
-        return "com.haruta.pojo.Role[ id=" + id + " ]";
+        return "com.haruta.pojo.Major[ id=" + id + " ]";
     }
     
 }

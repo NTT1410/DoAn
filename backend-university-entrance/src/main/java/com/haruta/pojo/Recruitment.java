@@ -42,9 +42,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Recruitment.findByName", query = "SELECT r FROM Recruitment r WHERE r.name = :name"),
     @NamedQuery(name = "Recruitment.findByStartDate", query = "SELECT r FROM Recruitment r WHERE r.startDate = :startDate"),
     @NamedQuery(name = "Recruitment.findByEndDate", query = "SELECT r FROM Recruitment r WHERE r.endDate = :endDate"),
-    @NamedQuery(name = "Recruitment.findByType", query = "SELECT r FROM Recruitment r WHERE r.type = :type"),
-    @NamedQuery(name = "Recruitment.findByMajor", query = "SELECT r FROM Recruitment r WHERE r.major = :major"),
-    @NamedQuery(name = "Recruitment.findBySocre", query = "SELECT r FROM Recruitment r WHERE r.socre = :socre")})
+    @NamedQuery(name = "Recruitment.findByType", query = "SELECT r FROM Recruitment r WHERE r.type = :type")})
 public class Recruitment implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -79,22 +77,14 @@ public class Recruitment implements Serializable {
     @Size(min = 1, max = 10)
     @Column(name = "type")
     private String type;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 255)
-    @Column(name = "major")
-    private String major;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "socre")
-    private float socre;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "recruitmentId")
-
+    @JsonIgnore
     private Set<News> newsSet;
     @JoinColumn(name = "deparment_id", referencedColumnName = "id")
     @ManyToOne
     private Department deparmentId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "recruitmentId")
+    @JsonIgnore
     private Set<Banner> bannerSet;
     @OneToMany(mappedBy = "recruitmentId")
     @JsonIgnore
@@ -107,15 +97,13 @@ public class Recruitment implements Serializable {
         this.id = id;
     }
 
-    public Recruitment(Integer id, String name, String description, Date startDate, Date endDate, String type, String major, float socre) {
+    public Recruitment(Integer id, String name, String description, Date startDate, Date endDate, String type) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.startDate = startDate;
         this.endDate = endDate;
         this.type = type;
-        this.major = major;
-        this.socre = socre;
     }
 
     public Integer getId() {
@@ -164,22 +152,6 @@ public class Recruitment implements Serializable {
 
     public void setType(String type) {
         this.type = type;
-    }
-
-    public String getMajor() {
-        return major;
-    }
-
-    public void setMajor(String major) {
-        this.major = major;
-    }
-
-    public float getSocre() {
-        return socre;
-    }
-
-    public void setSocre(float socre) {
-        this.socre = socre;
     }
 
     @XmlTransient

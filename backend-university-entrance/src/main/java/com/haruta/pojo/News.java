@@ -4,6 +4,7 @@
  */
 package com.haruta.pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
@@ -79,6 +80,7 @@ public class News implements Serializable {
     @ManyToOne(optional = false)
     private Recruitment recruitmentId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "newId")
+    @JsonIgnore
     private Set<Comment> commentSet;
 
     public News() {
