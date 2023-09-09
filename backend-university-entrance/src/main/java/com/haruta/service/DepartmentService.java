@@ -14,4 +14,16 @@ import java.util.Map;
  */
 public interface DepartmentService {
     List<Department> getDpm(Map<String, String> params);
+    Department getDepartmentById(int id);
+    
+    
+     
+//     Comment create(Comment banner, int recruitmentId);
+
+    Department update(Department department);
+
+    Boolean delete(int departmentId);
+
+    Department findDepartmentById(int departmentId);
+    
 }

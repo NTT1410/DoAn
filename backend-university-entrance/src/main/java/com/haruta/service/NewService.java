@@ -19,5 +19,13 @@ public interface NewService {
     
 
     int countNews();
+    
+//     News create(News news, int newsId);
+
+    News update(News news);
+
+    Boolean delete(int newsId);
+
+    News findNewsById(int newsId);
 
 }

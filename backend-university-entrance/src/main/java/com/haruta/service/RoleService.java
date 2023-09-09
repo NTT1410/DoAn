@@ -14,4 +14,13 @@ import java.util.Map;
  */
 public interface RoleService {
     List<Role> getRoles();
+    
+     
+//     Comment create(Comment banner, int recruitmentId);
+
+    Role update(Role role);
+
+    Boolean delete(int roleId);
+
+    Role findRoleById(int roleId);
 }

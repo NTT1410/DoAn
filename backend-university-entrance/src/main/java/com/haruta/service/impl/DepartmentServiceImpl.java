@@ -25,4 +25,29 @@ public class DepartmentServiceImpl implements DepartmentService{
     public List<Department> getDpm(Map<String, String> params) {
         return this.dpmRepo.getDpm(params);
     }
+
+    @Override
+    public Department getDepartmentById(int id) {
+        return this.dpmRepo.getDepartmentById(id);
+    }
+
+    @Override
+    public Department update(Department department) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public Boolean delete(int departmentId) {
+          Department department = dpmRepo.findDepartmentById(departmentId);
+        if(department != null){
+            dpmRepo.delete(department);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public Department findDepartmentById(int departmentId) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

@@ -18,6 +18,15 @@ public interface NewRepository {
     List<News> getNewsByRecruitment (int recruitmentId);
 
     int countNews();
+    
+     
+    News save(News news);
+
+    News update(News news);
+
+    Boolean delete(News news);
+
+    News findCommentById(int id);
 
 
 }

@@ -31,28 +31,29 @@ import org.springframework.web.multipart.MultipartFile;
  * @author nguye
  */
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
+
     @Autowired
     private UserRepository userRepository;
-    
+
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
-    
+
     @Autowired
     private Cloudinary cloudinary;
 
     @Override
     public List<User> getUsers(Map<String, String> params) {
         return this.userRepository.getUsers(params);
-    }   
+    }
 
     @Override
     public boolean addOrUpdateUser(User u) {
 //        u.setAvatar("https://res.cloudinary.com/ds8i6jriz/image/upload/v1691837083/MyImages/UniversityEntrance/avatar/avt3_atudsl.jpg");
-        if(u.getFile()!=null)
+        if (u.getFile() != null)
             try {
-                Map res = this.cloudinary.uploader().upload(u.getFile().getBytes(), ObjectUtils.asMap("resource_type", "auto"));
-                u.setAvatar(res.get("secure_url").toString());
+            Map res = this.cloudinary.uploader().upload(u.getFile().getBytes(), ObjectUtils.asMap("resource_type", "auto"));
+            u.setAvatar(res.get("secure_url").toString());
         } catch (IOException ex) {
             Logger.getLogger(UserServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -61,7 +62,7 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public User addUser(Map<String, String> params, MultipartFile avatar) {
-         User u = new User();
+        User u = new User();
         u.setFirstName(params.get("firstName"));
         u.setLastName(params.get("lastName"));
         u.setPhone(params.get("phone"));
@@ -71,28 +72,26 @@ public class UserServiceImpl implements UserService{
 //        u.setPassword(this.passwordEncoder.encode(params.get("password")));
         Role role = new Role();
         role.setName("user");
-                
+
         u.setUserRole(role);
-        
-        
 
         u.setPassword(this.passwordEncoder.encode(params.get("password")));
 //        u.setUserRole("ROLE_USER");
         if (!avatar.isEmpty()) {
             try {
-                Map res = this.cloudinary.uploader().upload(avatar.getBytes(), 
+                Map res = this.cloudinary.uploader().upload(avatar.getBytes(),
                         ObjectUtils.asMap("resource_type", "auto"));
                 u.setAvatar(res.get("secure_url").toString());
             } catch (IOException ex) {
                 Logger.getLogger(UserServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
+
         this.userRepository.addUser(u);
         return u;
     }
 
-   @Override
+    @Override
     public User getUserByUn(String username) {
         return this.userRepository.getUserByUsername(username);
     }
@@ -118,7 +117,26 @@ public class UserServiceImpl implements UserService{
     public int countUser() {
         return this.userRepository.countUser();
     }
-    
-    
-    
+
+    @Override
+    public User update(User user) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public Boolean delete(int userId) {
+
+        User user = userRepository.findUserById(userId);
+        if (user != null) {
+            userRepository.delete(user);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public User findUserById(int userId) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
 }

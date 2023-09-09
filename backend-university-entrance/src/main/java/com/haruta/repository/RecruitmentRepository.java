@@ -14,4 +14,12 @@ import java.util.List;
 public interface RecruitmentRepository {
     List<Recruitment> getRecruitments();
     
+    Recruitment save(Recruitment recruitment);
+
+    Recruitment update(Recruitment recruitment);
+
+    Boolean delete(Recruitment recruitment);
+
+    Recruitment findRecruitmentById(int id);
+    
 }

@@ -30,7 +30,7 @@ const Admissions = () => {
         {admissions.map(p => {
           // let url = `/products/${p.id}`;
           return <Col xs={12} md={3}>
-            {/* <Link to ="/sadfssaf"> */}
+            <Link to ="/sadfssaf">
               <Card>
                 <Card.Img variant="top" src={p.image} />
                 <Card.Body>
@@ -40,7 +40,7 @@ const Admissions = () => {
                   {/* <Link to={url} className="btn btn-info" variant="primary">Xem chi tiết</Link> */}
                 </Card.Body>
               </Card>
-            {/* </Link> */}
+            </Link>
           </Col>
 
         })}

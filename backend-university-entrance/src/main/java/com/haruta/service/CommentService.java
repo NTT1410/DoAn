@@ -20,5 +20,14 @@ public interface CommentService {
     List<Comment> getCommets();
     List<Comment> getCommentsByNews (int newsId);
     
+    Comment addComment(Comment c);
     
+    
+//     Comment create(Comment banner, int recruitmentId);
+
+    Comment update(Comment comment);
+
+    Boolean delete(int commentId);
+
+    Comment findCommentById(int commentId);
 }

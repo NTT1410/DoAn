@@ -40,6 +40,31 @@ public class NewServiceImpl implements NewService {
     public int countNews() {
         return this.newRepo.countNews();
     }
+
+//    @Override
+//    public News create(News news, int newsId) {
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+//    }
+
+    @Override
+    public News update(News news) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public Boolean delete(int newsId) {
+         News news = newRepo.findCommentById(newsId);
+        if(news != null){
+            newRepo.delete(news);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public News findNewsById(int newsId) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
     
    

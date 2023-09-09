@@ -67,7 +67,35 @@ public class NewRepositoryImpl implements NewRepository {
         return Integer.parseInt(q.getSingleResult().toString());
 
     }
+
+    @Override
+    public News save(News news) {
+          Session s = this.factory.getObject().getCurrentSession();
+        s.save(news);
+        return news;
+    }
+
+    @Override
+    public News update(News news) {
+         Session s = this.factory.getObject().getCurrentSession();
+        s.update(news);
+        return news;
+    }
+
+    @Override
+    public Boolean delete(News news) {
+         Session s = this.factory.getObject().getCurrentSession();
+        s.delete(news);
+        return true;
+    }
+
+    @Override
+    public News findCommentById(int id) { 
+        Session s = this.factory.getObject().getCurrentSession();
+        return s.get(News.class, id);
+    }
     
   
 
+    
 }

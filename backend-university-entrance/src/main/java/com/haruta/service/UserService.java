@@ -21,4 +21,15 @@ public interface UserService extends UserDetailsService{
     boolean addOrUpdateUser(User u);    
     boolean authUser(String username, String password);
     int countUser();
+    
+    
+     
+//     Comment create(Comment banner, int recruitmentId);
+
+    User update(User user);
+
+    Boolean delete(int userId);
+
+    User findUserById(int userId);
+    
 }

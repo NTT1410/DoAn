@@ -38,7 +38,7 @@ public class DepartmentRepositoryImpl implements DepartmentRepository {
         CriteriaQuery<Department> d = builder.createQuery(Department.class);
         Root root = d.from(Department.class);
         d.select(root);
-        
+
         if (params != null) {
             List<Predicate> predicates = new ArrayList<>();
 
@@ -58,5 +58,38 @@ public class DepartmentRepositoryImpl implements DepartmentRepository {
         d.orderBy(builder.asc(root.get("id")));
         Query query = s.createQuery(d);
         return query.getResultList();
+    }
+
+    @Override
+    public Department getDepartmentById(int id) {
+        Session session = this.factory.getObject().getCurrentSession();
+        return session.get(Department.class, id);
+    }
+
+    @Override
+    public Department save(Department department) {
+        Session s = this.factory.getObject().getCurrentSession();
+        s.save(department);
+        return department;
+    }
+
+    @Override
+    public Department update(Department department) {
+        Session s = this.factory.getObject().getCurrentSession();
+        s.update(department);
+        return department;
+    }
+
+    @Override
+    public Boolean delete(Department department) {
+        Session s = this.factory.getObject().getCurrentSession();
+        s.delete(department);
+        return true;
+    }
+
+    @Override
+    public Department findDepartmentById(int id) {
+        Session s = this.factory.getObject().getCurrentSession();
+        return s.get(Department.class, id);
     }
 }

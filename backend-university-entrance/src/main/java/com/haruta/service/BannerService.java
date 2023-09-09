@@ -14,4 +14,12 @@ import java.util.Map;
  */
 public interface BannerService {
     List<Banner> getBanner();
+    
+    Banner create(Banner banner, int recruitmentId);
+
+    Banner update(Banner banner);
+
+    Boolean delete(int bannerId);
+
+    Banner findByBannerId(int bannerId);
 }

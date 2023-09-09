@@ -32,5 +32,33 @@ public class RecruitmentRepositoryImpl implements RecruitmentRepository{
         
         return q.getResultList();
     }
+
+    @Override
+    public Recruitment save(Recruitment recruitment) {
+       
+        Session s = this.factory.getObject().getCurrentSession();
+        s.save(recruitment);
+        return recruitment;
+    }
+
+    @Override
+    public Recruitment update(Recruitment recruitment) {
+          Session s = this.factory.getObject().getCurrentSession();
+        s.update(recruitment);
+        return recruitment;
+    }
+
+    @Override
+    public Boolean delete(Recruitment recruitment) {
+          Session s = this.factory.getObject().getCurrentSession();
+        s.delete(recruitment);
+        return true;
+    }
+
+    @Override
+    public Recruitment findRecruitmentById(int id) {
+          Session s = this.factory.getObject().getCurrentSession();
+        return s.get(Recruitment.class, id);
+    }
     
 }

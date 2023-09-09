@@ -35,13 +35,13 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 @Transactional
 public class UserRepositoryImpl implements UserRepository {
-    
+
     @Autowired
     private SimpleDateFormat f;
 
     @Autowired
     private LocalSessionFactoryBean factory;
-    
+
     @Autowired
     private BCryptPasswordEncoder passEncoder;
 
@@ -92,9 +92,9 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public User addUser(User user) {
-         Session s = this.factory.getObject().getCurrentSession();
+        Session s = this.factory.getObject().getCurrentSession();
         s.save(user);
-        
+
         return user;
     }
 
@@ -104,9 +104,9 @@ public class UserRepositoryImpl implements UserRepository {
         org.hibernate.query.Query q = s.createQuery("FROM User WHERE username=:un");
         q.setParameter("un", username);
         return (User) q.getSingleResult();
-   
+
     }
-    
+
 //     @Override
 //    public User findByUsername(String username) {
 //        Session s = this.factory.getObject().getCurrentSession();
@@ -122,22 +122,17 @@ public class UserRepositoryImpl implements UserRepository {
 //            return user;
 //        }
 //    }
-    
-
-    
-    
     @Override
     public boolean authUser(String username, String password) {
-        User  u = this.getUserByUsername(username);
-        
+        User u = this.getUserByUsername(username);
+
 //        return this.passEncoder.matches(password, u.getPassword());
         boolean t = false;
-        if(password.equals(u.getPassword()))
-        {
+        if (password.equals(u.getPassword())) {
             t = true;
         }
         return t;
-        
+
     }
 
     @Override
@@ -146,6 +141,32 @@ public class UserRepositoryImpl implements UserRepository {
         Query q = s.createQuery("SELECT Count(*) FROM User");
         return Integer.parseInt(q.getSingleResult().toString());
     }
-    
+
+    @Override
+    public User save(User user) {
+        Session s = this.factory.getObject().getCurrentSession();
+        s.save(user);
+        return user;
+    }
+
+    @Override
+    public User update(User user) {
+        Session s = this.factory.getObject().getCurrentSession();
+        s.update(user);
+        return user;
+    }
+
+    @Override
+    public Boolean delete(User user) {
+        Session s = this.factory.getObject().getCurrentSession();
+        s.delete(user);
+        return true;
+    }
+
+    @Override
+    public User findUserById(int id) {
+        Session s = this.factory.getObject().getCurrentSession();
+        return s.get(User.class, id);
+    }
 
 }

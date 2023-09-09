@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+
 import Apis, { endpoints } from "../../configs/Apis";
 import { Button, Card, Col, Container, Form, Row } from "react-bootstrap";
 import DataTable, { createTheme } from "react-data-table-component";
@@ -104,7 +104,7 @@ const UserAdmin = () => {
                 onChange={handleFilter}
               />
             </div>
-          </form>
+          </form> 
         </div>
         <div className="mt-2">
           <DataTable

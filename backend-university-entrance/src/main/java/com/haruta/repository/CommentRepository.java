@@ -19,4 +19,16 @@ public interface CommentRepository {
     List<Comment> getComments();
     
      List<Comment> getCommentsByNews (int newsId);
+     
+     Comment addComment(Comment c);
+     
+    
+    
+    Comment save(Comment comment);
+
+    Comment update(Comment comment);
+
+    Boolean delete(Comment comment);
+
+    Comment findCommentById(int id);
 }

@@ -14,4 +14,13 @@ import java.util.Map;
  */
 public interface RoleRepository {
     List<Role> getRoles();
+    
+    
+    Role save(Role role);
+
+    Role update(Role role);
+
+    Boolean delete(Role role);
+
+    Role findRoleById(int id);
 }

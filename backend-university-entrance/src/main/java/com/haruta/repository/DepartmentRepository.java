@@ -15,4 +15,15 @@ import java.util.Map;
  */
 public interface DepartmentRepository {
     List<Department> getDpm(Map<String, String> params);
+    Department getDepartmentById(int id);
+    
+    
+     
+    Department save(Department department);
+
+    Department update(Department department);
+
+    Boolean delete(Department department);
+
+    Department findDepartmentById(int id);
 }

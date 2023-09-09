@@ -28,4 +28,24 @@ public class RecruitmentServiceImpl implements RecruitmentService {
 
     }
 
+    @Override
+    public Recruitment update(Recruitment recruitment) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public Boolean delete(int recruitmentId) {
+         Recruitment recruitment = recruitmentRepo.findRecruitmentById(recruitmentId);
+        if(recruitment != null){
+            recruitmentRepo.delete(recruitment);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public Recruitment findRecruitmentById(int recruitmentId) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
 }

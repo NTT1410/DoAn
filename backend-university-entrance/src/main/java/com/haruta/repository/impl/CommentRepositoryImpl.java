@@ -14,6 +14,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
@@ -78,6 +79,45 @@ public class CommentRepositoryImpl implements CommentRepository {
 
         
         return q.getResultList();
+    }
+
+    @Override
+    public Comment addComment(Comment c) {
+         Session s = this.factory.getObject().getCurrentSession();
+        try {
+            s.save(c);
+            return c;
+        } catch (HibernateException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
+    public Comment save(Comment comment) {
+         Session s = this.factory.getObject().getCurrentSession();
+        s.save(comment);
+        return comment;
+    }
+
+    @Override
+    public Comment update(Comment comment) {
+         Session s = this.factory.getObject().getCurrentSession();
+        s.update(comment);
+        return comment;
+    }
+
+    @Override
+    public Boolean delete(Comment comment) {
+          Session s = this.factory.getObject().getCurrentSession();
+        s.delete(comment);
+        return true;
+    }
+
+    @Override
+    public Comment findCommentById(int id) {
+         Session s = this.factory.getObject().getCurrentSession();
+        return s.get(Comment.class, id);
     }
 
 }

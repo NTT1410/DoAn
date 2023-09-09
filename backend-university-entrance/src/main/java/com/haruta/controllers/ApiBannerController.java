@@ -8,12 +8,17 @@ import com.haruta.pojo.Banner;
 import com.haruta.service.BannerService;
 import java.util.List;
 import java.util.Map;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -25,11 +30,43 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/api")
 @CrossOrigin
 public class ApiBannerController {
+
     @Autowired
     private BannerService banerService;
-    
+
     @GetMapping("/banners")
     public ResponseEntity<List<Banner>> list() {
         return new ResponseEntity<>(this.banerService.getBanner(), HttpStatus.OK);
+    }
+
+    //them
+    @PostMapping("/banners/{recruitmentId}")
+    @CrossOrigin
+    public ResponseEntity<?> createBanner(@RequestBody @Valid Banner banner, @PathVariable("recruitmentId") int recrId) {
+        Banner bannerSave = banerService.create(banner, recrId);
+        return new ResponseEntity<>(bannerSave, HttpStatus.CREATED);
+    }
+
+    //sua
+    @PostMapping("/banners/{recruitmentId}/banner/{bannerId}")
+    @CrossOrigin
+    public ResponseEntity<?> updateBanner(@RequestBody @Valid Banner banner, @PathVariable("recruitmentId") int recrId, @PathVariable("bannerId") int bannerId) {
+//        Banner bannerSave = banerService.update(bannerId);
+//            return new ResponseEntity<>(bannerSave, HttpStatus.CREATED);
+        return null;
+    }
+
+    //xoa
+     @DeleteMapping("/banner/delete/{id}/")
+    @CrossOrigin
+    public  ResponseEntity<?> deleteProduct (@PathVariable (value = "id") int id) {
+//        return new ResponseEntity..body("You don not have permission to delete this comment");
+//        return new ResponseEntity<>("Delete successfully!", HttpStatus.NO_CONTENT);
+        Boolean del = this.banerService.delete(id);  
+        if (del) {
+            return new ResponseEntity<>("Delete successfully!", HttpStatus.NO_CONTENT);
+        } else {
+            return ResponseEntity.badRequest().body("You don not have permission to delete this comment");
+        }
     }
 }

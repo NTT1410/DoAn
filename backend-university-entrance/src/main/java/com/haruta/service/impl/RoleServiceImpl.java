@@ -25,5 +25,25 @@ public class RoleServiceImpl implements RoleService{
     public List<Role> getRoles() {
         return this.roleRepo.getRoles();
     }
+
+    @Override
+    public Role update(Role role) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public Boolean delete(int roleId) {
+          Role role = roleRepo.findRoleById(roleId);
+        if(role != null){
+            roleRepo.delete(role);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public Role findRoleById(int roleId) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
 }

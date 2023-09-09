@@ -52,4 +52,35 @@ public class BannerRepositoryImpl implements BannerRepository {
         return query.getResultList();
     }
     
+    
+    //them
+    @Override
+    public Banner save(Banner banner) {
+        Session s = this.factory.getObject().getCurrentSession();
+        s.save(banner);
+        return banner;
+    }
+    //sua
+    @Override
+    public Banner update(Banner banner) {
+        Session s = this.factory.getObject().getCurrentSession();
+        s.update(banner);
+        return banner;
+    }
+    
+    //xoa
+    @Override
+    public Boolean delete(Banner banner) {
+        Session s = this.factory.getObject().getCurrentSession();
+        s.delete(banner);
+        return true;
+    }
+
+    //timKiemTheoIdBanner
+    @Override
+    public Banner findBannerById(int id) {
+         Session s = this.factory.getObject().getCurrentSession();
+        return s.get(Banner.class, id);
+    }
+    
 }

@@ -16,4 +16,12 @@ public interface RecruitmentService {
     List<Recruitment> getRecruitments();
     
     
+//     Recruitment create(Recruitment recruitment, int recruitmentId);
+
+    Recruitment update(Recruitment recruitment);
+
+    Boolean delete(int recruitmentId);
+
+    Recruitment findRecruitmentById(int recruitmentId);
+    
 }

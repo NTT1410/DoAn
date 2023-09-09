@@ -15,4 +15,13 @@ import java.util.Map;
  */
 public interface BannerRepository {
     List<Banner> getBanner();
+    
+    Banner save(Banner banner);
+
+    Banner update(Banner banner);
+
+    Boolean delete(Banner banner);
+
+    Banner findBannerById(int id);
+
 }
