@@ -78,6 +78,7 @@ public class News implements Serializable {
     private short status;
     @JoinColumn(name = "recruitment_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
+
     private Recruitment recruitmentId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "newId")
     @JsonIgnore

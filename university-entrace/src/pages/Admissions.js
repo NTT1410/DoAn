@@ -28,9 +28,10 @@ const Admissions = () => {
       <h1>Admissions</h1>
       <Row>
         {admissions.map(p => {
+          let h = `/admissions/${p.id}`;
           // let url = `/products/${p.id}`;
           return <Col xs={12} md={3}>
-            <Link to ="/sadfssaf">
+            <Link to = {h}>
               <Card>
                 <Card.Img variant="top" src={p.image} />
                 <Card.Body>

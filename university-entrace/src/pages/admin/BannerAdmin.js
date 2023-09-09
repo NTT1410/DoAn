@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 
 const BannerAdmin = () => {
   const [banner, setBanner] = useState([]);
+  const [records, setRecords] = useState([]);
 
   useEffect(() => {
     const loadDpm = async () => {
@@ -14,10 +15,16 @@ const BannerAdmin = () => {
       let res = await Apis.get(e);
 
       setBanner(res.data);
+      setRecords(res.data);
     };
     loadDpm();
   }, []);
-
+  const handleFilter = (evt) => {
+    const newData = banner.filter((row) => {
+      return row.title.toLowerCase().includes(evt.target.value.toLowerCase());
+    });
+    setRecords(newData);
+  };
   const columns = [
     {
       name: "Id",
@@ -52,20 +59,6 @@ const BannerAdmin = () => {
       name: "Status",
       selector: (r) => String(r.status),
       sortable: true,
-    },
-    {
-      name: "",
-      button: true,
-      cell: () => (
-        <Link>
-          <Button variant="primary">Enabled</Button>
-        </Link>
-      ),
-    },
-    {
-      name: "",
-      button: true,
-      cell: () => <Link variant="success">Disabled</Link>,
     },
     {
       name: "",
@@ -108,10 +101,29 @@ const BannerAdmin = () => {
 
   return (
     <main className="main-container">
+      <div className="d-flex">
+        <form class="d-flex" action="#">
+          <div class="input-group my-3 my-lg-0">
+            <input
+              type="text"
+              class="form-control"
+              name="kw"
+              placeholder="Search..."
+              aria-label="Search"
+              onChange={handleFilter}
+            />
+          </div>
+        </form>
+        <div className="ms-3">
+          <Link to="/editbanner">
+            <Button>Add Banner</Button>
+          </Link>
+        </div>
+      </div>
       <div className="mt-2">
         <DataTable
           columns={columns}
-          data={banner}
+          data={records}
           fixedHeader
           pagination
           theme="solarized"

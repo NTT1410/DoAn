@@ -32,7 +32,6 @@ import org.springframework.web.multipart.MultipartFile;
  * @author nguye
  */
 @Service
-@Transactional
 public class UserServiceImpl implements UserService {
 
     @Autowired

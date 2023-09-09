@@ -18,6 +18,11 @@ export const endpoints = {
   "current-user": `${SERVER_CONTEXT}/api/current-user/`,
   "user-register": `${SERVER_CONTEXT}/api/user-register/`,
   recruiments: `${SERVER_CONTEXT}/api/recruiments/`,
+  listNews: (admissionId) =>
+    `${SERVER_CONTEXT}/api/recruiments/${admissionId}/news/`,
+  listComments: (newsId) => `${SERVER_CONTEXT}/api/comment_news/${newsId}/`, //danh sách các comments trong từng news
+  newsDetails: (newsId) => `${SERVER_CONTEXT}/api/news/${newsId}/`, //chi tiết news
+  "add-comment": `${SERVER_CONTEXT}/api/comments/`, //them comments
 };
 
 //api có chứng thực

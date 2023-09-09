@@ -6,6 +6,7 @@ import MyUserReducer from "./reducers/MyUserReducer";
 import cookie from "react-cookies";
 import Normal from "./NormalApp";
 import AdminApp from "./AdminApp";
+import 'moment/locale/vi';
 
 export const MyUserContext = createContext();
 

@@ -1,21 +1,25 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Apis, { endpoints } from "../../configs/Apis";
 
 const EditBanner = () => {
   const { bannerId } = useParams();
-  const [banner, setBanner] = useState();
+  const [banner, setBanner] = useState(null);
+  const [checked, setChecked] = useState(false);
+
+  const enable = (evt) => {
+    setChecked(!checked);
+  };
 
   useEffect(() => {
     const loadDpm = async () => {
-      let e = endpoints["banners-full"];
-
-      if (bannerId != null) {
+      if (bannerId !== undefined) {
+        let e = endpoints["banners-full"];
         e = `${e}?bannerid=${bannerId}`;
+        let res = await Apis.get(e);
+        setBanner(res.data[0]);
+        setChecked(Boolean(res.data[0].status));
       }
-      let res = await Apis.get(e);
-      setBanner(res.data[0]);
-      console.log(res.data[0]);
     };
     loadDpm();
   }, [bannerId]);
@@ -46,20 +50,27 @@ const EditBanner = () => {
               src={banner ? banner.link : ""}
             />
           </div>
-          <div class="mb-3 form-check form-switch">
+          <div class="form-check form-switch">
             <input
               class="form-check-input"
               type="checkbox"
+              role="switch"
               id="status"
-              checked={banner ? banner.status : ""}
+              name="status"
+              onClick={enable}
+              checked={checked}
             />
             <label class="form-check-label" for="status">
               Status
             </label>
           </div>
-          <button type="submit" class="btn btn-primary">
-            Submit
-          </button>
+          <div>
+            <Link to="/banners">
+              <button type="submit" class="btn btn-primary">
+                Submit
+              </button>
+            </Link>
+          </div>
         </form>
       </main>
     </>

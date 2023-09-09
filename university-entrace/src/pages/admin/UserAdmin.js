@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Apis, { endpoints } from "../../configs/Apis";
 import { Button, Card, Col, Container, Form, Row } from "react-bootstrap";
 import DataTable, { createTheme } from "react-data-table-component";
+import { Link } from "react-router-dom";
 
 const UserAdmin = () => {
   const [users, setUsers] = useState([]);
@@ -59,7 +60,11 @@ const UserAdmin = () => {
     {
       name: "",
       button: true,
-      cell: () => <Button variant="primary">Change</Button>,
+      cell: (r) => (
+        <Link to={`/useradmin/${r.id}`}>
+          <Button variant="primary">Change</Button>
+        </Link>
+      ),
     },
     {
       name: "",
@@ -109,7 +114,12 @@ const UserAdmin = () => {
                 onChange={handleFilter}
               />
             </div>
-          </form> 
+          </form>{" "}
+          <div className="ms-3">
+            <Link to="/edituser">
+              <Button>Add User</Button>
+            </Link>
+          </div>
         </div>
         <div className="mt-2">
           <DataTable

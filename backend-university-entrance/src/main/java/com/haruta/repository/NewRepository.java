@@ -26,7 +26,7 @@ public interface NewRepository {
 
     Boolean delete(News news);
 
-    News findCommentById(int id);
+    News findNewsById(int id);
 
 
 }

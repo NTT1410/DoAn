@@ -42,14 +42,11 @@ public class ApiCommentsController {
     }
     
     //ok
-    @GetMapping("/news/{newsId}/")
+    @GetMapping("/comment_news/{newsId}/")
     @CrossOrigin
     public ResponseEntity<List<Comment>> listNewsByRec(@PathVariable(value = "newsId") int id) {
         return new ResponseEntity<>(this.commentService.getCommentsByNews(id), HttpStatus.OK);
     }
-    
-   
-    
 
     
     @GetMapping("/countcomments")

@@ -12,12 +12,14 @@ import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
  * @author nguye
  */
 @Service
+@Transactional
 public class NewServiceImpl implements NewService {
     
     @Autowired
@@ -53,7 +55,7 @@ public class NewServiceImpl implements NewService {
 
     @Override
     public Boolean delete(int newsId) {
-         News news = newRepo.findCommentById(newsId);
+         News news = newRepo.findNewsById(newsId);
         if(news != null){
             newRepo.delete(news);
             return true;
@@ -63,7 +65,7 @@ public class NewServiceImpl implements NewService {
 
     @Override
     public News findNewsById(int newsId) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return this.newRepo.findNewsById(newsId);
     }
     
     
