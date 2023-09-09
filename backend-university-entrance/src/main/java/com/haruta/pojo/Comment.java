@@ -4,6 +4,7 @@
  */
 package com.haruta.pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
@@ -58,9 +59,11 @@ public class Comment implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdDate;
     @OneToMany(mappedBy = "folowComment")
+    @JsonIgnore
     private Set<Comment> commentSet;
     @JoinColumn(name = "folow_comment", referencedColumnName = "id")
     @ManyToOne
+    @JsonIgnore
     private Comment folowComment;
     @JoinColumn(name = "new_id", referencedColumnName = "id")
     @ManyToOne(optional = false)

@@ -6,6 +6,7 @@ package com.haruta.configs;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
+import com.haruta.formatter.CommentFormatter;
 import com.haruta.formatter.DepartmentFormatter;
 import com.haruta.formatter.RecruitmentFormatter;
 import com.haruta.formatter.RoleFormatter;
@@ -54,6 +55,7 @@ public class WebAppContextConfig implements WebMvcConfigurer{
         registry.addFormatter(new UserFormatter());
         registry.addFormatter(new RecruitmentFormatter());
         registry.addFormatter(new DepartmentFormatter());
+        registry.addFormatter(new CommentFormatter());
     }
     
     @Bean

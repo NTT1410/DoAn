@@ -11,6 +11,7 @@ export const endpoints = {
   "count-users": `${SERVER_CONTEXT}/api/countusers`,
   "count-comments": `${SERVER_CONTEXT}/api/countcomments`,
   banners: `${SERVER_CONTEXT}/api/banners`,
+  "banners-full": `${SERVER_CONTEXT}/api/bannersFull`,
   news: `${SERVER_CONTEXT}/api/news`,
   "count-news": `${SERVER_CONTEXT}/api/countnews`,
   login: `${SERVER_CONTEXT}/api/login/`,

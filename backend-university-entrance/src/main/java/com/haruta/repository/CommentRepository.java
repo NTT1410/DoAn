@@ -16,7 +16,7 @@ public interface CommentRepository {
     List<Comment> countCmtByMonth(Map<String, String> params);
     int countComment();
     
-    List<Comment> getComments();
+    List<Comment> getComments(Map<String, String> params);
     
      List<Comment> getCommentsByNews (int newsId);
      

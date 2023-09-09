@@ -17,7 +17,7 @@ public interface CommentService {
     int countComment();
     
     
-    List<Comment> getCommets();
+    List<Comment> getCommets(Map<String, String> params);
     List<Comment> getCommentsByNews (int newsId);
     
     Comment addComment(Comment c);
