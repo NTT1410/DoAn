@@ -35,14 +35,15 @@ const EditBanner = () => {
             />
           </div>
           <div class="mb-3">
-            <label for="image" class="form-label">
+            <label for="link" class="form-label">
               {banner ? banner.link : ""}
             </label>
             <input
               type="file"
               class="form-control"
-              id="image"
-              //   src={banner ? banner.link : ""}
+              id="link"
+              name="link"
+              src={banner ? banner.link : ""}
             />
           </div>
           <div class="mb-3 form-check form-switch">
