@@ -74,7 +74,7 @@ public class CommentRepositoryImpl implements CommentRepository {
 
             String newid = params.get("newid");
             if (newid != null && !newid.isEmpty()) {
-                predicates.add(builder.equal(root.get("newId"), Double.parseDouble(newid)));
+                predicates.add(builder.equal(root.get("newId"), new News(Integer.parseInt(newid))));
             }
 
             b.where(predicates.toArray(Predicate[]::new));
