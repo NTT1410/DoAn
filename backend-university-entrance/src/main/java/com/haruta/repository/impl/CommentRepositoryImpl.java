@@ -5,6 +5,7 @@
 package com.haruta.repository.impl;
 
 import com.haruta.pojo.Comment;
+import com.haruta.pojo.News;
 import com.haruta.repository.CommentRepository;
 import java.util.ArrayList;
 import java.util.Date;
@@ -63,28 +64,25 @@ public class CommentRepositoryImpl implements CommentRepository {
     @Override
     public List<Comment> getComments(Map<String, String> params) {
         Session s = this.factory.getObject().getCurrentSession();
-//        CriteriaBuilder builder = s.getCriteriaBuilder();
-//        CriteriaQuery<Comment> b = builder.createQuery(Comment.class);
-//        Root root = b.from(Comment.class);
-//        b.select(root);
-//
-//        if (params != null) {
-//            List<Predicate> predicates = new ArrayList<>();
-//
-//            String bannerid = params.get("bannerid");
-//            if (bannerid != null && !bannerid.isEmpty()) {
-//                predicates.add(builder.equal(root.get("id"), Double.parseDouble(bannerid)));
-//            }
-//
-//            b.where(predicates.toArray(Predicate[]::new));
-//
-//        }
-//        b.orderBy(builder.asc(root.get("id")));
-//        Query query = s.createQuery(b);
-//        return query.getResultList();
-        Query q = s.createQuery("FROM Comment");
-        
-        return q.getResultList();
+        CriteriaBuilder builder = s.getCriteriaBuilder();
+        CriteriaQuery<Comment> b = builder.createQuery(Comment.class);
+        Root root = b.from(Comment.class);
+        b.select(root);
+
+        if (params != null) {
+            List<Predicate> predicates = new ArrayList<>();
+
+            String newid = params.get("newid");
+            if (newid != null && !newid.isEmpty()) {
+                predicates.add(builder.equal(root.get("newId"), Double.parseDouble(newid)));
+            }
+
+            b.where(predicates.toArray(Predicate[]::new));
+
+        }
+        b.orderBy(builder.asc(root.get("id")));
+        Query query = s.createQuery(b);
+        return query.getResultList();
 
     }
 
