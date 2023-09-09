@@ -26,9 +26,9 @@ DROP TABLE IF EXISTS `banner`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `banner` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) COLLATE utf8mb3_unicode_ci NOT NULL,
-  `image` varchar(255) COLLATE utf8mb3_unicode_ci NOT NULL,
-  `link` varchar(255) COLLATE utf8mb3_unicode_ci NOT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `image` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `link` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
   `created_date` datetime NOT NULL,
   `updated_date` datetime NOT NULL,
   `status` tinyint NOT NULL,
@@ -85,11 +85,14 @@ CREATE TABLE `comment` (
   `id` int NOT NULL AUTO_INCREMENT,
   `new_id` int NOT NULL,
   `user_id` int NOT NULL,
-  `content` text COLLATE utf8mb3_unicode_ci NOT NULL,
+  `content` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
   `created_date` datetime NOT NULL,
+  `folow_comment` int DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_newid_cmts_news_idx` (`new_id`),
   KEY `fk_userid_cmts_users_idx` (`user_id`),
+  KEY `fk_folow_cmt_idx` (`folow_comment`),
+  CONSTRAINT `fk_folow_cmt` FOREIGN KEY (`folow_comment`) REFERENCES `comment` (`id`),
   CONSTRAINT `fk_newid_cmts_news` FOREIGN KEY (`new_id`) REFERENCES `news` (`id`),
   CONSTRAINT `fk_userid_cmts_users` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
@@ -101,7 +104,7 @@ CREATE TABLE `comment` (
 
 LOCK TABLES `comment` WRITE;
 /*!40000 ALTER TABLE `comment` DISABLE KEYS */;
-INSERT INTO `comment` VALUES (1,1,1,'Who make it?','2023-08-05 08:48:32'),(2,1,2,'Who make it?','2023-08-05 08:48:32'),(3,2,1,'Who make it?','2023-08-05 08:48:32'),(4,3,1,'Who make it?','2023-08-05 08:48:32'),(5,1,5,'Who make it?','2023-08-05 08:48:32'),(6,3,2,'Who make it?','2023-08-05 08:48:32'),(7,5,8,'Who make it?','2023-08-05 08:48:32');
+INSERT INTO `comment` VALUES (1,1,1,'Who make it?','2023-08-05 08:48:32',1),(2,1,2,'Who make it?','2023-08-05 08:48:32',3),(3,2,1,'Who make it?','2023-08-05 08:48:32',2),(4,3,1,'Who make it?','2023-08-05 08:48:32',1),(5,1,5,'Who make it?','2023-08-05 08:48:32',3),(6,3,2,'Who make it?','2023-08-05 08:48:32',3),(7,5,8,'Who make it?','2023-08-05 08:48:32',4);
 /*!40000 ALTER TABLE `comment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -115,9 +118,9 @@ DROP TABLE IF EXISTS `department`;
 CREATE TABLE `department` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
-  `description` text COLLATE utf8mb3_unicode_ci NOT NULL,
-  `website` varchar(255) COLLATE utf8mb3_unicode_ci NOT NULL,
-  `video` varchar(255) COLLATE utf8mb3_unicode_ci NOT NULL,
+  `description` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `website` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `video` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
   `average_score` float NOT NULL,
   `cateid` int NOT NULL,
   PRIMARY KEY (`id`),
@@ -145,7 +148,7 @@ DROP TABLE IF EXISTS `livestream`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `livestream` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb3_unicode_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
   `description` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
   `start_date` date NOT NULL,
   `start_time` time NOT NULL,
@@ -167,6 +170,33 @@ INSERT INTO `livestream` VALUES (1,'Livestream 1','This is a livestream about th
 UNLOCK TABLES;
 
 --
+-- Table structure for table `major`
+--
+
+DROP TABLE IF EXISTS `major`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `major` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `department_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_dpm_major_idx` (`department_id`),
+  CONSTRAINT `fk_dpm_major` FOREIGN KEY (`department_id`) REFERENCES `department` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `major`
+--
+
+LOCK TABLES `major` WRITE;
+/*!40000 ALTER TABLE `major` DISABLE KEYS */;
+INSERT INTO `major` VALUES (1,'Kỹ thuật phần mềm',1),(2,'Kinh tế',2),(3,'Xây dựng',3),(4,'Y khoa',4),(5,'Luật',5),(6,'Nông nghiệp',6),(8,'Kỹ thuật phần mềm',1),(9,'Kinh tế',2),(10,'Xây dựng',3),(11,'Y khoa',4),(12,'Luật',5),(13,'Nông nghiệp',6),(14,'Tài chính - Ngân hàng',3),(15,'Du lịch',5);
+/*!40000 ALTER TABLE `major` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `news`
 --
 
@@ -175,8 +205,8 @@ DROP TABLE IF EXISTS `news`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `news` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) COLLATE utf8mb3_unicode_ci NOT NULL,
-  `content` text COLLATE utf8mb3_unicode_ci NOT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `content` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
   `created_date` datetime NOT NULL,
   `updated_date` datetime NOT NULL,
   `status` tinyint NOT NULL,
@@ -193,7 +223,7 @@ CREATE TABLE `news` (
 
 LOCK TABLES `news` WRITE;
 /*!40000 ALTER TABLE `news` DISABLE KEYS */;
-INSERT INTO `news` VALUES (1,'Tuyển sinh hệ chính quy năm 2023','Tuyển sinh hệ chính quy năm 2023. Thời gian tuyển sinh từ ngày 10 tháng 1 đến ngày 30 tháng 4 năm 2023. Yêu cầu tuyển sinh: Tốt nghiệp THPT hoặc tương đương. Điểm chuẩn: 24 điểm.','2023-07-14 07:08:58','2023-08-14 07:08:58',0,1),(2,'Tuyển sinh hệ liên thông năm 2023','Tuyển sinh hệ liên thông năm 2023. Thời gian tuyển sinh từ ngày 1 tháng 5 đến ngày 30 tháng 6 năm 2023. Yêu cầu tuyển sinh: Tốt nghiệp trung cấp hoặc cao đẳng. Điểm chuẩn: 20 điểm.','2023-08-05 07:09:10','2023-08-11 07:09:10',0,1),(3,'Tuyển sinh cao học năm 2023','Tuyển sinh cao học năm 2023. Thời gian tuyển sinh từ ngày 1 tháng 7 đến ngày 31 tháng 8 năm 2023. Yêu cầu tuyển sinh: Tốt nghiệp đại học. Điểm chuẩn: 28 điểm.','2023-08-05 08:46:52','2023-08-14 07:09:34',0,1),(4,'Tuyển sinh thạc sĩ năm 2023','Tuyển sinh thạc sĩ năm 2023. Thời gian tuyển sinh từ ngày 1 tháng 9 đến ngày 30 tháng 10 năm 2023. Yêu cầu tuyển sinh: Tốt nghiệp thạc sĩ. Điểm chuẩn: 32 điểm.','2023-08-05 08:46:52','2023-08-07 08:46:52',0,1),(5,'Tuyển sinh đào tạo từ xa năm 2023','Tuyển sinh đào tạo từ xa năm 2023. Thời gian tuyển sinh từ ngày 1 tháng 11 đến ngày 31 tháng 12 năm 2023. Yêu cầu tuyển sinh: Tốt nghiệp THPT hoặc tương đương. Điểm chuẩn: 22 điểm.','2023-08-12 07:09:46','2023-08-14 07:09:46',0,1);
+INSERT INTO `news` VALUES (1,'Tuyển sinh hệ chính quy năm 2023','Tuyển sinh hệ chính quy năm 2023. Thời gian tuyển sinh từ ngày 10 tháng 1 đến ngày 30 tháng 4 năm 2023. Yêu cầu tuyển sinh: Tốt nghiệp THPT hoặc tương đương. Điểm chuẩn: 24 điểm.','2023-07-14 07:08:58','2023-08-14 07:08:58',0,2),(2,'Tuyển sinh hệ liên thông năm 2023','Tuyển sinh hệ liên thông năm 2023. Thời gian tuyển sinh từ ngày 1 tháng 5 đến ngày 30 tháng 6 năm 2023. Yêu cầu tuyển sinh: Tốt nghiệp trung cấp hoặc cao đẳng. Điểm chuẩn: 20 điểm.','2023-08-05 07:09:10','2023-08-11 07:09:10',0,1),(3,'Tuyển sinh cao học năm 2023','Tuyển sinh cao học năm 2023. Thời gian tuyển sinh từ ngày 1 tháng 7 đến ngày 31 tháng 8 năm 2023. Yêu cầu tuyển sinh: Tốt nghiệp đại học. Điểm chuẩn: 28 điểm.','2023-08-05 08:46:52','2023-08-14 07:09:34',0,1),(4,'Tuyển sinh thạc sĩ năm 2023','Tuyển sinh thạc sĩ năm 2023. Thời gian tuyển sinh từ ngày 1 tháng 9 đến ngày 30 tháng 10 năm 2023. Yêu cầu tuyển sinh: Tốt nghiệp thạc sĩ. Điểm chuẩn: 32 điểm.','2023-08-05 08:46:52','2023-08-07 08:46:52',0,1),(5,'Tuyển sinh đào tạo từ xa năm 2023','Tuyển sinh đào tạo từ xa năm 2023. Thời gian tuyển sinh từ ngày 1 tháng 11 đến ngày 31 tháng 12 năm 2023. Yêu cầu tuyển sinh: Tốt nghiệp THPT hoặc tương đương. Điểm chuẩn: 22 điểm.','2023-08-12 07:09:46','2023-08-14 07:09:46',0,1);
 /*!40000 ALTER TABLE `news` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -288,6 +318,34 @@ INSERT INTO `role` VALUES (1,'admin'),(2,'user');
 UNLOCK TABLES;
 
 --
+-- Table structure for table `score`
+--
+
+DROP TABLE IF EXISTS `score`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `score` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `major_id` int NOT NULL,
+  `year` year NOT NULL,
+  `score` float NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_major_score_idx` (`major_id`),
+  CONSTRAINT `fk_major_score` FOREIGN KEY (`major_id`) REFERENCES `major` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `score`
+--
+
+LOCK TABLES `score` WRITE;
+/*!40000 ALTER TABLE `score` DISABLE KEYS */;
+INSERT INTO `score` VALUES (1,1,2023,22),(2,3,2022,21),(3,5,2021,20),(4,5,2020,19),(5,3,2019,18);
+/*!40000 ALTER TABLE `score` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `user`
 --
 
@@ -300,9 +358,9 @@ CREATE TABLE `user` (
   `last_name` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
   `email` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
   `phone` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
-  `username` varchar(45) COLLATE utf8mb3_unicode_ci NOT NULL,
+  `username` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
   `password` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
-  `avatar` varchar(255) COLLATE utf8mb3_unicode_ci NOT NULL,
+  `avatar` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
   `user_role` int NOT NULL,
   `date_of_bird` date DEFAULT NULL,
   `active` bit(1) NOT NULL DEFAULT b'1',
@@ -321,7 +379,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'Cảnh','Điều Ngọc','canhdieungoc@gmail.com','0504146784','canhdieungoc','canhdieungoc123@','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691837083/MyImages/UniversityEntrance/avatar/avt3_atudsl.jpg',1,'2004-01-07',_binary ''),(2,'Khang','Nhan Nguyên','khangnhannguyen@gmail.com','0119030299','khangnhannguyen','khangnhannguyen123@','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691837083/MyImages/UniversityEntrance/avatar/avt2_nwbeon.jpg',1,'2000-01-04',_binary ''),(3,'Hiệp','Mạc Hoàng','hiepmachoang@gmail.com','0206696076','hiepmachoang','hiepmachoang123@','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691837082/MyImages/UniversityEntrance/avatar/avt1_bgmadm.jpg',2,'2003-03-27',_binary ''),(4,'Luật','Thái Công','luatthaicong@gmail.com','0585418152','luatthaicong','luatthaicong123@','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691837082/MyImages/UniversityEntrance/avatar/avt4_byi2ba.jpg',2,'2003-10-03',_binary ''),(5,'Quân','Nguyễn Hải','quannguyenhai@gmail.com','0757844680','quannguyenhai','quannguyenhai123@','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691837083/MyImages/UniversityEntrance/avatar/avt3_atudsl.jpg',2,'2004-04-30',_binary ''),(6,'Quỳnh','Hình Mạnh','quynhhinhmanh@gmail.com','0700454988','quynhhinhmanh','quynhhinhmanh123@','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691837083/MyImages/UniversityEntrance/avatar/avt2_nwbeon.jpg',2,'2003-07-05',_binary ''),(7,'Thanh','Ngọ Chí','thanhngochi@gmail.com','0696697454','thanhngochi','thanhngochi123@','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691837082/MyImages/UniversityEntrance/avatar/avt1_bgmadm.jpg',2,'2003-12-10',_binary ''),(8,'Châu','Bạch Tùng','chaubachtung@gmail.com','0719484192','chaubachtung','chaubachtung123@','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691837082/MyImages/UniversityEntrance/avatar/avt4_byi2ba.jpg',2,'2003-10-22',_binary ''),(9,'Nam','Mộc Hoàng','nammochoang@gmail.com','0195774102','nammochoang','nammochoang123@','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691837083/MyImages/UniversityEntrance/avatar/avt2_nwbeon.jpg',2,'2000-02-18',_binary ''),(10,'Trường','Tấn Quang','truongtanquang@gmail.com','0649900171','truongtanquang','truongtanquang123@','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691837082/MyImages/UniversityEntrance/avatar/avt4_byi2ba.jpg',2,'2001-03-10',_binary ''),(11,'Trụ','Nguyễn Tấn','tru@gmail.com','0123456789','admin','admin@123','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691837082/MyImages/UniversityEntrance/avatar/avt4_byi2ba.jpg',1,'2004-01-04',_binary ''),(12,'Trụ','Tấn','nguyentantru14102002@gmail.com','0784674775','tru','123','https://res.cloudinary.com/ds8i6jriz/image/upload/v1693327162/b8cevacwo28j5wfc9o5m.png',1,NULL,_binary '\0');
+INSERT INTO `user` VALUES (1,'Cảnh','Điều Ngọc','canhdieungoc@gmail.com','0504146784','canhdieungoc','canhdieungoc123@','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691837083/MyImages/UniversityEntrance/avatar/avt3_atudsl.jpg',1,'2004-01-07',_binary ''),(2,'Khang','Nhan Nguyên','khangnhannguyen@gmail.com','0119030299','khangnhannguyen','khangnhannguyen123@','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691837083/MyImages/UniversityEntrance/avatar/avt2_nwbeon.jpg',1,'2000-01-04',_binary ''),(3,'Hiệp','Mạc Hoàng','hiepmachoang@gmail.com','0206696076','hiepmachoang','hiepmachoang123@','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691837082/MyImages/UniversityEntrance/avatar/avt1_bgmadm.jpg',2,'2003-03-27',_binary ''),(4,'Luật','Thái Công','luatthaicong@gmail.com','0585418152','luatthaicong','luatthaicong123@','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691837082/MyImages/UniversityEntrance/avatar/avt4_byi2ba.jpg',2,'2003-10-03',_binary ''),(5,'Quân','Nguyễn Hải','quannguyenhai@gmail.com','0757844680','quannguyenhai','quannguyenhai123@','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691837083/MyImages/UniversityEntrance/avatar/avt3_atudsl.jpg',2,'2004-04-30',_binary ''),(6,'Quỳnh','Hình Mạnh','quynhhinhmanh@gmail.com','0700454988','quynhhinhmanh','quynhhinhmanh123@','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691837083/MyImages/UniversityEntrance/avatar/avt2_nwbeon.jpg',2,'2003-07-05',_binary '\0'),(7,'Thanh','Ngọ Chí','thanhngochi@gmail.com','0696697454','thanhngochi','thanhngochi123@','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691837082/MyImages/UniversityEntrance/avatar/avt1_bgmadm.jpg',2,'2003-12-10',_binary ''),(8,'Châu','Bạch Tùng','chaubachtung@gmail.com','0719484192','chaubachtung','chaubachtung123@','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691837082/MyImages/UniversityEntrance/avatar/avt4_byi2ba.jpg',2,'2003-10-22',_binary '\0'),(9,'Nam','Mộc Hoàng','nammochoang@gmail.com','0195774102','nammochoang','nammochoang123@','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691837083/MyImages/UniversityEntrance/avatar/avt2_nwbeon.jpg',2,'2000-02-18',_binary ''),(10,'Trường','Tấn Quang','truongtanquang@gmail.com','0649900171','truongtanquang','truongtanquang123@','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691837082/MyImages/UniversityEntrance/avatar/avt4_byi2ba.jpg',2,'2001-03-10',_binary '\0'),(11,'Trụ','Nguyễn Tấn','tru@gmail.com','0123456789','admin','admin@123','https://res.cloudinary.com/ds8i6jriz/image/upload/v1691837082/MyImages/UniversityEntrance/avatar/avt4_byi2ba.jpg',2,'2004-01-04',_binary ''),(12,'Trụ','Tấn','nguyentantru14102002@gmail.com','0784674775','tru','123','https://res.cloudinary.com/ds8i6jriz/image/upload/v1693327162/b8cevacwo28j5wfc9o5m.png',1,'2004-01-04',_binary '');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -334,4 +392,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-09-03  0:25:45
+-- Dump completed on 2023-09-09 19:21:26
