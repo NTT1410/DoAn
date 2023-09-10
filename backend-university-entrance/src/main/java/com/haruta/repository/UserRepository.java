@@ -26,6 +26,7 @@ public interface UserRepository {
 
     boolean authUser(String username, String password);
 
+    User post(User post);
     
     User save(User user);
 

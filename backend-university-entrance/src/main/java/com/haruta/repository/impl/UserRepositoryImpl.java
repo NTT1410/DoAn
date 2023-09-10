@@ -169,4 +169,11 @@ public class UserRepositoryImpl implements UserRepository {
         return s.get(User.class, id);
     }
 
+    @Override
+    public User post(User post) {
+        Session s = this.factory.getObject().getCurrentSession();
+        s.save(post);
+        return post;
+    }
+
 }

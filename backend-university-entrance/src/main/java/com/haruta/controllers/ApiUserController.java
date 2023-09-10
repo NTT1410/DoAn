@@ -5,11 +5,13 @@
 package com.haruta.controllers;
 
 import com.haruta.components.JwtService;
+import com.haruta.dto.UserDto;
 import com.haruta.pojo.User;
 import com.haruta.service.UserService;
 import java.security.Principal;
 import java.util.List;
 import java.util.Map;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -80,6 +82,7 @@ public class ApiUserController {
         return new ResponseEntity<>("SUCCESSFUL", HttpStatus.OK);
     }
 
+    //them user
     @PostMapping(path = "/users/",
             consumes = {MediaType.MULTIPART_FORM_DATA_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE})
@@ -88,6 +91,15 @@ public class ApiUserController {
         User user = this.userService.addUser(params, avatar);
         return new ResponseEntity<>(user, HttpStatus.CREATED);
     }
+    
+    @PostMapping(path = "/usersTest/",
+            produces = {MediaType.APPLICATION_JSON_VALUE})
+    @CrossOrigin
+    public ResponseEntity<User> addUserTest(@RequestParam Map<String, String> params) {
+        User user = this.userService.addUserTest(params);
+        return new ResponseEntity<>(user, HttpStatus.CREATED);
+    } 
+     
 
     @GetMapping(path = "/current-user/", produces = MediaType.APPLICATION_JSON_VALUE)
     @CrossOrigin
@@ -98,7 +110,6 @@ public class ApiUserController {
     
     //xoa
     @DeleteMapping("/users/delete/{id}/")
-    @CrossOrigin
     public  ResponseEntity<?> deleteUser (@PathVariable (value = "id") int id) {
 //        return new ResponseEntity..body("You don not have permission to delete this comment");
 //        return new ResponseEntity<>("Delete successfully!", HttpStatus.NO_CONTENT);
@@ -109,4 +120,13 @@ public class ApiUserController {
             return ResponseEntity.badRequest().body("You don not have permission to delete this comment");
         }
     }
+    
+    
+    @PostMapping("/add-usertest")
+    public ResponseEntity<?> createPost(@RequestBody @Valid UserDto userDto) {
+            User userDtoSaved = userService.possUser(userDto);
+            return new ResponseEntity<>(userDtoSaved, HttpStatus.CREATED);
+// 
+    }
+
 }

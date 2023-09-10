@@ -20,6 +20,7 @@ const UserAdmin = () => {
     loadDpm();
   }, []);
 
+
   const handleFilter = (evt) => {
     const newData = users.filter((row) => {
       return (row.firstName + " " + row.lastName)

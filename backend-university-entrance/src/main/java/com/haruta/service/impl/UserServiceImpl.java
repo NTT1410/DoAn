@@ -6,6 +6,7 @@ package com.haruta.service.impl;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
+import com.haruta.dto.UserDto;
 import com.haruta.pojo.Role;
 import com.haruta.pojo.User;
 import com.haruta.repository.UserRepository;
@@ -33,6 +34,8 @@ import org.springframework.web.multipart.MultipartFile;
  */
 @Service
 public class UserServiceImpl implements UserService {
+    
+  
 
     @Autowired
     private UserRepository userRepository;
@@ -61,6 +64,47 @@ public class UserServiceImpl implements UserService {
         return this.userRepository.addOrUpdateUser(u);
     }
 
+//    @Override
+//    public UserDto post(UserDto userDto) {
+////        Post post = Post.builder()
+////                .isLocked(postDto == null ? true : false)
+////                .userId(userId)
+////                .content(postDto.getContent())
+////                .isSurvey(postDto.getIsSurvey())
+////                .timestamp(Timestamp.valueOf(LocalDateTime.now()))
+////                .build();
+////        return mapper.map(postRepository.post(post), PostDto.class);
+//
+//        User user  = new User();
+//        user.setFirstName(userDto.getFirstName());
+//        user.setLastName(userDto.getLastName());
+//        user.setPhone(userDto.getPhone());
+//        user.setEmail(userDto.getEmail());
+//        user.setUsername(userDto.getUsername());
+//        user.setPassword(userDto.getPassword());
+//        user.setUserRole(new Role(1));
+//        user.setActive(false);
+//        
+//        return mapper.map(userRepository.post(user), UserDto.class);
+//    }
+    
+     @Override
+    public User possUser(UserDto userDto) {
+          User user  = new User();
+        user.setFirstName(userDto.getFirstName());
+        user.setLastName(userDto.getLastName());
+        user.setPhone(userDto.getPhone());
+        user.setEmail(userDto.getEmail());
+        user.setUsername(userDto.getUsername());
+        user.setPassword(userDto.getPassword());
+        user.setUserRole(new Role(1));
+        user.setActive(false);
+        user.setAvatar("zzz");
+        
+        this.userRepository.post(user);
+        return user;
+    }
+    
     @Override
     public User addUser(Map<String, String> params, MultipartFile avatar) {
         User u = new User();
@@ -133,5 +177,25 @@ public class UserServiceImpl implements UserService {
     public User findUserById(int userId) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
+    @Override
+    public User addUserTest(Map<String, String> params) {
+        User u = new User();
+        u.setFirstName(params.get("firstName"));
+        u.setLastName(params.get("lastName"));
+        u.setPhone(params.get("phone"));
+        u.setEmail(params.get("email"));
+        u.setUsername(params.get("username"));
+        u.setPassword(this.passwordEncoder.encode(params.get("password")));
+        u.setUserRole(new Role(1));
+        u.setActive(false);
+
+        this.userRepository.addUser(u);
+        return u;
+    }
+
+   
+
+    
 
 }

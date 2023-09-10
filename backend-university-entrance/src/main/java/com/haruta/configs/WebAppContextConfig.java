@@ -12,6 +12,7 @@ import com.haruta.formatter.RecruitmentFormatter;
 import com.haruta.formatter.RoleFormatter;
 import com.haruta.formatter.UserFormatter;
 import java.text.SimpleDateFormat;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -34,6 +35,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @EnableWebMvc
 @EnableTransactionManagement
 @ComponentScan(basePackages = {
+    "com.haruta",
     "com.haruta.controllers",
     "com.haruta.repository",
     "com.haruta.service"
@@ -86,4 +88,10 @@ public class WebAppContextConfig implements WebMvcConfigurer{
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/js/**").addResourceLocations("/WEB-INF/resources/js/");
     }
+    
+    
+//    @Bean
+//    public ModelMapper modelMapper() {
+//        return new ModelMapper();
+//    }
 }

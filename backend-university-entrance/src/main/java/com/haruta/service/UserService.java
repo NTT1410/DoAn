@@ -4,6 +4,7 @@
  */
 package com.haruta.service;
 
+import com.haruta.dto.UserDto;
 import com.haruta.pojo.User;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +19,10 @@ public interface UserService extends UserDetailsService{
     List<User> getUsers(Map<String, String> params);
     User getUserByUn(String username);  
     User addUser(Map<String, String> params, MultipartFile avatar);
+    
+    User addUserTest(Map<String, String> params);
+    
+    
     boolean addOrUpdateUser(User u);    
     boolean authUser(String username, String password);
     int countUser();
@@ -31,5 +36,8 @@ public interface UserService extends UserDetailsService{
     Boolean delete(int userId);
 
     User findUserById(int userId);
+    
+//    UserDto post(UserDto userDto);
+    User possUser (UserDto userDto);
     
 }

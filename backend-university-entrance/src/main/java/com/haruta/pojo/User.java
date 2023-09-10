@@ -90,8 +90,8 @@ public class User implements Serializable {
     @Column(name = "password")
     private String password;
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 255)
+//    @NotNull
+//    @Size(min = 1, max = 255)
     @Column(name = "avatar")
     private String avatar;
     @Column(name = "date_of_bird")
