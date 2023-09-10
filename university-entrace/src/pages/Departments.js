@@ -4,18 +4,6 @@ import Apis, { endpoints } from "../configs/Apis";
 import MySpinner from "../components/MySpinner";
 
 const Departments = () => {
-  // const [departments, setDepartments] = useState([]);
-
-  // useEffect(() => {
-  //   const loadDpm = async () => {
-  //     let res = await Apis.get(endpoints["departments"]);
-
-  //     console.log(res.data);
-
-  //     setDepartments(res.data);
-  //   };
-  //   loadDpm();
-  // }, []);
 
   const [departments, setDepartments] = useState(null);
 

@@ -7,6 +7,7 @@ const SERVER = "http://localhost:8088";
 
 export const endpoints = {
   departments: `${SERVER_CONTEXT}/api/departments`,
+  livestreams: `${SERVER_CONTEXT}/api/livestreams`,
   users: `${SERVER_CONTEXT}/api/users`,
   "count-users": `${SERVER_CONTEXT}/api/countusers`,
   "count-comments": `${SERVER_CONTEXT}/api/countcomments`,

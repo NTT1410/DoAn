@@ -4,6 +4,7 @@
  */
 package com.haruta.pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
@@ -41,6 +42,12 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Livestream.findByName", query = "SELECT l FROM Livestream l WHERE l.name = :name"),
     @NamedQuery(name = "Livestream.findByStartDate", query = "SELECT l FROM Livestream l WHERE l.startDate = :startDate"),
     @NamedQuery(name = "Livestream.findByStartTime", query = "SELECT l FROM Livestream l WHERE l.startTime = :startTime")})
+
+
+@JsonIgnoreProperties(value = {
+    "questionSet",
+    "recruitmentId"
+})
 public class Livestream implements Serializable {
 
     private static final long serialVersionUID = 1L;

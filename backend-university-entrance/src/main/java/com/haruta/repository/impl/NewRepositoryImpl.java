@@ -36,6 +36,7 @@ public class NewRepositoryImpl implements NewRepository {
 
     @Override
     public List<News> getNews(Map<String, String> params) {
+       
         Session s = this.factory.getObject().getCurrentSession();
         CriteriaBuilder builder = s.getCriteriaBuilder();
         CriteriaQuery<News> m = builder.createQuery(News.class);
