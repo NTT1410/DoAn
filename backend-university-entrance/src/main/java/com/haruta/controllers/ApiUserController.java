@@ -122,15 +122,15 @@ public class ApiUserController {
     }
 
     @PostMapping("/add-user")
-    public ResponseEntity<?> createPost(@RequestBody @Valid UserDto userDto) {
-        User userDtoSaved = userService.possUser(userDto);
+    public ResponseEntity<?> createPost(@RequestBody @Valid UserDto userDto, @RequestPart MultipartFile avatar) {
+        User userDtoSaved = userService.possUser(userDto, avatar);
         return new ResponseEntity<>(userDtoSaved, HttpStatus.CREATED);
 // 
     }
 
     @PutMapping("/update-user/{idUser}/")
-    public ResponseEntity<?> uppdateUser(@RequestBody @Valid UserDto userDto, @PathVariable("idUser") int userId) {
-        User userDtoSaved = userService.updateUser(userDto, userId);
+    public ResponseEntity<?> uppdateUser(@RequestBody @Valid UserDto userDto, @PathVariable("idUser") int userId, @RequestPart MultipartFile avatar) {
+        User userDtoSaved = userService.updateUser(userDto, userId, avatar);
         return new ResponseEntity<>(userDtoSaved, HttpStatus.CREATED);
 // 
     }

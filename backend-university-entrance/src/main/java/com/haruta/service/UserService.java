@@ -38,8 +38,8 @@ public interface UserService extends UserDetailsService{
     User findUserById(int userId);
     
 //    UserDto post(UserDto userDto);
-    User possUser (UserDto userDto);
-    User updateUser (UserDto userDto, int userId);
+    User possUser (UserDto userDto, MultipartFile avatar);
+    User updateUser (UserDto userDto, int userId, MultipartFile avatar);
     
     
     

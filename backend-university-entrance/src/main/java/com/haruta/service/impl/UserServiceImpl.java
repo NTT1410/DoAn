@@ -182,7 +182,7 @@ public class UserServiceImpl implements UserService {
 
     
     @Override
-    public User possUser(UserDto userDto) {
+    public User possUser(UserDto userDto, MultipartFile avatar) {
           User user  = new User();
         user.setFirstName(userDto.getFirstName());
         user.setLastName(userDto.getLastName());
@@ -192,7 +192,17 @@ public class UserServiceImpl implements UserService {
         user.setPassword(userDto.getPassword());
         user.setUserRole(new Role(1));
         user.setActive(false);
-        user.setAvatar("zzz");
+       
+         if (!avatar.isEmpty()) {
+            try {
+                Map res = this.cloudinary.uploader().upload(avatar.getBytes(),
+                        ObjectUtils.asMap("resource_type", "auto"));
+                user.setAvatar(res.get("secure_url").toString());
+            } catch (IOException ex) {
+                Logger.getLogger(UserServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
         
         this.userRepository.post(user);
         return user;
@@ -200,7 +210,7 @@ public class UserServiceImpl implements UserService {
     
     
     @Override
-    public User updateUser(UserDto userDto, int userId) {
+    public User updateUser(UserDto userDto, int userId, MultipartFile avatar) {
         User user = userRepository.findUserById(userId);
          if (user == null) {
             throw new ResourceNotFoundException("Post", "id", userId);
@@ -215,6 +225,17 @@ public class UserServiceImpl implements UserService {
         user.setUserRole(new Role(1));
         user.setActive(false);
         user.setAvatar("zzz");
+        
+         if (!avatar.isEmpty()) {
+            try {
+                Map res = this.cloudinary.uploader().upload(avatar.getBytes(),
+                        ObjectUtils.asMap("resource_type", "auto"));
+                user.setAvatar(res.get("secure_url").toString());
+            } catch (IOException ex) {
+                Logger.getLogger(UserServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
         
         this.userRepository.update(user);
         return user;
