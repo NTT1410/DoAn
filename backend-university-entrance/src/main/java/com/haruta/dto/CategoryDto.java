@@ -4,7 +4,6 @@
  */
 package com.haruta.dto;
 
-import com.haruta.pojo.Role;
 import lombok.Data;
 
 /**
@@ -13,17 +12,9 @@ import lombok.Data;
  */
 
 @Data
-public class UserDto {
-
+public class CategoryDto {
     private Integer id;
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String phone;
-    private String username;
-    private String password;
-//    private boolean active;
-    private int userRoleId;
-
-
+    private String name;
+    private String description;
+    
 }

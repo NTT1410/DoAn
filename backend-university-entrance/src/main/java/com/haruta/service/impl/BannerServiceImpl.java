@@ -4,6 +4,7 @@
  */
 package com.haruta.service.impl;
 
+import com.haruta.dto.BannerDto;
 import com.haruta.pojo.Banner;
 import com.haruta.pojo.Recruitment;
 import com.haruta.repository.BannerRepository;
@@ -92,5 +93,49 @@ public class BannerServiceImpl implements BannerService{
     @Override
     public List<Banner> getFullBanner(Map<String, String> params) {
         return this.bannerRepo.getFullBanner(params);
+    }
+
+    @Override
+    public Banner addBanner(BannerDto bannerDto) {
+        Banner banner  = new Banner();
+        banner.setTitle(bannerDto.getTitle());
+        banner.setImage(bannerDto.getImage());
+        banner.setLink(bannerDto.getLink());
+        banner.setCreatedDate(bannerDto.getCreatedDate());
+        banner.setUpdatedDate(bannerDto.getUpdatedDate());
+        banner.setStatus(bannerDto.getStatus());
+        
+//        banner.setRecruitmentId(bannerDto.setRecruitmentId);
+        
+//            private Integer id;
+//    private String title;
+//    private String image;
+//    private String link;
+//    private Date createdDate;
+//    private Date updatedDate;
+//    private short status;
+//    private int recruitmentId;
+        
+        this.bannerRepo.save(banner);
+        return banner;
+    }
+
+    @Override
+    public Banner updateBanner(BannerDto bannerDto, int bannerId) {
+          Banner banner = bannerRepo.findBannerById(bannerId);
+         if (banner == null) {
+            throw new ResourceNotFoundException("Post", "id", bannerId);
+         }
+         
+        banner.setTitle(bannerDto.getTitle());
+        banner.setImage(bannerDto.getImage());
+        banner.setLink(bannerDto.getLink());
+        banner.setCreatedDate(bannerDto.getCreatedDate());
+        banner.setUpdatedDate(bannerDto.getUpdatedDate());
+        banner.setStatus(bannerDto.getStatus());
+        
+        this.bannerRepo.update(banner);
+        return banner;
+         
     }
 }

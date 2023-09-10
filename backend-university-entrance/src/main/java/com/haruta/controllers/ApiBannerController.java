@@ -4,6 +4,7 @@
  */
 package com.haruta.controllers;
 
+import com.haruta.dto.BannerDto;
 import com.haruta.pojo.Banner;
 import com.haruta.service.BannerService;
 import java.util.List;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -40,7 +42,7 @@ public class ApiBannerController {
     public ResponseEntity<List<Banner>> list() {
         return new ResponseEntity<>(this.banerService.getBanner(), HttpStatus.OK);
     }
-    
+
     @GetMapping("/bannersFull")
     @CrossOrigin
     public ResponseEntity<List<Banner>> listFull(Model model, @RequestParam Map<String, String> params) {
@@ -65,16 +67,31 @@ public class ApiBannerController {
     }
 
     //xoa
-     @DeleteMapping("/banner/delete/{id}/")
+    @DeleteMapping("/banner/delete/{id}/")
     @CrossOrigin
-    public  ResponseEntity<?> deleteBanner (@PathVariable (value = "id") int id) {
+    public ResponseEntity<?> deleteBanner(@PathVariable(value = "id") int id) {
 //        return new ResponseEntity..body("You don not have permission to delete this comment");
 //        return new ResponseEntity<>("Delete successfully!", HttpStatus.NO_CONTENT);
-        Boolean del = this.banerService.delete(id);  
+        Boolean del = this.banerService.delete(id);
         if (del) {
             return new ResponseEntity<>("Delete successfully!", HttpStatus.NO_CONTENT);
         } else {
             return ResponseEntity.badRequest().body("You don not have permission to delete this comment");
         }
     }
+
+    @PostMapping("/add-banner")
+    public ResponseEntity<?> createPost(@RequestBody @Valid BannerDto bannerDto) {
+        Banner bannerSaved = banerService.addBanner(bannerDto);
+        return new ResponseEntity<>(bannerSaved, HttpStatus.CREATED);
+// 
+    }
+
+    @PutMapping("/update-banner/{idBanner}/")
+    public ResponseEntity<?> uppdateUser(@RequestBody @Valid BannerDto bannerDto, @PathVariable("idBanner") int userId) {
+        Banner bannerSaved = banerService.updateBanner(bannerDto, userId);
+        return new ResponseEntity<>(bannerSaved, HttpStatus.CREATED);
+// 
+    }
 }
+    

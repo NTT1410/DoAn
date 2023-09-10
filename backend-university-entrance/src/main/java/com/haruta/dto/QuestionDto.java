@@ -4,7 +4,7 @@
  */
 package com.haruta.dto;
 
-import com.haruta.pojo.Role;
+import java.util.Date;
 import lombok.Data;
 
 /**
@@ -13,17 +13,14 @@ import lombok.Data;
  */
 
 @Data
-public class UserDto {
-
+public class QuestionDto {
     private Integer id;
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String phone;
-    private String username;
-    private String password;
-//    private boolean active;
-    private int userRoleId;
-
-
+    private String content;
+    private String answer;
+    private Date createdDate;
+    private Date answeredDate;
+    private Integer userId;
+    private Integer livestreamId;
+    
+    
 }

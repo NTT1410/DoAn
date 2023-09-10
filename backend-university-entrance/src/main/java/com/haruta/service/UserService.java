@@ -39,5 +39,9 @@ public interface UserService extends UserDetailsService{
     
 //    UserDto post(UserDto userDto);
     User possUser (UserDto userDto);
+    User updateUser (UserDto userDto, int userId);
+    
+    
+    
     
 }

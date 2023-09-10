@@ -7,6 +7,7 @@ package com.haruta.service.impl;
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 import com.haruta.dto.UserDto;
+import com.haruta.exception.ResourceNotFoundException;
 import com.haruta.pojo.Role;
 import com.haruta.pojo.User;
 import com.haruta.repository.UserRepository;
@@ -88,22 +89,7 @@ public class UserServiceImpl implements UserService {
 //        return mapper.map(userRepository.post(user), UserDto.class);
 //    }
     
-     @Override
-    public User possUser(UserDto userDto) {
-          User user  = new User();
-        user.setFirstName(userDto.getFirstName());
-        user.setLastName(userDto.getLastName());
-        user.setPhone(userDto.getPhone());
-        user.setEmail(userDto.getEmail());
-        user.setUsername(userDto.getUsername());
-        user.setPassword(userDto.getPassword());
-        user.setUserRole(new Role(1));
-        user.setActive(false);
-        user.setAvatar("zzz");
-        
-        this.userRepository.post(user);
-        return user;
-    }
+   
     
     @Override
     public User addUser(Map<String, String> params, MultipartFile avatar) {
@@ -192,6 +178,47 @@ public class UserServiceImpl implements UserService {
 
         this.userRepository.addUser(u);
         return u;
+    }
+
+    
+    @Override
+    public User possUser(UserDto userDto) {
+          User user  = new User();
+        user.setFirstName(userDto.getFirstName());
+        user.setLastName(userDto.getLastName());
+        user.setPhone(userDto.getPhone());
+        user.setEmail(userDto.getEmail());
+        user.setUsername(userDto.getUsername());
+        user.setPassword(userDto.getPassword());
+        user.setUserRole(new Role(1));
+        user.setActive(false);
+        user.setAvatar("zzz");
+        
+        this.userRepository.post(user);
+        return user;
+    }
+    
+    
+    @Override
+    public User updateUser(UserDto userDto, int userId) {
+        User user = userRepository.findUserById(userId);
+         if (user == null) {
+            throw new ResourceNotFoundException("Post", "id", userId);
+         }
+         
+        user.setFirstName(userDto.getFirstName());
+        user.setLastName(userDto.getLastName());
+        user.setPhone(userDto.getPhone());
+        user.setEmail(userDto.getEmail());
+        user.setUsername(userDto.getUsername());
+        user.setPassword(userDto.getPassword());
+        user.setUserRole(new Role(1));
+        user.setActive(false);
+        user.setAvatar("zzz");
+        
+        this.userRepository.update(user);
+        return user;
+         
     }
 
    

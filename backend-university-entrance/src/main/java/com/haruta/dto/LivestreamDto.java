@@ -4,26 +4,19 @@
  */
 package com.haruta.dto;
 
-import com.haruta.pojo.Role;
+import java.util.Date;
 import lombok.Data;
 
 /**
  *
  * @author HP
  */
-
 @Data
-public class UserDto {
-
+public class LivestreamDto {
     private Integer id;
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String phone;
-    private String username;
-    private String password;
-//    private boolean active;
-    private int userRoleId;
-
-
+    private String name;
+    private String description;
+    private Date startDate;
+    private Date startTime;
+    private Integer recruitmentId;
 }

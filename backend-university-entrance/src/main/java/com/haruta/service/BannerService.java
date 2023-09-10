@@ -4,6 +4,7 @@
  */
 package com.haruta.service;
 
+import com.haruta.dto.BannerDto;
 import com.haruta.pojo.Banner;
 import java.util.List;
 import java.util.Map;
@@ -23,4 +24,8 @@ public interface BannerService {
     Boolean delete(int bannerId);
 
     Banner findByBannerId(int bannerId);
+    
+    Banner addBanner (BannerDto bannerDto);
+    Banner updateBanner (BannerDto bannerDto, int bannerId);
+    
 }

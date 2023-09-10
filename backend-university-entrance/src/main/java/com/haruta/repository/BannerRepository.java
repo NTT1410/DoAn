@@ -24,5 +24,7 @@ public interface BannerRepository {
     Boolean delete(Banner banner);
 
     Banner findBannerById(int id);
+    
+    
 
 }
