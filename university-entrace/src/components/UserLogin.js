@@ -71,7 +71,7 @@ const UserLogin = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link class="dropdown-item" onClick={logout}>
+                  <Link to="/" class="dropdown-item" onClick={logout}>
                     Logout
                   </Link>
                 </li>
