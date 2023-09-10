@@ -36,8 +36,9 @@ public class ApiNewsController {
     
     //ok
     @GetMapping("/news")
-    public ResponseEntity<List<News>> list() {
-        return new ResponseEntity<>(this.newService.getNews(), HttpStatus.OK);
+    @CrossOrigin
+    public ResponseEntity<List<News>> list(Model model, @RequestParam Map<String, String> params) {
+        return new ResponseEntity<>(this.newService.getNews(params), HttpStatus.OK);
     }
     
 //    @RequestMapping(path = "/news/{newsId}/", produces = MediaType.APPLICATION_JSON_VALUE)

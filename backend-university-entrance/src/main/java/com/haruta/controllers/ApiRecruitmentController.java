@@ -31,7 +31,7 @@ public class ApiRecruitmentController {
     
     //lay thong tin tuyen sinh
     //ok
-    @GetMapping("/recruiments/")
+    @GetMapping("/recruiments")
     @CrossOrigin
     public ResponseEntity<List<Recruitment>> list() {
         return new ResponseEntity<>(this.recruitmentService.getRecruitments(), HttpStatus.OK);

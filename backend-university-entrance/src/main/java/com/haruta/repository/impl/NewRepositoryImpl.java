@@ -7,11 +7,17 @@ package com.haruta.repository.impl;
 import com.haruta.pojo.News;
 
 import com.haruta.repository.NewRepository;
+import java.util.ArrayList;
 
 import java.util.List;
+import java.util.Map;
 
 import org.hibernate.Session;
 import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.stereotype.Repository;
@@ -29,28 +35,31 @@ public class NewRepositoryImpl implements NewRepository {
     private LocalSessionFactoryBean factory;
 
     @Override
-    public List<News> getNews() {
-//        Session s = this.factory.getObject().getCurrentSession();
-//        CriteriaBuilder builder = s.getCriteriaBuilder();
-//        CriteriaQuery<News> n = builder.createQuery(News.class);
-//        Root root = n.from(News.class);
-//        
-//        n.select(root);
-//        
-//        n.orderBy(builder.desc(root.get("createdDate")), builder.desc(root.get("updatedDate")));
-//        
-//        Query query = s.createQuery(n);
-//        return query.getResultList();
-
+    public List<News> getNews(Map<String, String> params) {
         Session s = this.factory.getObject().getCurrentSession();
-//        Query q = s.createQuery("News.findAll");
-        Query q = s.createQuery("From News");
+        CriteriaBuilder builder = s.getCriteriaBuilder();
+        CriteriaQuery<News> m = builder.createQuery(News.class);
+        Root root = m.from(News.class);
+        m.select(root);
 
-        return q.getResultList();
+        if (params != null) {
+            List<Predicate> predicates = new ArrayList<>();
+
+            String newsid = params.get("newsid");
+            if (newsid != null && !newsid.isEmpty()) {
+                predicates.add(builder.equal(root.get("id"), Integer.parseInt(newsid)));
+            }
+
+            m.where(predicates.toArray(Predicate[]::new));
+
+        }
+        m.orderBy(builder.asc(root.get("id")));
+        Query query = s.createQuery(m);
+        return query.getResultList();
     }
 
     @Override
-    public List<News> getNewsByRecruitment(int recruitmentId) {  
+    public List<News> getNewsByRecruitment(int recruitmentId) {
         Session s = this.factory.getObject().getCurrentSession();
         Query q = s.createQuery("From News Where recruitmentId.id=:id");//can phai sua lai
         q.setParameter("id", recruitmentId); //recruitment_id
@@ -62,7 +71,7 @@ public class NewRepositoryImpl implements NewRepository {
 
     @Override
     public int countNews() {
-         Session s = this.factory.getObject().getCurrentSession();
+        Session s = this.factory.getObject().getCurrentSession();
         Query q = s.createQuery("SELECT Count(*) FROM News");
         return Integer.parseInt(q.getSingleResult().toString());
 
@@ -70,32 +79,29 @@ public class NewRepositoryImpl implements NewRepository {
 
     @Override
     public News save(News news) {
-          Session s = this.factory.getObject().getCurrentSession();
+        Session s = this.factory.getObject().getCurrentSession();
         s.save(news);
         return news;
     }
 
     @Override
     public News update(News news) {
-         Session s = this.factory.getObject().getCurrentSession();
+        Session s = this.factory.getObject().getCurrentSession();
         s.update(news);
         return news;
     }
 
     @Override
     public Boolean delete(News news) {
-         Session s = this.factory.getObject().getCurrentSession();
+        Session s = this.factory.getObject().getCurrentSession();
         s.delete(news);
         return true;
     }
 
     @Override
-    public News findNewsById(int id) { 
+    public News findNewsById(int id) {
         Session s = this.factory.getObject().getCurrentSession();
         return s.get(News.class, id);
     }
-    
-  
 
-    
 }

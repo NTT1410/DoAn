@@ -13,7 +13,7 @@ import java.util.Map;
  * @author nguye
  */
 public interface NewService {
-    List<News> getNews();
+    List<News> getNews(Map<String, String> params);
 
     List<News> getNewsByRecruitment (int recruitmentId);
     
