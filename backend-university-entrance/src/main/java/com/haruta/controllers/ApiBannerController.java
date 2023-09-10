@@ -80,17 +80,17 @@ public class ApiBannerController {
         }
     }
 
-    @PostMapping("/add-banner")
-    public ResponseEntity<?> createPost(@RequestBody @Valid BannerDto bannerDto) {
-        Banner bannerSaved = banerService.addBanner(bannerDto);
+    @PostMapping("/add-banner/{idRecruitment}/")
+    public ResponseEntity<?> createBanner(@RequestBody @Valid BannerDto bannerDto, @PathVariable("idRecruitment") int idRecruitment) {
+        Banner bannerSaved = banerService.addBanner(bannerDto,idRecruitment);
         return new ResponseEntity<>(bannerSaved, HttpStatus.CREATED);
 // 
     }
 
-    @PutMapping("/update-banner/{idBanner}/")
-    public ResponseEntity<?> uppdateUser(@RequestBody @Valid BannerDto bannerDto, @PathVariable("idBanner") int userId) {
-        Banner bannerSaved = banerService.updateBanner(bannerDto, userId);
-        return new ResponseEntity<>(bannerSaved, HttpStatus.CREATED);
+    @PutMapping("/update-banner/{idRecruitment}/{idBanner}/")
+    public ResponseEntity<?> uppdateUser(@RequestBody @Valid BannerDto bannerDto,@PathVariable("idRecruitment") int idRecruitment , @PathVariable("idBanner") int idBanner) {
+        Banner bannerSaved = banerService.updateBanner(bannerDto, idRecruitment,idBanner);
+        return new ResponseEntity<>(bannerSaved, HttpStatus.OK);
 // 
     }
 }

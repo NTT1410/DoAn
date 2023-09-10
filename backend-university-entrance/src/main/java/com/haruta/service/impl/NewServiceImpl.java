@@ -4,7 +4,10 @@
  */
 package com.haruta.service.impl;
 
+import com.haruta.dto.NewsDto;
+import com.haruta.exception.ResourceNotFoundException;
 import com.haruta.pojo.News;
+import com.haruta.pojo.Recruitment;
 import com.haruta.repository.NewRepository;
 import com.haruta.repository.RecruitmentRepository;
 import com.haruta.service.NewService;
@@ -21,10 +24,10 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional
 public class NewServiceImpl implements NewService {
-    
+
     @Autowired
     private NewRepository newRepo;
-    
+
     @Autowired
     private RecruitmentRepository recuitRepo;
 
@@ -35,7 +38,7 @@ public class NewServiceImpl implements NewService {
 
     @Override
     public List<News> getNewsByRecruitment(int recruitmentId) {
-         return this.newRepo.getNewsByRecruitment(recruitmentId);
+        return this.newRepo.getNewsByRecruitment(recruitmentId);
     }
 
     @Override
@@ -47,7 +50,6 @@ public class NewServiceImpl implements NewService {
 //    public News create(News news, int newsId) {
 //        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
 //    }
-
     @Override
     public News update(News news) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
@@ -55,8 +57,8 @@ public class NewServiceImpl implements NewService {
 
     @Override
     public Boolean delete(int newsId) {
-         News news = newRepo.findNewsById(newsId);
-        if(news != null){
+        News news = newRepo.findNewsById(newsId);
+        if (news != null) {
             newRepo.delete(news);
             return true;
         }
@@ -67,8 +69,44 @@ public class NewServiceImpl implements NewService {
     public News findNewsById(int newsId) {
         return this.newRepo.findNewsById(newsId);
     }
-    
-    
-   
-    
+
+    @Override
+    public News addNews(NewsDto newsDto, int recruitmentId) {
+        
+        Recruitment recruitment = recuitRepo.findRecruitmentById(recruitmentId);
+        
+        News news = new News();
+        
+        news.setTitle(newsDto.getTitle());
+        news.setContent(newsDto.getContent());
+        news.setCreatedDate(newsDto.getCreatedDate());
+        news.setUpdatedDate(newsDto.getUpdatedDate());
+        news.setStatus(newsDto.getStatus());
+        news.setRecruitmentId(recruitment);
+
+        this.newRepo.save(news);
+        return news;
+    }
+
+    @Override
+    public News updateNews(NewsDto newsDto,int recruitmentId, int newsId) {
+        
+         Recruitment recruitment = recuitRepo.findRecruitmentById(recruitmentId);
+         
+         News news = newRepo.findNewsById(newsId);
+         if (news == null) {
+            throw new ResourceNotFoundException("News", "id", newsId);
+         }
+         news.setTitle(newsDto.getTitle());
+        news.setContent(newsDto.getContent());
+        news.setCreatedDate(newsDto.getCreatedDate());
+        news.setUpdatedDate(newsDto.getUpdatedDate());
+        news.setStatus(newsDto.getStatus());
+        news.setRecruitmentId(recruitment);
+        
+        
+        this.newRepo.update(news);
+        return news;
+    }
+
 }

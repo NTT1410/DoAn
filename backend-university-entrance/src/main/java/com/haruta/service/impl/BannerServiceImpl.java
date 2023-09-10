@@ -26,6 +26,7 @@ import org.springframework.stereotype.Service;
 public class BannerServiceImpl implements BannerService{
     @Autowired
     private BannerRepository bannerRepo;
+    
     @Autowired
     private RecruitmentRepository recuRepository;
 
@@ -96,7 +97,9 @@ public class BannerServiceImpl implements BannerService{
     }
 
     @Override
-    public Banner addBanner(BannerDto bannerDto) {
+    public Banner addBanner(BannerDto bannerDto,  int recruitmentId) {
+        Recruitment recruitment = recuRepository.findRecruitmentById(recruitmentId);
+        
         Banner banner  = new Banner();
         banner.setTitle(bannerDto.getTitle());
         banner.setImage(bannerDto.getImage());
@@ -104,24 +107,16 @@ public class BannerServiceImpl implements BannerService{
         banner.setCreatedDate(bannerDto.getCreatedDate());
         banner.setUpdatedDate(bannerDto.getUpdatedDate());
         banner.setStatus(bannerDto.getStatus());
-        
-//        banner.setRecruitmentId(bannerDto.setRecruitmentId);
-        
-//            private Integer id;
-//    private String title;
-//    private String image;
-//    private String link;
-//    private Date createdDate;
-//    private Date updatedDate;
-//    private short status;
-//    private int recruitmentId;
+        banner.setRecruitmentId(recruitment);
         
         this.bannerRepo.save(banner);
         return banner;
     }
 
     @Override
-    public Banner updateBanner(BannerDto bannerDto, int bannerId) {
+    public Banner updateBanner(BannerDto bannerDto, int recruitmentId, int bannerId) {
+        
+         Recruitment recruitment = recuRepository.findRecruitmentById(recruitmentId);
           Banner banner = bannerRepo.findBannerById(bannerId);
          if (banner == null) {
             throw new ResourceNotFoundException("Post", "id", bannerId);
@@ -133,6 +128,7 @@ public class BannerServiceImpl implements BannerService{
         banner.setCreatedDate(bannerDto.getCreatedDate());
         banner.setUpdatedDate(bannerDto.getUpdatedDate());
         banner.setStatus(bannerDto.getStatus());
+        banner.setRecruitmentId(recruitment);
         
         this.bannerRepo.update(banner);
         return banner;

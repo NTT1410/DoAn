@@ -25,7 +25,7 @@ public interface BannerService {
 
     Banner findByBannerId(int bannerId);
     
-    Banner addBanner (BannerDto bannerDto);
-    Banner updateBanner (BannerDto bannerDto, int bannerId);
+    Banner addBanner (BannerDto bannerDto, int recruitmentId);
+    Banner updateBanner (BannerDto bannerDto, int recruitmentId, int bannerId);
     
 }

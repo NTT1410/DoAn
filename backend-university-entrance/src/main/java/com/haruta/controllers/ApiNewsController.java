@@ -4,10 +4,12 @@
  */
 package com.haruta.controllers;
 
+import com.haruta.dto.NewsDto;
 import com.haruta.pojo.News;
 import com.haruta.service.NewService;
 import java.util.List;
 import java.util.Map;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,6 +20,9 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -62,7 +67,7 @@ public class ApiNewsController {
     }
 
     
-      @DeleteMapping("/news/delete/{id}/")
+    @DeleteMapping("/news/delete/{id}/")
     @CrossOrigin
     public  ResponseEntity<?> deleteProduct (@PathVariable (value = "id") int id) {
 //        return new ResponseEntity..body("You don not have permission to delete this comment");
@@ -74,4 +79,24 @@ public class ApiNewsController {
             return ResponseEntity.badRequest().body("You don not have permission to delete this comment");
         }
     }
+    
+    
+    //ok 
+    @PostMapping("/add-news/{idRecruitment}/")
+    public ResponseEntity<?> createNews(@RequestBody @Valid NewsDto newsDto, @PathVariable("idRecruitment") int idRecruitment) {
+        News userSaved = newService.addNews(newsDto,idRecruitment);
+        return new ResponseEntity<>(userSaved, HttpStatus.CREATED);
+// 
+    }
+    
+     
+    //ok
+    @PutMapping("/update-news/{idRecruitment}/{idNews}/")
+    public ResponseEntity<?> uppdateUser(@RequestBody @Valid NewsDto newsDto,@PathVariable("idRecruitment") int idRecruitment ,@PathVariable("idNews") int newsId) {
+        News newsSaved = newService.updateNews(newsDto,idRecruitment ,newsId);
+        return new ResponseEntity<>(newsSaved, HttpStatus.OK);
+       
+// 
+    }
+    
 }
