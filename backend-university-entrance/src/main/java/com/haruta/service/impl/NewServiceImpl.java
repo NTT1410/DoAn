@@ -29,8 +29,8 @@ public class NewServiceImpl implements NewService {
     private RecruitmentRepository recuitRepo;
 
     @Override
-    public List<News> getNews() {
-        return this.newRepo.getNews();
+    public List<News> getNews(Map<String, String> params) {
+        return this.newRepo.getNews(params);
     }
 
     @Override

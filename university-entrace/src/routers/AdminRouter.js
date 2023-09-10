@@ -6,6 +6,8 @@ import BannerAdmin from "../pages/admin/BannerAdmin";
 import Test from "../pages/admin/Test";
 import EditBanner from "../pages/admin/EditBanner";
 import EditUser from "../pages/admin/EditUser";
+import NewsAdmin from "../pages/admin/NewsAdmin";
+import EditNews from "../pages/admin/EditNews";
 
 const AdminRouter = () => {
   return (
@@ -20,6 +22,9 @@ const AdminRouter = () => {
         <Route path="useradmin/:userId" element={<EditUser />} />
         <Route path="test" element={<Test />} />
         <Route path="editbanner" element={<EditBanner />} />
+        <Route path="newsadmin" element={<NewsAdmin />} />
+        <Route path="newsadmin/:newsId" element={<EditNews />} />
+        <Route path="editnew" element={<EditNews />} />
       </Routes>
     </>
   );

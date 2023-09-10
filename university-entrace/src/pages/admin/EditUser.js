@@ -36,7 +36,7 @@ const EditUser = () => {
               class="form-control"
               id="username"
               name="username"
-              value={user ? user.username : ""}
+              defaultValue={user ? user.username : ""}
             />
           </div>
           <div class="mb-3">
@@ -48,7 +48,7 @@ const EditUser = () => {
               class="form-control"
               id="firstName"
               name="firstName"
-              value={user ? user.firstName : ""}
+              defaultValue={user ? user.firstName : ""}
             />
           </div>
           <div class="mb-3">
@@ -60,7 +60,7 @@ const EditUser = () => {
               class="form-control"
               id="lastName"
               name="lastName"
-              value={user ? user.lastName : ""}
+              defaultValue={user ? user.lastName : ""}
             />
           </div>
           <div class="mb-3">
@@ -72,7 +72,7 @@ const EditUser = () => {
               class="form-control"
               id="email"
               name="email"
-              value={user ? user.email : ""}
+              defaultValue={user ? user.email : ""}
             />
           </div>
           <div class="mb-3">
@@ -84,7 +84,7 @@ const EditUser = () => {
               class="form-control"
               id="firstName"
               name="firstName"
-              value={user ? user.phone : ""}
+              defaultValue={user ? user.phone : ""}
             />
           </div>
           <div class="mb-3">
@@ -96,7 +96,7 @@ const EditUser = () => {
               class="form-control"
               id="password"
               name="password"
-              value={user ? user.password : ""}
+              defaultValue={user ? user.password : ""}
             />
           </div>
           <div class="mb-3">

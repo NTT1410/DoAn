@@ -28,8 +28,8 @@ function Sidebar({ openSidebarToggle, OpenSidebar }) {
           </Link>
         </li>
         <li className="sidebar-list-item">
-          <Link to="/">
-            <i class="icon fas fa-th"></i> Categories
+          <Link to="/newsadmin">
+            <i class="icon fas fa-th"></i> News
           </Link>
         </li>
         <li className="sidebar-list-item">

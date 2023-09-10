@@ -8,6 +8,7 @@ import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 import com.haruta.formatter.CommentFormatter;
 import com.haruta.formatter.DepartmentFormatter;
+import com.haruta.formatter.MajorFormatter;
 import com.haruta.formatter.RecruitmentFormatter;
 import com.haruta.formatter.RoleFormatter;
 import com.haruta.formatter.UserFormatter;
@@ -56,6 +57,7 @@ public class WebAppContextConfig implements WebMvcConfigurer{
         registry.addFormatter(new RecruitmentFormatter());
         registry.addFormatter(new DepartmentFormatter());
         registry.addFormatter(new CommentFormatter());
+        registry.addFormatter(new MajorFormatter());
     }
     
     @Bean
