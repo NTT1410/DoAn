@@ -22,6 +22,7 @@ const EditBanner = () => {
       if (bannerId !== undefined) {
         let e = endpoints["banners-full"];
         e = `${e}?bannerid=${bannerId}`;
+        console.log(e);
         let res = await Apis.get(e);
         setBanner(res.data[0]);
         setTitle(res.data[0].title);
