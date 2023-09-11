@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import Apis, { endpoints } from "../../configs/Apis";
+import Apis, { deleteUser, endpoints } from "../../configs/Apis";
 import { Button, Card, Col, Container, Form, Row } from "react-bootstrap";
 import DataTable, { createTheme } from "react-data-table-component";
 import { Link } from "react-router-dom";
@@ -8,6 +8,11 @@ import { Link } from "react-router-dom";
 const UserAdmin = () => {
   const [users, setUsers] = useState([]);
   const [records, setRecords] = useState([]);
+
+  const deleteUserButton = (userId) => {
+    deleteUser(userId);
+    setUsers([]);
+  };
 
   useEffect(() => {
     const loadDpm = async () => {
@@ -18,8 +23,7 @@ const UserAdmin = () => {
       setRecords(res.data);
     };
     loadDpm();
-  }, []);
-
+  }, [users]);
 
   const handleFilter = (evt) => {
     const newData = users.filter((row) => {
@@ -70,7 +74,11 @@ const UserAdmin = () => {
     {
       name: "",
       button: true,
-      cell: () => <Button variant="success">Delete</Button>,
+      cell: (r) => (
+        <Link onClick={() => deleteUserButton(r.id)}>
+          <Button variant="success">Delete</Button>
+        </Link>
+      ),
     },
   ];
 

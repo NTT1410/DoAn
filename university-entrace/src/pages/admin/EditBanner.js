@@ -1,14 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import Apis, { endpoints } from "../../configs/Apis";
+import Apis, { endpoints, updateBanner } from "../../configs/Apis";
 
 const EditBanner = () => {
   const { bannerId } = useParams();
   const [banner, setBanner] = useState(null);
   const [checked, setChecked] = useState(false);
+  const [title, setTitle] = useState();
 
   const enable = (evt) => {
     setChecked(!checked);
+  };
+
+  const handleUpdate = () => {
+    setBanner((banner.title = title), (banner.status = checked));
+    updateBanner(banner.recruitmentId.id, banner.id, banner);
   };
 
   useEffect(() => {
@@ -18,6 +24,7 @@ const EditBanner = () => {
         e = `${e}?bannerid=${bannerId}`;
         let res = await Apis.get(e);
         setBanner(res.data[0]);
+        setTitle(res.data[0].title);
         setChecked(Boolean(res.data[0].status));
       }
     };
@@ -35,19 +42,8 @@ const EditBanner = () => {
               type="text"
               class="form-control"
               id="title"
-              value={banner ? banner.title : ""}
-            />
-          </div>
-          <div class="mb-3">
-            <label for="link" class="form-label">
-              {banner ? banner.link : ""}
-            </label>
-            <input
-              type="file"
-              class="form-control"
-              id="link"
-              name="link"
-              src={banner ? banner.link : ""}
+              defaultValue={banner ? banner.title : ""}
+              onChange={(e) => setTitle(e.target.value)}
             />
           </div>
           <div class="form-check form-switch">
@@ -65,7 +61,7 @@ const EditBanner = () => {
             </label>
           </div>
           <div>
-            <Link to="/banners">
+            <Link to="/banners" onClick={handleUpdate}>
               <button type="submit" class="btn btn-primary">
                 Submit
               </button>

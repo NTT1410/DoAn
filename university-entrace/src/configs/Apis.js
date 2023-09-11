@@ -2,13 +2,14 @@ import axios from "axios";
 import cookie from "react-cookies";
 
 const SERVER_CONTEXT = "/backend-university-entrance";
-// const SERVER = "http://localhost:8080";
-const SERVER = "http://localhost:8088";
+const SERVER = "http://localhost:8080";
+// const SERVER = "http://localhost:8088";
 
 export const endpoints = {
   departments: `${SERVER_CONTEXT}/api/departments`,
   livestreams: `${SERVER_CONTEXT}/api/livestreams`,
   users: `${SERVER_CONTEXT}/api/users`,
+  deleteU: `${SERVER_CONTEXT}/api/users/users/delete`,
   "count-users": `${SERVER_CONTEXT}/api/countusers`,
   "count-comments": `${SERVER_CONTEXT}/api/countcomments`,
   banners: `${SERVER_CONTEXT}/api/banners`,
@@ -35,6 +36,17 @@ export const authApi = () => {
       Authorization: cookie.load("token"),
     },
   });
+};
+
+export const deleteUser = (userId) => {
+  return axios.delete(`${SERVER}${SERVER_CONTEXT}/api/users/delete/${userId}/`);
+};
+
+export const updateBanner = (bannerid, rid, data) => {
+  console.log(data);
+  return axios.put(
+    `${SERVER}${SERVER_CONTEXT}/api/update-banner/${rid}/${bannerid}/`
+  );
 };
 
 export default axios.create({
